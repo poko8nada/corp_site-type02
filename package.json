@@ -1,0 +1,43 @@
+{
+  "name": "corp-site-t1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "clean": "rm -rf .vite dist node_modules/.vite",
+    "build": "vite build --mode client && vite build",
+    "rebuild": "pnpm run clean && pnpm run build",
+    "preview": "vite preview",
+    "preview:pages": "pnpm run rebuild && wrangler pages dev dist",
+    "deploy": "pnpm run rebuild && wrangler pages deploy dist --project-name pomodoro",
+    "test": "vitest --passWithNoTests",
+    "test:run": "vitest run --passWithNoTests",
+    "lint": "oxlint .",
+    "lint:fix": "oxlint --fix .",
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check .",
+    "typecheck": "tsc --noEmit",
+    "prepare": "lefthook install"
+  },
+  "dependencies": {
+    "daisyui": "^5.5.19",
+    "hono": "^4.12.12",
+    "honox": "^0.1.55"
+  },
+  "devDependencies": {
+    "@fontsource-variable/cormorant": "^5.2.8",
+    "@hono/vite-dev-server": "^0.18.2",
+    "@hono/vite-ssg": "^0.3.3",
+    "@tailwindcss/vite": "^4.0.9",
+    "@types/node": "^25.6.0",
+    "lefthook": "^1.11.0",
+    "oxc-parser": "^0.123.0",
+    "oxfmt": "^0.41.0",
+    "oxlint": "^1.0.0",
+    "tailwindcss": "^4.0.9",
+    "typescript": "^5.9.3",
+    "vite": "^6.3.5",
+    "vitest": "^4.0.18",
+    "wrangler": "^4.4.0"
+  }
+}

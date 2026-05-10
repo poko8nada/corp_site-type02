@@ -1,0 +1,537 @@
+{
+  "version": "2.10",
+  "children": [
+    {
+      "type": "frame",
+      "id": "bi8Au",
+      "x": 0,
+      "y": 0,
+      "name": "Frame",
+      "width": 1200,
+      "height": 2200,
+      "fill": "#1B1612",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "zeQkK",
+          "name": "header",
+          "width": "fill_container",
+          "fill": "#241D17",
+          "padding": [
+            24,
+            48
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "dikaD",
+              "name": "logo",
+              "fill": "#E9D9C2",
+              "content": "NAKASU LOUNGE",
+              "fontFamily": "Playfair Display",
+              "fontSize": 30,
+              "fontWeight": "600",
+              "letterSpacing": 1.2
+            },
+            {
+              "type": "frame",
+              "id": "M4KTL",
+              "name": "nav",
+              "gap": 28,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "3bbDG",
+                  "name": "nav1",
+                  "fill": "#D8C8B2",
+                  "content": "トップ",
+                  "fontFamily": "Newsreader",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "BVQZy",
+                  "name": "nav2",
+                  "fill": "#D8C8B2",
+                  "content": "私たちについて",
+                  "fontFamily": "Newsreader",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "R0qtH",
+                  "name": "nav3",
+                  "fill": "#D8C8B2",
+                  "content": "サービス",
+                  "fontFamily": "Newsreader",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "i2u2r",
+              "name": "cta",
+              "fill": "#B68A52",
+              "cornerRadius": 4,
+              "padding": [
+                10,
+                18
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ry0CA",
+                  "name": "ctaText",
+                  "fill": "#1D1713",
+                  "content": "お問い合わせ",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "T5suv",
+          "name": "hero",
+          "width": "fill_container",
+          "height": 720,
+          "fill": "#1B1612",
+          "gap": 48,
+          "padding": [
+            72,
+            64
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "Bnej9",
+              "name": "heroText",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 22,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "wLvmP",
+                  "name": "badge",
+                  "fill": "#CDAE82",
+                  "content": "福岡・中洲の架空ラグジュアリーバー",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal",
+                  "letterSpacing": 0.8
+                },
+                {
+                  "type": "text",
+                  "id": "MLdqy",
+                  "name": "heroTitle",
+                  "fill": "#F1E6D8",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "上質な夜を、\n堅実なもてなしで。",
+                  "lineHeight": 1.12,
+                  "fontFamily": "Playfair Display",
+                  "fontSize": 64,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "K2L5b",
+                  "name": "heroDesc",
+                  "fill": "#D7C8B6",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "企業接待から特別な記念日まで。静かな重厚感と確かなサービスで、記憶に残る時間を提供します。",
+                  "lineHeight": 1.4,
+                  "fontFamily": "Newsreader",
+                  "fontSize": 22,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "peP34",
+                  "name": "btnRow",
+                  "gap": 14,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "gwTpc",
+                      "name": "btnPrimary",
+                      "fill": "#B68A52",
+                      "cornerRadius": 4,
+                      "padding": [
+                        12,
+                        20
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "xcab3",
+                          "name": "btnPrimaryText",
+                          "fill": "#1D1713",
+                          "content": "プランを見る",
+                          "fontFamily": "Inter",
+                          "fontSize": 15,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "NjIW7",
+                      "name": "btnSecondary",
+                      "cornerRadius": 4,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "#8E7555"
+                      },
+                      "padding": [
+                        11,
+                        20
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "g0cQt",
+                          "name": "btnSecondaryText",
+                          "fill": "#D8C8B2",
+                          "content": "店舗紹介",
+                          "fontFamily": "Inter",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "m43LZ",
+              "name": "heroVisual",
+              "metadata": {
+                "type": "unsplash",
+                "username": "adryan_studio",
+                "link": "https://unsplash.com/@adryan_studio",
+                "author": "Puscas Adryan"
+              },
+              "width": 500,
+              "height": 560,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "https://images.unsplash.com/photo-1769970502261-541570454bd7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzYyNDAyMzR8&ixlib=rb-4.1.0&q=80&w=1080",
+                "mode": "fill"
+              },
+              "cornerRadius": 8
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "zpHvM",
+          "name": "features",
+          "width": "fill_container",
+          "fill": "#201913",
+          "layout": "vertical",
+          "gap": 30,
+          "padding": [
+            72,
+            64
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "3CcSY",
+              "name": "featuresTitle",
+              "fill": "#F0E3D1",
+              "content": "選ばれる3つの理由",
+              "fontFamily": "Playfair Display",
+              "fontSize": 44,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "iqvSD",
+              "name": "cardRow",
+              "width": "fill_container",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Ny2U0",
+                  "name": "card1",
+                  "width": "fill_container",
+                  "fill": "#2A211A",
+                  "cornerRadius": 6,
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "22UVA",
+                      "name": "card1Title",
+                      "fill": "#F0E1CC",
+                      "content": "落ち着いた空間設計",
+                      "fontFamily": "Playfair Display",
+                      "fontSize": 28,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "UzQXw",
+                      "name": "card1Desc",
+                      "fill": "#D8C7B0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "木材の温かみを活かした内装と、静かな照明設計で会話に集中できる環境を整えています。",
+                      "lineHeight": 1.45,
+                      "fontFamily": "Newsreader",
+                      "fontSize": 18,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "JIctT",
+                  "name": "card2",
+                  "width": "fill_container",
+                  "fill": "#2A211A",
+                  "cornerRadius": 6,
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "YrbJs",
+                      "name": "card2Title",
+                      "fill": "#F0E1CC",
+                      "content": "接待に強い運営",
+                      "fontFamily": "Playfair Display",
+                      "fontSize": 28,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "GBbEU",
+                      "name": "card2Desc",
+                      "fill": "#D8C7B0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "企業利用を想定した導線と予約体制で、大切なゲストを安心してお迎えできます。",
+                      "lineHeight": 1.45,
+                      "fontFamily": "Newsreader",
+                      "fontSize": 18,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "z4rhv",
+                  "name": "card3",
+                  "width": "fill_container",
+                  "fill": "#2A211A",
+                  "cornerRadius": 6,
+                  "layout": "vertical",
+                  "gap": 12,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Z4pAj",
+                      "name": "card3Title",
+                      "fill": "#F0E1CC",
+                      "content": "信頼できるホスピタリティ",
+                      "fontFamily": "Playfair Display",
+                      "fontSize": 28,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "VFlaX",
+                      "name": "card3Desc",
+                      "fill": "#D8C7B0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "経験豊富なスタッフが、場面に応じた距離感でサービスを提供します。",
+                      "lineHeight": 1.45,
+                      "fontFamily": "Newsreader",
+                      "fontSize": 18,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "C2Ot2",
+          "name": "about",
+          "width": "fill_container",
+          "fill": "#1B1612",
+          "gap": 48,
+          "padding": [
+            84,
+            64
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "N4gqn",
+              "name": "aboutLeft",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 18,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "BTPN7",
+                  "name": "aboutKicker",
+                  "fill": "#CDAE82",
+                  "content": "ABOUT US",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal",
+                  "letterSpacing": 1.2
+                },
+                {
+                  "type": "text",
+                  "id": "FjWwu",
+                  "name": "aboutTitle",
+                  "fill": "#F1E6D8",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "格式に寄り添う、\n現代的なバー体験。",
+                  "lineHeight": 1.14,
+                  "fontFamily": "Playfair Display",
+                  "fontSize": 52,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "hjxu4",
+                  "name": "aboutDesc",
+                  "fill": "#D7C8B6",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "中小企業の役員会食や顧客との会食にふさわしい、品位と実用性を兼ねた空間を設計。落ち着いた個室、柔軟なドリンクプラン、スムーズな予約対応でビジネスシーンを支えます。",
+                  "lineHeight": 1.45,
+                  "fontFamily": "Newsreader",
+                  "fontSize": 21,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "xNobE",
+                  "name": "aboutCta",
+                  "fill": "#B68A52",
+                  "cornerRadius": 4,
+                  "padding": [
+                    12,
+                    20
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "l1gfd",
+                      "name": "aboutCtaText",
+                      "fill": "#1D1713",
+                      "content": "企業利用のご相談",
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "MuSzK",
+              "name": "aboutVisual",
+              "metadata": {
+                "type": "unsplash",
+                "username": "yogesh_7",
+                "link": "https://unsplash.com/@yogesh_7",
+                "author": "Yogesh Pedamkar"
+              },
+              "width": 500,
+              "height": 420,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "https://images.unsplash.com/photo-1559110134-597d9a24abe1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzYyNDAyNzB8&ixlib=rb-4.1.0&q=80&w=1080",
+                "mode": "fill"
+              },
+              "cornerRadius": 8
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "FJMIf",
+          "name": "footer",
+          "width": "fill_container",
+          "fill": "#241D17",
+          "padding": [
+            22,
+            48
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "k3W2i",
+              "name": "footerBrand",
+              "fill": "#DCCBB5",
+              "content": "NAKASU LOUNGE",
+              "fontFamily": "Playfair Display",
+              "fontSize": 20,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "C5bob",
+              "name": "footerCopy",
+              "fill": "#A89274",
+              "content": "© 2026 NAKASU LOUNGE. All rights reserved.",
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,368 @@
+@import '@fontsource-variable/cormorant/index.css';
+
+@import 'tailwindcss' source('../app');
+
+@plugin 'daisyui' {
+  themes: false;
+}
+
+@plugin 'daisyui/theme' {
+  name: 'soft-craft';
+  default: true;
+  color-scheme: light;
+
+  --color-base-100: oklch(97% 0.01 80);
+  --color-base-200: oklch(94% 0.012 75);
+  --color-base-300: oklch(88% 0.015 70);
+  --color-base-content: oklch(25% 0.02 55);
+
+  --color-primary: oklch(45% 0.09 45);
+  --color-primary-content: oklch(97% 0.01 80);
+  --color-secondary: oklch(55% 0.06 350);
+  --color-secondary-content: oklch(97% 0.01 80);
+  --color-accent: oklch(62% 0.08 80);
+  --color-accent-content: oklch(25% 0.02 55);
+
+  --color-neutral: oklch(30% 0.015 55);
+  --color-neutral-content: oklch(94% 0.012 75);
+
+  --color-info: oklch(60% 0.08 236);
+  --color-info-content: oklch(97% 0.01 80);
+  --color-success: oklch(60% 0.1 155);
+  --color-success-content: oklch(97% 0.01 80);
+  --color-warning: oklch(75% 0.12 85);
+  --color-warning-content: oklch(25% 0.02 55);
+  --color-error: oklch(55% 0.14 24);
+  --color-error-content: oklch(97% 0.01 80);
+
+  --radius-selector: 0.25rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
+@theme inline {
+  --font-sans: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+  --font-display: 'Cormorant Variable', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+
+  --color-surface-emphasis: oklch(95.2% 0.01 80);
+  --color-surface-subtle: oklch(96.5% 0.008 78);
+  --color-surface-cta: oklch(96% 0.008 78);
+  --color-surface-card: oklch(98.8% 0.004 80);
+  --color-surface-card-hover: oklch(100% 0 0);
+
+  --color-border-divider: oklch(88% 0.015 70 / 0.75);
+  --color-border-card: oklch(84% 0.016 70 / 0.8);
+  --color-border-card-hover: oklch(62% 0.08 80 / 0.55);
+  --color-border-image: oklch(84% 0.016 70 / 0.7);
+
+  --color-shadow-card: oklch(25% 0.02 55 / 0.14);
+  --color-shadow-card-ambient: oklch(25% 0.02 55 / 0.25);
+  --color-shadow-card-small: oklch(25% 0.02 55 / 0.12);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-base-content);
+}
+
+/* --- Section pattern slot defaults --- */
+
+:root {
+  --_pat-1: none;
+  --_pat-2: none;
+  --_pat-1-size: auto;
+  --_pat-2-size: auto;
+  --_pat-c: 25% 0.02 55;
+}
+
+/* --- Section surfaces --- */
+
+.surface-emphasis {
+  --_pat-c: 25% 0.02 55;
+  background-image:
+    var(--_pat-1), var(--_pat-2),
+    radial-gradient(
+      ellipse 85% 62% at 0% 50%,
+      color-mix(in oklch, var(--color-primary) 5.5%, transparent) 0%,
+      transparent 62%
+    ),
+    radial-gradient(
+      ellipse 65% 72% at 100% 50%,
+      color-mix(in oklch, var(--color-accent) 4%, transparent) 0%,
+      transparent 52%
+    );
+  background-color: var(--color-surface-emphasis);
+  background-size: var(--_pat-1-size), var(--_pat-2-size), auto, auto;
+  background-repeat: repeat, repeat, no-repeat, no-repeat;
+  background-position:
+    0 0,
+    0 0,
+    0 0,
+    0 0;
+}
+
+.surface-subtle {
+  --_pat-c: 25% 0.02 55;
+  background-image:
+    var(--_pat-1), var(--_pat-2),
+    radial-gradient(
+      ellipse 72% 52% at 50% 0%,
+      color-mix(in oklch, var(--color-primary) 4%, transparent) 0%,
+      transparent 52%
+    ),
+    radial-gradient(
+      ellipse 62% 62% at 80% 100%,
+      color-mix(in oklch, var(--color-secondary) 3%, transparent) 0%,
+      transparent 42%
+    );
+  background-color: var(--color-surface-subtle);
+  background-size: var(--_pat-1-size), var(--_pat-2-size), auto, auto;
+  background-repeat: repeat, repeat, no-repeat, no-repeat;
+  background-position:
+    0 0,
+    0 0,
+    0 0,
+    0 0;
+}
+
+/* --- Home section framing --- */
+
+.section-divider {
+  border-top: 1px solid var(--color-border-divider);
+}
+
+/* --- Cards --- */
+
+.card-elevate {
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-border-card);
+  border-radius: 0.75rem;
+  transition:
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms ease,
+    background-color 220ms ease;
+}
+
+.card-elevate:hover {
+  transform: translateY(-3px);
+  background: var(--color-surface-card-hover);
+  border-color: var(--color-border-card-hover);
+  box-shadow:
+    0 10px 34px -10px var(--color-shadow-card),
+    0 3px 10px -3px var(--color-shadow-card-small);
+}
+
+/* --- Lead intro motion --- */
+
+@keyframes lead-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(var(--lead-offset, 24px));
+    filter: blur(var(--lead-blur, 6px));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.lead-reveal {
+  opacity: 0;
+  animation: lead-fade-up var(--lead-duration, 780ms)
+    var(--lead-easing, cubic-bezier(0.22, 1, 0.36, 1)) forwards;
+  animation-delay: var(--lead-delay, 0ms);
+}
+
+/* --- Scroll indicator --- */
+
+@keyframes scroll-pulse {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.72;
+    transform: translateY(var(--scroll-pulse-offset, 6px));
+  }
+}
+
+.scroll-indicator {
+  animation: scroll-pulse var(--scroll-pulse-duration, 2s) ease-in-out infinite;
+}
+
+/* --- Scroll reveal --- */
+
+[data-reveal='ready'] .reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(var(--reveal-offset, 18px));
+  filter: blur(var(--reveal-blur, 2px));
+  transition:
+    opacity var(--reveal-duration, 640ms) var(--reveal-easing, cubic-bezier(0.22, 1, 0.36, 1)),
+    transform var(--reveal-duration, 640ms) var(--reveal-easing, cubic-bezier(0.22, 1, 0.36, 1)),
+    filter var(--reveal-duration, 640ms) var(--reveal-easing, cubic-bezier(0.22, 1, 0.36, 1));
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform, filter;
+}
+
+[data-reveal='ready'] .reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* --- Section spacing --- */
+
+:root {
+  --section-padding-relaxed: clamp(4.5rem, 9vw, 7.5rem);
+  --section-padding-compact: clamp(3rem, 5.5vw, 4.25rem);
+}
+
+.section-pad-relaxed {
+  padding-block: var(--section-padding-relaxed);
+}
+
+.section-pad-compact {
+  padding-block: var(--section-padding-compact);
+}
+
+/* --- CTA ambient --- */
+
+.cta-surface {
+  --_pat-c: 25% 0.02 55;
+  background-image:
+    var(--_pat-1), var(--_pat-2),
+    radial-gradient(
+      ellipse 60% 80% at 50% 50%,
+      color-mix(in oklch, var(--color-primary) 9%, transparent) 0%,
+      transparent 66%
+    ),
+    radial-gradient(
+      ellipse 80% 60% at 30% 60%,
+      color-mix(in oklch, var(--color-secondary) 5%, transparent) 0%,
+      transparent 56%
+    );
+  background-color: var(--color-surface-cta);
+  background-size: var(--_pat-1-size), var(--_pat-2-size), auto, auto;
+  background-repeat: repeat, repeat, no-repeat, no-repeat;
+  background-position:
+    0 0,
+    0 0,
+    0 0,
+    0 0;
+}
+
+/* --- Section patterns --- */
+/*  surface-* クラスと組み合わせて使う。パターンクラスのみで単体動作はしない。 */
+
+.section-pattern-dots {
+  --_pat-1: radial-gradient(circle, oklch(var(--_pat-c) / 0.06) 1.5px, transparent 1.5px);
+  --_pat-1-size: 20px 20px;
+}
+
+.section-pattern-grid {
+  --_pat-1: repeating-linear-gradient(90deg, oklch(var(--_pat-c) / 0.04) 0 1px, transparent 0 24px);
+  --_pat-2: repeating-linear-gradient(0deg, oklch(var(--_pat-c) / 0.04) 0 1px, transparent 0 24px);
+}
+
+.section-pattern-stripe-v {
+  --_pat-1: repeating-linear-gradient(90deg, oklch(var(--_pat-c) / 0.04) 0 2px, transparent 0 24px);
+}
+
+.section-pattern-stripe-h {
+  --_pat-1: repeating-linear-gradient(
+    180deg,
+    oklch(var(--_pat-c) / 0.04) 0 2px,
+    transparent 0 24px
+  );
+}
+
+.section-pattern-diagonal {
+  --_pat-1: repeating-linear-gradient(45deg, oklch(var(--_pat-c) / 0.04) 0 1px, transparent 0 20px);
+}
+
+.section-pattern-cross {
+  --_pat-1: repeating-linear-gradient(45deg, oklch(var(--_pat-c) / 0.04) 0 1px, transparent 0 20px);
+  --_pat-2: repeating-linear-gradient(
+    -45deg,
+    oklch(var(--_pat-c) / 0.04) 0 1px,
+    transparent 0 20px
+  );
+}
+
+.section-pattern-checker {
+  --_pat-1: repeating-conic-gradient(oklch(var(--_pat-c) / 0.04) 0% 25%, transparent 0% 50%);
+  --_pat-1-size: 20px 20px;
+}
+
+/* --- Parallax layer system --- */
+/* Layer DOM elements rendered by <Section layer={...}>. */
+/* parallax-scroll wrapper always exists; parallax-on クラスで有効化。 */
+
+.parallax-scroll {
+  position: relative;
+}
+
+.parallax-backdrop {
+  display: none;
+}
+
+.parallax-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.parallax-on body {
+  overflow: hidden;
+}
+
+.parallax-on .drawer-content {
+  max-height: 100dvh;
+}
+
+.parallax-on .parallax-scroll {
+  max-height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  perspective: 1px;
+  perspective-origin: 0 0;
+}
+
+.parallax-on .parallax-layer {
+  transform-origin: 0 0;
+}
+
+.parallax-on .parallax-layer--d1 {
+  transform: translateZ(-1px) scale(2);
+}
+
+.parallax-on .parallax-layer--d2 {
+  transform: translateZ(-2px) scale(3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lead-reveal,
+  .scroll-indicator,
+  .card-elevate {
+    animation: none;
+    transition: none;
+    transform: none;
+    filter: none;
+    opacity: 1;
+  }
+  [data-reveal='ready'] .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
