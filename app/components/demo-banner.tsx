@@ -25,7 +25,7 @@ export function DemoBanner(props: DemoBannerProps) {
       </svg>
       <span>
         このサイトは<strong>架空のデモサイト</strong>
-        です。実際の店舗・サービスとは一切関係ありません。
+        です。実際の店舗・企業・サービスとは一切関係ありません。
       </span>
     </div>
   );

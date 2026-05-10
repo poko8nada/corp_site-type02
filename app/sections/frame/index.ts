@@ -18,8 +18,8 @@ export type FrameNavEntry =
   | { kind: 'placeholder'; label: string; reason: string };
 
 export const frameNavEntries: readonly FrameNavEntry[] = [
-  { kind: 'link', label: '当店について', href: '/#home-section-explanation' },
-  { kind: 'link', label: 'こだわり', href: '/#home-section-strengths' },
+  { kind: 'link', label: '事業概要', href: '/#home-section-explanation' },
+  { kind: 'link', label: '強み', href: '/#home-section-strengths' },
   { kind: 'link', label: 'アクセス', href: '/#home-section-facts' },
   { kind: 'link', label: 'よくある質問', href: '/#home-section-info' },
 ] as const;
@@ -44,7 +44,7 @@ export interface FrameFooterCopy {
 }
 
 export const frameFooterCopy: FrameFooterCopy = {
-  companyHeading: '店舗情報',
+  companyHeading: '会社情報',
   companyLines: [SITE_BRAND, `${SITE_ZIP} ${SITE_ADDRESS}`, SITE_BUILDING],
   contactHeading: '連絡先',
   contactLines: [`Tel ${SITE_PHONE}`, `営業: ${SITE_HOURS}（${SITE_HOLIDAY}）`],

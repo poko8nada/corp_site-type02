@@ -14,6 +14,30 @@ export function ContactFormArea() {
     phoneCtaAfter,
   } = contactFormAreaCatalog;
 
+  if (!googleFormUrl) {
+    return (
+      <div class='mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8'>
+        <div class='flex min-h-64 items-center justify-center rounded-xl border-2 border-dashed border-base-300 bg-base-200/50'>
+          <p class='px-6 text-center text-sm text-base-content/60'>
+            フォームプレースホルダー
+            <br />
+            実際のフォームURLに差し替えてください
+          </p>
+        </div>
+        <p class='mt-4 text-center text-xs text-base-content/50'>
+          {phoneCtaBefore}{' '}
+          <a
+            href={`tel:${SITE_PHONE.replace(/-/g, '')}`}
+            class='underline hover:text-base-content/80'
+          >
+            {SITE_PHONE}
+          </a>{' '}
+          {phoneCtaAfter}
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div class='mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8'>
       <div class='min-h-fit'>
