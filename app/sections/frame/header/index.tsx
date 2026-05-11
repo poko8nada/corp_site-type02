@@ -2,6 +2,7 @@ import type { HeaderPattern, HeaderProps } from './header.types';
 import { HeaderStandard } from './header-standard';
 import { HeaderCompact } from './header-compact';
 
+export { HeaderStandard, HeaderCompact };
 export type { HeaderPattern, HeaderProps } from './header.types';
 
 export interface HeaderPropsWithPattern extends HeaderProps {

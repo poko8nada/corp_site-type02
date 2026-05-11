@@ -2,6 +2,7 @@ import type { FooterProps } from './footer.types';
 import { FooterStandard } from './footer-standard';
 import { FooterMinimal } from './footer-minimal';
 
+export { FooterStandard, FooterMinimal };
 export type { FooterPattern, FooterProps } from './footer.types';
 
 export function Footer(props: FooterProps) {

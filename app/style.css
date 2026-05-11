@@ -45,7 +45,8 @@
 }
 
 @theme inline {
-  --font-sans: 'Noto Sans JP Variable', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+  --font-sans:
+    'Noto Sans JP Variable', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
   --font-serif: 'Cormorant Variable', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
   --font-display: var(--font-sans);
 
