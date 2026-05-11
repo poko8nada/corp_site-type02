@@ -39,7 +39,7 @@ export function HomePage() {
       >
         <div class={container}>
           <div class='reveal-on-scroll [--reveal-delay:40ms]'>
-            <MediaBlock {...homeExplanationImage}>
+            <MediaBlock {...homeExplanationImage} revealOnScroll>
               <RichText {...homeExplanationCatalog} />
             </MediaBlock>
           </div>
@@ -54,13 +54,13 @@ export function HomePage() {
       >
         <div class={container}>
           <div class='reveal-on-scroll [--reveal-delay:60ms]'>
-            <TextCardGrid {...homeStrengthsCatalog} />
+            <TextCardGrid {...homeStrengthsCatalog} revealOnScroll />
           </div>
         </div>
       </Section>
 
       <div class='section-divider'>
-        <ImageBreak {...homeImageBreaks[0]} />
+        <ImageBreak {...homeImageBreaks[0]} revealOnScroll />
       </div>
 
       <Section
@@ -70,7 +70,12 @@ export function HomePage() {
       >
         <div class={container}>
           <div class='reveal-on-scroll [--reveal-delay:60ms]'>
-            <MapWithInfo heading={homeFactsHeading} mapNote={homeFactsMapNote} rows={homeFactsRows}>
+            <MapWithInfo
+              heading={homeFactsHeading}
+              mapNote={homeFactsMapNote}
+              rows={homeFactsRows}
+              revealOnScroll
+            >
               <MapEmbed />
             </MapWithInfo>
           </div>
@@ -85,13 +90,13 @@ export function HomePage() {
       >
         <div class={container}>
           <div class='reveal-on-scroll [--reveal-delay:80ms]'>
-            <FaqList {...homeInfoFaq} />
+            <FaqList {...homeInfoFaq} revealOnScroll />
           </div>
         </div>
       </Section>
 
       <div class='section-divider'>
-        <ImageBreak {...homeImageBreaks[1]} />
+        <ImageBreak {...homeImageBreaks[1]} revealOnScroll />
       </div>
 
       <Section
@@ -101,7 +106,7 @@ export function HomePage() {
         layer={{ depth: 1, surface: 'cta-surface section-pattern-cross' }}
       >
         <div class='mx-auto w-full max-w-lg px-4 sm:px-6 lg:px-8 relative'>
-          <CtaBand {...homeConversionCatalog} />
+          <CtaBand {...homeConversionCatalog} revealOnScroll />
         </div>
       </Section>
     </div>

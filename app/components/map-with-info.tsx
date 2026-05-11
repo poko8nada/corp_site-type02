@@ -10,10 +10,11 @@ export interface MapWithInfoProps {
   mapNote: string;
   rows: readonly MapInfoRow[];
   children?: import('hono/jsx').Child;
+  revealOnScroll?: boolean;
 }
 
 export function MapWithInfo(props: MapWithInfoProps) {
-  const { heading, mapNote, rows, children } = props;
+  const { heading, mapNote, rows, children, revealOnScroll } = props;
 
   return (
     <div>
@@ -21,7 +22,7 @@ export function MapWithInfo(props: MapWithInfoProps) {
         {heading}
       </h3>
       <div class='mt-10 grid gap-10 md:mt-12 lg:grid-cols-[1fr_1fr] lg:gap-16'>
-        <dl class='reveal-on-scroll space-y-0 [--reveal-delay:40ms]'>
+        <dl class={`${revealOnScroll ? 'reveal-on-scroll [--reveal-delay:40ms] ' : ''}space-y-0`}>
           {rows.map((row) => (
             <div
               class='flex gap-4 border-b border-base-300/70 py-4 first:pt-0 last:border-0 last:pb-0'
@@ -44,13 +45,15 @@ export function MapWithInfo(props: MapWithInfoProps) {
           ))}
         </dl>
         {children ? (
-          <div class='reveal-on-scroll [--reveal-delay:140ms] w-full overflow-hidden rounded-lg border border-base-300/75'>
+          <div
+            class={`${revealOnScroll ? 'reveal-on-scroll [--reveal-delay:140ms] ' : ''}w-full overflow-hidden rounded-lg border border-base-300/75`}
+          >
             {children}
           </div>
         ) : (
           <div
             aria-label={mapNote}
-            class='reveal-on-scroll [--reveal-delay:140ms] flex aspect-4/3 w-full items-center justify-center rounded-lg border border-base-300/75 bg-base-200/65 text-center text-sm text-base-content/72 lg:aspect-auto lg:min-h-80'
+            class={`${revealOnScroll ? 'reveal-on-scroll [--reveal-delay:140ms] ' : ''}flex aspect-4/3 w-full items-center justify-center rounded-lg border border-base-300/75 bg-base-200/65 text-center text-sm text-base-content/72 lg:aspect-auto lg:min-h-80`}
             role='img'
           >
             <span class='max-w-48 px-4'>{mapNote}</span>

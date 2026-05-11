@@ -1,7 +1,5 @@
 import { Section } from '@/components/section';
 import { VisualLead } from '@/components/visual-lead';
-import { MediaBlock } from '@/components/media-block';
-import { RichText } from '@/components/rich-text';
 import { TextCardGrid } from '@/components/text-card-grid';
 import { FaqList } from '@/components/faq-list';
 import { CtaBand } from '@/components/cta-band';
@@ -13,10 +11,9 @@ import { DemoBanner } from '@/components/demo-banner';
 import { frameIsDemo } from '@/sections/frame';
 import { createRoute } from 'honox/factory';
 import FramePanel from '@/islands/frame-panel';
+import MediaBlockDemo from '@/islands/media-block-demo';
 import {
   sampleLead,
-  sampleMediaBlock,
-  sampleRichText,
   sampleTextCardGrid,
   sampleFaq,
   sampleCta,
@@ -75,7 +72,7 @@ export default createRoute((c) => {
       </Section>
 
       <Section
-        class='w-full  section-pad-relaxed  section-divider'
+        class='w-full section-pad-relaxed section-divider'
         id='catalog-image-break'
         label='ImageBreak'
       >
@@ -96,9 +93,7 @@ export default createRoute((c) => {
           <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
             MediaBlock + RichText
           </h2>
-          <MediaBlock {...sampleMediaBlock}>
-            <RichText {...sampleRichText} />
-          </MediaBlock>
+          <MediaBlockDemo />
         </div>
       </Section>
 

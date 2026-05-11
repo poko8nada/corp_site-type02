@@ -9,10 +9,11 @@ export interface FaqListProps {
   sectionHeading: string;
   items: readonly FaqItem[];
   columns?: 1 | 2;
+  revealOnScroll?: boolean;
 }
 
 export function FaqList(props: FaqListProps) {
-  const { sectionHeading, items, columns = 2 } = props;
+  const { sectionHeading, items, columns = 2, revealOnScroll } = props;
   const dlCols = columns === 2 ? 'lg:grid-cols-2 lg:gap-x-10' : '';
   const revealDelayByIndex = [
     '[--reveal-delay:0ms]',
@@ -32,7 +33,7 @@ export function FaqList(props: FaqListProps) {
       <dl class={`mt-10 grid md:mt-12 ${dlCols}`}>
         {items.map((item, index) => (
           <div
-            class={`reveal-on-scroll border-b border-base-300/60 py-4 ${revealDelayByIndex[Math.min(index, revealDelayByIndex.length - 1)]}`}
+            class={`${revealOnScroll ? 'reveal-on-scroll ' + revealDelayByIndex[Math.min(index, revealDelayByIndex.length - 1)] + ' ' : ''}border-b border-base-300/60 py-4`}
             key={item.question}
           >
             <dt class='font-sans font-medium text-lg text-base-content/74'>{item.question}</dt>

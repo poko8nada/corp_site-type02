@@ -17,10 +17,11 @@ export interface TextCardGridProps {
   items: readonly TextCardGridItem[];
   columns?: 2 | 3;
   cardStyle?: CardStyle;
+  revealOnScroll?: boolean;
 }
 
 export function TextCardGrid(props: TextCardGridProps) {
-  const { sectionHeading, items, columns = 3, cardStyle = 'elevated' } = props;
+  const { sectionHeading, items, columns = 3, cardStyle = 'elevated', revealOnScroll } = props;
   const gridCols = columns === 2 ? 'md:grid-cols-2' : 'md:grid-cols-3';
   const revealDelayByIndex = [
     '[--reveal-delay:0ms]',
@@ -37,9 +38,7 @@ export function TextCardGrid(props: TextCardGridProps) {
       <div class={`mt-10 grid gap-5 sm:mt-12 sm:gap-6 ${gridCols}`}>
         {items.map((item, index) => (
           <div
-            class={`reveal-on-scroll px-6 py-6 sm:py-8 lg:py-10 ${CARD_CLASS[cardStyle]} ${
-              revealDelayByIndex[Math.min(index, revealDelayByIndex.length - 1)]
-            }`}
+            class={`${revealOnScroll ? 'reveal-on-scroll ' + revealDelayByIndex[Math.min(index, revealDelayByIndex.length - 1)] + ' ' : ''}px-6 py-6 sm:py-8 lg:py-10 ${CARD_CLASS[cardStyle]}`}
             key={`${item.heading ?? ''}${index}`}
           >
             {item.heading ? (

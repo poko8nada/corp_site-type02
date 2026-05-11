@@ -9,6 +9,7 @@ export interface CtaBandProps {
   tel?: string;
   buttonVariant?: CtaButtonVariant;
   telLabel?: string;
+  revealOnScroll?: boolean;
 }
 
 const BTN_CLASS: Record<CtaButtonVariant, string> = {
@@ -27,10 +28,13 @@ export function CtaBand(props: CtaBandProps) {
     tel,
     buttonVariant = 'primary',
     telLabel,
+    revealOnScroll,
   } = props;
 
   return (
-    <div class='reveal-on-scroll [--reveal-delay:80ms] flex flex-col items-center gap-6 text-center'>
+    <div
+      class={`${revealOnScroll ? 'reveal-on-scroll [--reveal-delay:80ms] ' : ''}flex flex-col items-center gap-6 text-center`}
+    >
       <h3 class='font-display text-base-content text-3xl leading-snug tracking-tight sm:text-4xl'>
         {heading}
       </h3>
