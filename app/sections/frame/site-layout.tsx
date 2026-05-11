@@ -1,11 +1,10 @@
 import type { Child } from 'hono/jsx';
-import type { FrameFooterCopy, FrameNavEntry } from './index';
+import type { FrameFooterCopy } from '@/sections/frame/footer/footer.types';
+import type { FrameNavEntry } from '@/sections/frame/header/header.types';
 import { DemoBanner } from '@/components/demo-banner';
 import { DrawerNav } from './drawer-nav';
-import { Footer } from './footer';
-import type { FooterPattern } from './footer';
-import { Header } from './header';
-import type { HeaderPattern } from './header';
+import { Footer, type FooterPattern } from './footer';
+import { Header, type HeaderPattern } from './header';
 
 /** Top-level shell: demo banner → header → main → footer. All structure props flow down from _renderer. */
 export interface SiteLayoutProps {

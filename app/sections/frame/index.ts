@@ -8,14 +8,16 @@ import {
   SITE_HOURS,
   SITE_HOLIDAY,
 } from '@/data';
+import type { FrameFooterCopy } from '@/sections/frame/footer/footer.types';
+import type { FrameNavEntry } from '@/sections/frame/header/header.types';
+
+export type { FrameFooterCopy } from '@/sections/frame/footer/footer.types';
+export type { FrameLegalEntry } from '@/sections/frame/footer/footer.types';
+export type { FrameNavEntry } from '@/sections/frame/header/header.types';
 
 export const SITE_FRAME_DRAWER_ID = 'site-frame-drawer' as const;
 
 export const frameIsDemo = true as const;
-
-export type FrameNavEntry =
-  | { kind: 'link'; label: string; href: string }
-  | { kind: 'placeholder'; label: string; reason: string };
 
 export const frameNavEntries: readonly FrameNavEntry[] = [
   { kind: 'link', label: '事業概要', href: '/#home-section-explanation' },
@@ -28,20 +30,6 @@ export const framePrimaryCta = {
   label: 'お問い合わせ',
   href: '/contact',
 } as const;
-
-export type FrameLegalEntry =
-  | { kind: 'link'; label: string; href: string }
-  | { kind: 'placeholder'; label: string; reason: string };
-
-export interface FrameFooterCopy {
-  companyHeading: string;
-  companyLines: readonly string[];
-  contactHeading: string;
-  contactLines: readonly string[];
-  legalHeading: string;
-  legalEntries: readonly FrameLegalEntry[];
-  copyrightName: string;
-}
 
 export const frameFooterCopy: FrameFooterCopy = {
   companyHeading: '会社情報',
@@ -56,9 +44,7 @@ export const frameFooterCopy: FrameFooterCopy = {
 export { DrawerNav } from './drawer-nav';
 
 export type { DrawerNavProps } from './drawer-nav';
-export { Footer } from './footer';
-export type { FooterPattern, FooterProps } from './footer';
-export { Header } from './header';
-export type { HeaderPattern, HeaderProps } from './header';
+export { Footer, type FooterPattern, type FooterProps } from './footer';
+export { Header, type HeaderPattern, type HeaderProps } from './header';
 export { SiteLayout } from './site-layout';
 export type { SiteLayoutProps } from './site-layout';
