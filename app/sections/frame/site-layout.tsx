@@ -1,7 +1,7 @@
 import type { Child } from 'hono/jsx';
 import type { FrameFooterCopy } from '@/sections/frame/footer/footer.types';
 import type { FrameNavEntry } from '@/sections/frame/header/header.types';
-import { DemoBanner } from '@/components/demo-banner';
+import DemoBanner from '@/islands/demo-banner';
 import { DrawerNav } from './drawer-nav';
 import { Footer, type FooterPattern } from './footer';
 import { Header, type HeaderPattern } from './header';

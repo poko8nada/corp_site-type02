@@ -24,12 +24,14 @@ export const sampleLead: VisualLeadProps = {
   ],
   imageSrc: '/images/placeholder-hero.svg',
   imageAlt: 'ヒーローイメージ プレースホルダー',
+  revealOnScroll: true,
 };
 
 export const sampleMediaBlock: Omit<MediaBlockProps, 'children'> = {
   variant: 'wall',
   imageSrc: '/images/placeholder-content.svg',
   imageAlt: 'コンテンツイメージ プレースホルダー',
+  revealOnScroll: true,
 };
 
 export const sampleRichText: RichTextProps = {
@@ -43,6 +45,7 @@ export const sampleRichText: RichTextProps = {
 export const sampleTextCardGrid: TextCardGridProps = {
   sectionHeading: 'カード一覧サンプル',
   columns: 3,
+  revealOnScroll: true,
   items: [
     { heading: '項目 01', body: ['1つ目の項目の説明文です。'] },
     { heading: '項目 02', body: ['2つ目の項目の説明文です。'] },
@@ -52,6 +55,7 @@ export const sampleTextCardGrid: TextCardGridProps = {
 
 export const sampleFaq: FaqListProps = {
   sectionHeading: 'よくある質問 サンプル',
+  revealOnScroll: true,
   items: [
     { question: 'Q1. サンプルの質問ですか？', answer: 'A1. はい、サンプルの回答です。' },
     { question: 'Q2. もう一つ質問がありますか？', answer: 'A2. こちらもサンプル回答です。' },
@@ -64,15 +68,18 @@ export const sampleCta: CtaBandProps = {
   ctaLabel: 'お問い合わせ',
   ctaHref: '/contact',
   tel: '000-000-0000',
+  revealOnScroll: true,
 };
 
 export const sampleImageBreak: ImageBreakProps = {
   src: '/images/placeholder-break-1.svg',
   alt: 'イメージブレイク サンプル',
+  revealOnScroll: true,
 };
 
 export const sampleInfoGrid: InfoGridProps = {
   sectionHeading: '情報グリッド サンプル',
+  revealOnScroll: true,
   groups: [
     {
       heading: 'グループ A',
@@ -100,6 +107,7 @@ export const sampleMapWithInfo: MapWithInfoProps = {
   heading: 'マップサンプル',
   mapNote: 'こちらはプレースホルダーです。',
   rows: sampleMapRows,
+  revealOnScroll: true,
 };
 
 export const sampleStatsCounter: StatsCounterProps = {
@@ -109,6 +117,7 @@ export const sampleStatsCounter: StatsCounterProps = {
     { value: '98', label: '満足度', suffix: '%' },
     { value: '3', label: '拠点数' },
   ],
+  revealOnScroll: true,
 };
 
 export const sampleLogoCloud: LogoCloudProps = {
@@ -120,6 +129,7 @@ export const sampleLogoCloud: LogoCloudProps = {
     { src: '/logo.svg', alt: 'ロゴ 05' },
     { src: '/logo.svg', alt: 'ロゴ 06' },
   ],
+  revealOnScroll: true,
 };
 
 export const sampleVisualSlideshow: VisualSlideshowProps = {
@@ -127,19 +137,32 @@ export const sampleVisualSlideshow: VisualSlideshowProps = {
     {
       imageSrc: '/images/placeholder-hero.svg',
       imageAlt: 'スライド 01',
-      caption: { eyebrow: '事業カテゴリ', headline: 'スライド 01', description: '1枚目のスライドです。' },
+      caption: {
+        eyebrow: '事業カテゴリ',
+        headline: 'スライド 01',
+        description: '1枚目のスライドです。',
+      },
     },
     {
       imageSrc: '/images/placeholder-content.svg',
       imageAlt: 'スライド 02',
-      caption: { eyebrow: '事業カテゴリ', headline: 'スライド 02', description: '2枚目のスライドです。' },
+      caption: {
+        eyebrow: '事業カテゴリ',
+        headline: 'スライド 02',
+        description: '2枚目のスライドです。',
+      },
     },
     {
       imageSrc: '/images/placeholder-break-1.svg',
       imageAlt: 'スライド 03',
-      caption: { eyebrow: '事業カテゴリ', headline: 'スライド 03', description: '3枚目のスライドです。' },
+      caption: {
+        eyebrow: '事業カテゴリ',
+        headline: 'スライド 03',
+        description: '3枚目のスライドです。',
+      },
     },
   ],
+  revealOnScroll: true,
 };
 
 export const sampleImageGallery: ImageGalleryProps = {
@@ -151,6 +174,7 @@ export const sampleImageGallery: ImageGalleryProps = {
     { src: '/images/placeholder-content.svg', alt: 'ギャラリー 05' },
     { src: '/images/placeholder-hero.svg', alt: 'ギャラリー 06' },
   ],
+  revealOnScroll: true,
 };
 
 export const sampleProcessSteps: ProcessStepsProps = {
@@ -160,10 +184,13 @@ export const sampleProcessSteps: ProcessStepsProps = {
     { label: 'STEP 03', description: '制作・進行管理' },
     { label: 'STEP 04', description: '納品・フォローアップ' },
   ],
+  revealOnScroll: true,
 };
 
 export const sampleTestimonial: TestimonialProps = {
-  quote: 'こちらの要望を丁寧にヒアリングいただき、期待以上の仕上がりになりました。納期も正確で、大変満足しています。',
+  quote:
+    'こちらの要望を丁寧にヒアリングいただき、期待以上の仕上がりになりました。納期も正確で、大変満足しています。',
   author: 'サンプル太郎',
   role: '株式会社サンプル 代表取締役',
+  revealOnScroll: true,
 };

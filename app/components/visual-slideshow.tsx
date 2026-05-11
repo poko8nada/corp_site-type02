@@ -62,16 +62,38 @@ export function VisualSlideshow(props: VisualSlideshowProps) {
                   class='btn btn-circle btn-ghost text-white/70 hover:bg-white/15 hover:text-white'
                   href={i === 0 ? `#vslide-${items.length - 1}` : `#vslide-${i - 1}`}
                 >
-                  <svg aria-hidden='true' class='h-5 w-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                    <path d='M15 19l-7-7 7-7' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' />
+                  <svg
+                    aria-hidden='true'
+                    class='h-5 w-5'
+                    fill='none'
+                    stroke='currentColor'
+                    viewBox='0 0 24 24'
+                  >
+                    <path
+                      d='M15 19l-7-7 7-7'
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      stroke-width='2'
+                    />
                   </svg>
                 </a>
                 <a
                   class='btn btn-circle btn-ghost text-white/70 hover:bg-white/15 hover:text-white'
                   href={i === items.length - 1 ? '#vslide-0' : `#vslide-${i + 1}`}
                 >
-                  <svg aria-hidden='true' class='h-5 w-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                    <path d='M9 5l7 7-7 7' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' />
+                  <svg
+                    aria-hidden='true'
+                    class='h-5 w-5'
+                    fill='none'
+                    stroke='currentColor'
+                    viewBox='0 0 24 24'
+                  >
+                    <path
+                      d='M9 5l7 7-7 7'
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      stroke-width='2'
+                    />
                   </svg>
                 </a>
               </div>
@@ -82,7 +104,11 @@ export function VisualSlideshow(props: VisualSlideshowProps) {
       {showDots && (
         <div class='absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2'>
           {items.map((_, i) => (
-            <a class='h-2 w-2 rounded-full bg-white/40 hover:bg-white/70 transition-colors' href={`#vslide-${i}`} key={i}>
+            <a
+              class='h-2 w-2 rounded-full bg-white/40 hover:bg-white/70 transition-colors'
+              href={`#vslide-${i}`}
+              key={i}
+            >
               <span class='sr-only'>スライド {i + 1}</span>
             </a>
           ))}

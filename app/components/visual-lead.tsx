@@ -11,6 +11,7 @@ export interface VisualLeadProps {
   highlights?: readonly string[];
   overlayStyle?: OverlayStyle;
   showScrollIndicator?: boolean;
+  revealOnScroll?: boolean;
 }
 
 export function VisualLead(props: VisualLeadProps) {
@@ -24,6 +25,7 @@ export function VisualLead(props: VisualLeadProps) {
     highlights = [],
     overlayStyle = 'dark',
     showScrollIndicator = true,
+    revealOnScroll,
   } = props;
 
   const isDark = overlayStyle === 'dark';
@@ -35,7 +37,9 @@ export function VisualLead(props: VisualLeadProps) {
   const scrollColor = isDark ? 'text-white/75' : 'text-base-content/60';
 
   return (
-    <div class='relative flex min-h-[88svh] items-end sm:min-h-svh'>
+    <div
+      class={`relative flex min-h-[88svh] items-end sm:min-h-svh ${revealOnScroll ? 'reveal-on-scroll [--reveal-delay:20ms]' : ''}`}
+    >
       <img
         alt={imageAlt}
         class='absolute inset-0 h-full w-full object-cover'

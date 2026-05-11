@@ -9,10 +9,11 @@ export interface StatsCounterItem {
 export interface StatsCounterProps {
   items: readonly StatsCounterItem[];
   columns?: 2 | 3 | 4;
+  revealOnScroll?: boolean;
 }
 
 export function StatsCounter(props: StatsCounterProps) {
-  const { items, columns = 4 } = props;
+  const { items, columns = 4, revealOnScroll } = props;
   const gridCols = {
     2: 'grid-cols-2',
     3: 'grid-cols-3',
@@ -20,7 +21,9 @@ export function StatsCounter(props: StatsCounterProps) {
   } as const;
 
   return (
-    <div class={`stats stats-vertical grid ${gridCols[columns]} shadow-sm`}>
+    <div
+      class={`stats stats-vertical grid ${gridCols[columns]} shadow-sm ${revealOnScroll ? 'reveal-on-scroll [--reveal-delay:60ms]' : ''}`}
+    >
       {items.map((item) => (
         <div class='stat' key={item.label}>
           {item.prefix || item.suffix ? (

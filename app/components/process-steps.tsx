@@ -18,18 +18,28 @@ function StepNumber({ index }: { readonly index: number }) {
   );
 }
 
+const revealDelayByIndex = [
+  '[--reveal-delay:0ms]',
+  '[--reveal-delay:80ms]',
+  '[--reveal-delay:160ms]',
+  '[--reveal-delay:240ms]',
+  '[--reveal-delay:320ms]',
+] as const;
+
 export function ProcessSteps(props: ProcessStepsProps) {
   const { items, variant = 'horizontal', revealOnScroll } = props;
   const isVertical = variant === 'vertical';
-  const revealClass = revealOnScroll ? 'reveal-on-scroll [--reveal-delay:60ms]' : '';
 
   if (isVertical) {
     return (
-      <div class={`flex flex-col w-full ${revealClass}`}>
+      <div class='flex flex-col w-full'>
         {items.map((step, i) => {
           const isLast = i === items.length - 1;
+          const stepClass = revealOnScroll
+            ? `reveal-on-scroll ${revealDelayByIndex[Math.min(i, revealDelayByIndex.length - 1)]}`
+            : '';
           return (
-            <div class='flex gap-5' key={step.label}>
+            <div class={`flex gap-5 ${stepClass}`} key={step.label}>
               <div class='flex flex-col items-center'>
                 <StepNumber index={i} />
                 {!isLast && (
@@ -52,12 +62,15 @@ export function ProcessSteps(props: ProcessStepsProps) {
   }
 
   return (
-    <div class={`flex w-full ${revealClass}`}>
+    <div class='flex w-full'>
       {items.map((step, i) => {
         const isFirst = i === 0;
         const isLast = i === items.length - 1;
+        const stepClass = revealOnScroll
+          ? `reveal-on-scroll ${revealDelayByIndex[Math.min(i, revealDelayByIndex.length - 1)]}`
+          : '';
         return (
-          <div class='flex flex-1 flex-col items-center' key={step.label}>
+          <div class={`flex flex-1 flex-col items-center ${stepClass}`} key={step.label}>
             <div class='flex w-full items-center'>
               {!isFirst && (
                 <div class='flex-1 h-0.5 bg-linear-to-l from-primary/40 to-transparent rounded-full' />

@@ -13,7 +13,7 @@ import { ImageBreak } from '@/components/image-break';
 import { InfoGrid } from '@/components/info-grid';
 import { MapEmbed } from '@/components/map-embed';
 import { MapWithInfo } from '@/components/map-with-info';
-import { DemoBanner } from '@/components/demo-banner';
+import DemoBanner from '@/islands/demo-banner';
 import { frameIsDemo } from '@/sections/frame';
 import { createRoute } from 'honox/factory';
 import FramePanel from '@/islands/frame-panel';
@@ -228,7 +228,8 @@ export default createRoute((c) => {
             ProcessSteps
           </h2>
           <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60'>
-            時系列ステップ。variant で horizontal / vertical 切替。text-card-grid の代替として使用可能。
+            時系列ステップ。variant で horizontal / vertical 切替。text-card-grid
+            の代替として使用可能。
           </p>
           <div class='flex flex-col gap-8'>
             <div>

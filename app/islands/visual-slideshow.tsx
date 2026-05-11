@@ -15,10 +15,11 @@ export interface VisualSlideshowProps {
   showArrows?: boolean;
   showDots?: boolean;
   interval?: number;
+  revealOnScroll?: boolean;
 }
 
 export default function VisualSlideshow(props: VisualSlideshowProps) {
-  const { items, showArrows = true, showDots = true, interval = 5000 } = props;
+  const { items, showArrows = true, showDots = true, interval = 5000, revealOnScroll } = props;
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
@@ -29,11 +30,14 @@ export default function VisualSlideshow(props: VisualSlideshowProps) {
   }, [interval, items.length]);
 
   useEffect(() => {
-    const el = document.getElementById(`vslide-${current}`);
-    if (!el) return;
-    const carousel = el.closest('.carousel') as HTMLElement | null;
-    if (!carousel) return;
-    carousel.scrollLeft = el.offsetLeft;
+    const raf = requestAnimationFrame(() => {
+      const el = document.getElementById(`vslide-${current}`);
+      if (!el) return;
+      const carousel = el.closest('.carousel') as HTMLElement | null;
+      if (!carousel) return;
+      carousel.scrollLeft = el.offsetLeft;
+    });
+    return () => cancelAnimationFrame(raf);
   }, [current]);
 
   function goPrev() {
@@ -45,7 +49,7 @@ export default function VisualSlideshow(props: VisualSlideshowProps) {
   }
 
   return (
-    <div class='relative'>
+    <div class={`relative ${revealOnScroll ? 'reveal-on-scroll [--reveal-delay:20ms]' : ''}`}>
       <div class='carousel w-full'>
         {items.map((slide, i) => (
           <div class='carousel-item relative w-full' id={`vslide-${i}`} key={slide.imageSrc}>
@@ -89,8 +93,19 @@ export default function VisualSlideshow(props: VisualSlideshowProps) {
                   type='button'
                   aria-label='前のスライド'
                 >
-                  <svg aria-hidden='true' class='h-5 w-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                    <path d='M15 19l-7-7 7-7' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' />
+                  <svg
+                    aria-hidden='true'
+                    class='h-5 w-5'
+                    fill='none'
+                    stroke='currentColor'
+                    viewBox='0 0 24 24'
+                  >
+                    <path
+                      d='M15 19l-7-7 7-7'
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      stroke-width='2'
+                    />
                   </svg>
                 </button>
                 <button
@@ -99,8 +114,19 @@ export default function VisualSlideshow(props: VisualSlideshowProps) {
                   type='button'
                   aria-label='次のスライド'
                 >
-                  <svg aria-hidden='true' class='h-5 w-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                    <path d='M9 5l7 7-7 7' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' />
+                  <svg
+                    aria-hidden='true'
+                    class='h-5 w-5'
+                    fill='none'
+                    stroke='currentColor'
+                    viewBox='0 0 24 24'
+                  >
+                    <path
+                      d='M9 5l7 7-7 7'
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      stroke-width='2'
+                    />
                   </svg>
                 </button>
               </div>

@@ -8,6 +8,7 @@ export interface LogoCloudItem {
 export interface LogoCloudProps {
   items: readonly LogoCloudItem[];
   variant?: 'grid' | 'bar';
+  revealOnScroll?: boolean;
 }
 
 function LogoImage({ item }: { item: LogoCloudItem }) {
@@ -23,11 +24,12 @@ function LogoImage({ item }: { item: LogoCloudItem }) {
 }
 
 export function LogoCloud(props: LogoCloudProps) {
-  const { items, variant = 'grid' } = props;
+  const { items, variant = 'grid', revealOnScroll } = props;
+  const revealClass = revealOnScroll ? 'reveal-on-scroll [--reveal-delay:80ms]' : '';
 
   if (variant === 'bar') {
     return (
-      <div class='flex flex-wrap items-center justify-center gap-8 sm:gap-12'>
+      <div class={`flex flex-wrap items-center justify-center gap-8 sm:gap-12 ${revealClass}`}>
         {items.map((item) => (
           <div key={item.alt}>
             {item.href ? (
@@ -44,7 +46,7 @@ export function LogoCloud(props: LogoCloudProps) {
   }
 
   return (
-    <div class='grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:gap-8'>
+    <div class={`grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:gap-8 ${revealClass}`}>
       {items.map((item) => (
         <div
           class='flex items-center justify-center rounded-xl border border-base-300/60 bg-base-100 p-6'
