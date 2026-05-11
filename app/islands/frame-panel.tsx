@@ -9,8 +9,8 @@ import {
 import { Header, type HeaderPattern } from '@/sections/frame/header';
 import { Footer, type FooterPattern } from '@/sections/frame/footer';
 
-const headerPatterns: HeaderPattern[] = ['standard', 'compact', 'none'];
-const footerPatterns: FooterPattern[] = ['standard', 'minimal', 'none'];
+const headerPatterns: HeaderPattern[] = ['standard', 'compact', 'minimal', 'none'];
+const footerPatterns: FooterPattern[] = ['standard', 'minimal', 'compact', 'none'];
 
 export default function FramePanel() {
   const [headerPattern, setHeaderPattern] = useState<HeaderPattern>('standard');
@@ -20,7 +20,6 @@ export default function FramePanel() {
     <div class='flex flex-col gap-6 my-6 w-full mx-auto'>
       <div class='flex flex-wrap gap-4 justify-start'>
         <div class='flex items-center gap-2'>
-          <span class='text-sm font-semibold'>Header:</span>
           {headerPatterns.map((p) => (
             <button
               class={headerPattern === p ? 'btn btn-primary btn-sm' : 'btn btn-outline btn-sm'}
@@ -46,7 +45,6 @@ export default function FramePanel() {
 
       <div class='flex flex-wrap gap-4 justify-start'>
         <div class='flex items-center gap-2'>
-          <span class='text-sm font-semibold'>Footer:</span>
           {footerPatterns.map((p) => (
             <button
               class={footerPattern === p ? 'btn btn-primary btn-sm' : 'btn btn-outline btn-sm'}

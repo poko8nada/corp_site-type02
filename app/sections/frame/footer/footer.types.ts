@@ -12,7 +12,7 @@ export interface FrameFooterCopy {
   copyrightName: string;
 }
 
-export type FooterPattern = 'standard' | 'minimal' | 'none';
+export type FooterPattern = 'standard' | 'minimal' | 'compact' | 'none';
 
 export interface FooterProps {
   pattern: FooterPattern;

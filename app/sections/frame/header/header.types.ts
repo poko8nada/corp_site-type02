@@ -2,7 +2,7 @@ export type FrameNavEntry =
   | { kind: 'link'; label: string; href: string }
   | { kind: 'placeholder'; label: string; reason: string };
 
-export type HeaderPattern = 'standard' | 'compact' | 'none';
+export type HeaderPattern = 'standard' | 'compact' | 'minimal' | 'none';
 
 export interface HeaderProps {
   brandText: string;

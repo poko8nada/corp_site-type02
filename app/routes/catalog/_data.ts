@@ -5,6 +5,8 @@ import type { InfoGridProps } from '@/components/info-grid';
 import type { MapWithInfoProps, MapInfoRow } from '@/components/map-with-info';
 import type { MediaBlockProps } from '@/components/media-block';
 import type { RichTextProps } from '@/components/rich-text';
+import type { StatsCounterProps } from '@/components/stats-counter';
+import type { LogoCloudProps } from '@/components/logo-cloud';
 import type { TextCardGridProps } from '@/components/text-card-grid';
 import type { VisualLeadProps } from '@/components/visual-lead';
 
@@ -94,4 +96,24 @@ export const sampleMapWithInfo: MapWithInfoProps = {
   heading: 'マップサンプル',
   mapNote: 'こちらはプレースホルダーです。',
   rows: sampleMapRows,
+};
+
+export const sampleStatsCounter: StatsCounterProps = {
+  items: [
+    { value: '120', label: '対応実績', suffix: '件' },
+    { value: '15', label: '在籍年数', suffix: '年' },
+    { value: '98', label: '満足度', suffix: '%' },
+    { value: '3', label: '拠点数' },
+  ],
+};
+
+export const sampleLogoCloud: LogoCloudProps = {
+  items: [
+    { src: '/logo.svg', alt: 'ロゴ 01' },
+    { src: '/logo.svg', alt: 'ロゴ 02' },
+    { src: '/logo.svg', alt: 'ロゴ 03' },
+    { src: '/logo.svg', alt: 'ロゴ 04' },
+    { src: '/logo.svg', alt: 'ロゴ 05' },
+    { src: '/logo.svg', alt: 'ロゴ 06' },
+  ],
 };
