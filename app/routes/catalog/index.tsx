@@ -1,9 +1,13 @@
 import { Section } from '@/components/section';
 import { VisualLead } from '@/components/visual-lead';
+import VisualSlideshow from '@/islands/visual-slideshow';
 import { StatsCounter } from '@/components/stats-counter';
 import { LogoCloud } from '@/components/logo-cloud';
+import { ImageGallery } from '@/components/image-gallery';
+import { ProcessSteps } from '@/components/process-steps';
 import { TextCardGrid } from '@/components/text-card-grid';
 import { FaqList } from '@/components/faq-list';
+import { Testimonial } from '@/components/testimonial';
 import { CtaBand } from '@/components/cta-band';
 import { ImageBreak } from '@/components/image-break';
 import { InfoGrid } from '@/components/info-grid';
@@ -16,10 +20,14 @@ import FramePanel from '@/islands/frame-panel';
 import MediaBlockDemo from '@/islands/media-block-demo';
 import {
   sampleLead,
+  sampleVisualSlideshow,
   sampleStatsCounter,
   sampleLogoCloud,
+  sampleImageGallery,
+  sampleProcessSteps,
   sampleTextCardGrid,
   sampleFaq,
+  sampleTestimonial,
   sampleCta,
   sampleImageBreak,
   sampleInfoGrid,
@@ -80,6 +88,24 @@ export default createRoute((c) => {
 
       <Section
         class='w-full section-pad-relaxed section-divider'
+        id='catalog-visual-slideshow'
+        label='VisualSlideshow'
+      >
+        <div class='w-full'>
+          <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8'>
+            VisualSlideshow
+          </h2>
+          <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8'>
+            カルーセルスライド。visual-lead の代替として lead スロットに使用可能。
+          </p>
+          <div class='max-h-[90svh] overflow-hidden'>
+            <VisualSlideshow {...sampleVisualSlideshow} />
+          </div>
+        </div>
+      </Section>
+
+      <Section
+        class='w-full section-pad-relaxed section-divider'
         id='catalog-image-break'
         label='ImageBreak'
       >
@@ -91,6 +117,31 @@ export default createRoute((c) => {
             セクション間の区切り画像。image-break スロットで使用。
           </p>
           <ImageBreak {...sampleImageBreak} />
+        </div>
+      </Section>
+
+      <Section
+        class='w-full section-pad-relaxed section-divider'
+        id='catalog-image-gallery'
+        label='ImageGallery'
+      >
+        <div class={container}>
+          <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
+            ImageGallery
+          </h2>
+          <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60'>
+            画像ギャラリー。variant で carousel / grid 切替。image-break の代替として使用可能。
+          </p>
+          <div class='flex flex-col gap-8'>
+            <div>
+              <p class='text-sm text-base-content/50 mb-3'>variant: carousel</p>
+              <ImageGallery {...sampleImageGallery} />
+            </div>
+            <div>
+              <p class='text-sm text-base-content/50 mb-3'>variant: grid</p>
+              <ImageGallery {...sampleImageGallery} variant='grid' />
+            </div>
+          </div>
         </div>
       </Section>
 
@@ -166,6 +217,31 @@ export default createRoute((c) => {
           <TextCardGrid {...sampleTextCardGrid} />
         </div>
       </Section>
+
+      <Section
+        class='w-full section-pad-relaxed section-divider'
+        id='catalog-process-steps'
+        label='ProcessSteps'
+      >
+        <div class={container}>
+          <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
+            ProcessSteps
+          </h2>
+          <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60'>
+            時系列ステップ。variant で horizontal / vertical 切替。text-card-grid の代替として使用可能。
+          </p>
+          <div class='flex flex-col gap-8'>
+            <div>
+              <p class='text-sm text-base-content/50 mb-3'>variant: horizontal</p>
+              <ProcessSteps {...sampleProcessSteps} variant='horizontal' />
+            </div>
+            <div>
+              <p class='text-sm text-base-content/50 mb-3'>variant: vertical</p>
+              <ProcessSteps {...sampleProcessSteps} variant='vertical' />
+            </div>
+          </div>
+        </div>
+      </Section>
       <Section class='w-full section-pad-relaxed section-divider' id='catalog-faq' label='FaqList'>
         <div class={container}>
           <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
@@ -175,6 +251,24 @@ export default createRoute((c) => {
             FAQ アコーディオン。info スロットで使用。
           </p>
           <FaqList {...sampleFaq} />
+        </div>
+      </Section>
+
+      <Section
+        class='w-full section-pad-relaxed section-divider'
+        id='catalog-testimonial'
+        label='Testimonial'
+      >
+        <div class={container}>
+          <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
+            Testimonial
+          </h2>
+          <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60'>
+            お客様の声・引用表示。任意セクションで使用。
+          </p>
+          <div class='max-w-lg'>
+            <Testimonial {...sampleTestimonial} />
+          </div>
         </div>
       </Section>
 

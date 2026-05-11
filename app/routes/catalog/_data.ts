@@ -1,14 +1,18 @@
 import type { CtaBandProps } from '@/components/cta-band';
 import type { FaqListProps } from '@/components/faq-list';
 import type { ImageBreakProps } from '@/components/image-break';
+import type { ImageGalleryProps } from '@/components/image-gallery';
 import type { InfoGridProps } from '@/components/info-grid';
 import type { MapWithInfoProps, MapInfoRow } from '@/components/map-with-info';
 import type { MediaBlockProps } from '@/components/media-block';
+import type { ProcessStepsProps } from '@/components/process-steps';
 import type { RichTextProps } from '@/components/rich-text';
 import type { StatsCounterProps } from '@/components/stats-counter';
 import type { LogoCloudProps } from '@/components/logo-cloud';
+import type { TestimonialProps } from '@/components/testimonial';
 import type { TextCardGridProps } from '@/components/text-card-grid';
 import type { VisualLeadProps } from '@/components/visual-lead';
+import type { VisualSlideshowProps } from '@/islands/visual-slideshow';
 
 export const sampleLead: VisualLeadProps = {
   eyebrow: '事業カテゴリ',
@@ -116,4 +120,50 @@ export const sampleLogoCloud: LogoCloudProps = {
     { src: '/logo.svg', alt: 'ロゴ 05' },
     { src: '/logo.svg', alt: 'ロゴ 06' },
   ],
+};
+
+export const sampleVisualSlideshow: VisualSlideshowProps = {
+  items: [
+    {
+      imageSrc: '/images/placeholder-hero.svg',
+      imageAlt: 'スライド 01',
+      caption: { eyebrow: '事業カテゴリ', headline: 'スライド 01', description: '1枚目のスライドです。' },
+    },
+    {
+      imageSrc: '/images/placeholder-content.svg',
+      imageAlt: 'スライド 02',
+      caption: { eyebrow: '事業カテゴリ', headline: 'スライド 02', description: '2枚目のスライドです。' },
+    },
+    {
+      imageSrc: '/images/placeholder-break-1.svg',
+      imageAlt: 'スライド 03',
+      caption: { eyebrow: '事業カテゴリ', headline: 'スライド 03', description: '3枚目のスライドです。' },
+    },
+  ],
+};
+
+export const sampleImageGallery: ImageGalleryProps = {
+  items: [
+    { src: '/images/placeholder-content.svg', alt: 'ギャラリー 01' },
+    { src: '/images/placeholder-break-1.svg', alt: 'ギャラリー 02' },
+    { src: '/images/placeholder-break-2.svg', alt: 'ギャラリー 03' },
+    { src: '/images/placeholder-break-3.svg', alt: 'ギャラリー 04' },
+    { src: '/images/placeholder-content.svg', alt: 'ギャラリー 05' },
+    { src: '/images/placeholder-hero.svg', alt: 'ギャラリー 06' },
+  ],
+};
+
+export const sampleProcessSteps: ProcessStepsProps = {
+  items: [
+    { label: 'STEP 01', description: 'ヒアリング・現状把握' },
+    { label: 'STEP 02', description: '企画提案・見積もり' },
+    { label: 'STEP 03', description: '制作・進行管理' },
+    { label: 'STEP 04', description: '納品・フォローアップ' },
+  ],
+};
+
+export const sampleTestimonial: TestimonialProps = {
+  quote: 'こちらの要望を丁寧にヒアリングいただき、期待以上の仕上がりになりました。納期も正確で、大変満足しています。',
+  author: 'サンプル太郎',
+  role: '株式会社サンプル 代表取締役',
 };
