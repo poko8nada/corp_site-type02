@@ -53,17 +53,9 @@
   --color-surface-emphasis: oklch(95.2% 0.005 260);
   --color-surface-subtle: oklch(96.5% 0.003 260);
   --color-surface-cta: oklch(96% 0.004 260);
-  --color-surface-card: oklch(98.8% 0.003 260);
-  --color-surface-card-hover: oklch(100% 0 0);
 
   --color-border-divider: oklch(90% 0.008 260 / 0.75);
-  --color-border-card: oklch(84% 0.01 260 / 0.8);
-  --color-border-card-hover: oklch(62% 0.12 190 / 0.55);
   --color-border-image: oklch(84% 0.01 260 / 0.7);
-
-  --color-shadow-card: oklch(25% 0.015 260 / 0.14);
-  --color-shadow-card-ambient: oklch(25% 0.015 260 / 0.25);
-  --color-shadow-card-small: oklch(25% 0.015 260 / 0.12);
 }
 
 html {
@@ -139,28 +131,6 @@ body {
 
 .section-divider {
   border-top: 1px solid var(--color-border-divider);
-}
-
-/* --- Cards --- */
-
-.card-elevate {
-  background: var(--color-surface-card);
-  border: 1px solid var(--color-border-card);
-  border-radius: 0.75rem;
-  transition:
-    transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 260ms cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 220ms ease,
-    background-color 220ms ease;
-}
-
-.card-elevate:hover {
-  transform: translateY(-3px);
-  background: var(--color-surface-card-hover);
-  border-color: var(--color-border-card-hover);
-  box-shadow:
-    0 10px 34px -10px var(--color-shadow-card),
-    0 3px 10px -3px var(--color-shadow-card-small);
 }
 
 /* --- Lead intro motion --- */
@@ -353,13 +323,6 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .lead-reveal,
   .scroll-indicator,
-  .card-elevate {
-    animation: none;
-    transition: none;
-    transform: none;
-    filter: none;
-    opacity: 1;
-  }
   [data-reveal='ready'] .reveal-on-scroll {
     opacity: 1;
     transform: none;

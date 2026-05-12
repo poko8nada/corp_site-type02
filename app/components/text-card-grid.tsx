@@ -9,9 +9,11 @@ export interface TextCardGridItem {
 export type CardStyle = 'elevated' | 'flat' | 'outline';
 
 const CARD_CLASS: Record<CardStyle, string> = {
-  elevated: 'card-elevate',
-  flat: '',
-  outline: 'border border-base-300 rounded-xl',
+  elevated:
+    'bg-base-100 border border-base-300/70 shadow-sm hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 ease-out motion-reduce:transform-none motion-reduce:shadow-sm motion-reduce:transition-none',
+  flat: 'bg-base-100 border border-transparent hover:border-base-300/70 hover:bg-base-200/70 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 ease-out motion-reduce:transform-none motion-reduce:shadow-none motion-reduce:transition-none',
+  outline:
+    'bg-base-100 border border-base-300 hover:bg-base-200/70 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 ease-out motion-reduce:transform-none motion-reduce:shadow-none motion-reduce:transition-none',
 };
 
 const GRID_COLS: Record<number, string> = {
@@ -46,29 +48,33 @@ export function TextCardGrid(props: TextCardGridProps) {
       <div class={`mt-10 grid gap-5 sm:mt-12 sm:gap-6 ${gridCols}`}>
         {items.map((item, index) => (
           <div
-            class={`${revealOnScroll ? 'reveal-on-scroll ' + revealDelayByIndex[Math.min(index, revealDelayByIndex.length - 1)] + ' ' : ''}px-6 py-6 sm:py-8 lg:py-10 ${CARD_CLASS[cardStyle]}`}
+            class={`${revealOnScroll ? 'reveal-on-scroll ' + revealDelayByIndex[Math.min(index, revealDelayByIndex.length - 1)] : ''}`}
             key={`${item.heading ?? ''}${index}`}
           >
-            {item.imageSrc && (
-              <figure class='-mx-6 -mt-6 mb-5 sm:-mt-8 sm:-mx-6 lg:-mt-10 lg:-mx-6'>
-                <img
-                  alt={item.imageAlt ?? ''}
-                  class='w-full h-48 object-cover'
-                  src={item.imageSrc}
-                />
-              </figure>
-            )}
-            {item.heading ? (
-              <p class='font-display text-xl tracking-tight text-base-content sm:text-2xl'>
-                {item.heading}
-              </p>
-            ) : null}
-            <div
-              class={`text-base-content/82 space-y-4 text-sm leading-relaxed sm:text-base ${item.heading ? 'mt-5' : ''}`}
-            >
-              {item.body.map((p) => (
-                <p key={p}>{p}</p>
-              ))}
+            <div class={`overflow-hidden rounded-xl ${CARD_CLASS[cardStyle]}`}>
+              <div class='px-6 py-6 sm:py-8 lg:py-10'>
+                {item.imageSrc && (
+                  <figure class='-mx-6 -mt-6 mb-5 overflow-hidden rounded-xl sm:-mt-8 sm:-mx-6 lg:-mt-10 lg:-mx-6'>
+                    <img
+                      alt={item.imageAlt ?? ''}
+                      class='h-48 w-full object-cover'
+                      src={item.imageSrc}
+                    />
+                  </figure>
+                )}
+                {item.heading ? (
+                  <p class='font-display text-xl tracking-tight text-base-content sm:text-2xl'>
+                    {item.heading}
+                  </p>
+                ) : null}
+                <div
+                  class={`text-base-content/82 space-y-4 text-sm leading-relaxed sm:text-base ${item.heading ? 'mt-5' : ''}`}
+                >
+                  {item.body.map((p) => (
+                    <p key={p}>{p}</p>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         ))}
