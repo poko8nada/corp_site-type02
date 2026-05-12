@@ -5,13 +5,12 @@ import type { ImageGalleryProps } from '@/components/image-gallery';
 import type { InfoGridProps } from '@/components/info-grid';
 import type { MapWithInfoProps, MapInfoRow } from '@/components/map-with-info';
 import type { MediaBlockProps } from '@/components/media-block';
-import type { ProcessStepsProps } from '@/components/process-steps';
+import type { StepListProps } from '@/components/step-list';
 import type { RichTextProps } from '@/components/rich-text';
 import type { StatsCounterProps } from '@/components/stats-counter';
 import type { LogoCloudProps } from '@/components/logo-cloud';
 import type { TestimonialProps } from '@/components/testimonial';
 import type { TextCardGridProps } from '@/components/text-card-grid';
-import type { TimelineProps } from '@/components/timeline';
 import type { InfoTableProps } from '@/components/info-table';
 import type { NewsListProps } from '@/components/news-list';
 import type { VisualLeadProps } from '@/components/visual-lead';
@@ -207,14 +206,28 @@ export const sampleImageGallery: ImageGalleryProps = {
   revealOnScroll: true,
 };
 
-export const sampleProcessSteps: ProcessStepsProps = {
-  items: [
-    { label: 'STEP 01', description: 'ヒアリング・現状把握' },
-    { label: 'STEP 02', description: '企画提案・見積もり' },
-    { label: 'STEP 03', description: '制作・進行管理' },
-    { label: 'STEP 04', description: '納品・フォローアップ' },
-  ],
+export const sampleStepListNumbered: StepListProps = {
+  sectionHeading: 'ステップ サンプル',
+  variant: 'numbered',
   revealOnScroll: true,
+  items: [
+    { heading: 'STEP 01', description: 'ヒアリング・現状把握' },
+    { heading: 'STEP 02', description: '企画提案・見積もり' },
+    { heading: 'STEP 03', description: '制作・進行管理' },
+    { heading: 'STEP 04', description: '納品・フォローアップ' },
+  ],
+};
+
+export const sampleStepListDated: StepListProps = {
+  sectionHeading: '沿革 サンプル',
+  variant: 'dated',
+  revealOnScroll: true,
+  items: [
+    { date: '2010', heading: '創業', description: 'サンプル企業を設立。' },
+    { date: '2015', heading: '事業拡大', description: '2拠点目を開設。' },
+    { date: '2020', heading: 'サービス開始', description: '主力サービスの提供を開始。' },
+    { date: '2025', heading: '現在', description: 'さらなる成長を目指して。' },
+  ],
 };
 
 export const sampleTestimonial: TestimonialProps = {
@@ -223,17 +236,6 @@ export const sampleTestimonial: TestimonialProps = {
   author: 'サンプル太郎',
   role: '株式会社サンプル 代表取締役',
   revealOnScroll: true,
-};
-
-export const sampleTimeline: TimelineProps = {
-  sectionHeading: '沿革 サンプル',
-  revealOnScroll: true,
-  items: [
-    { year: '2010', title: '創業', description: 'サンプル企業を設立。' },
-    { year: '2015', title: '事業拡大', description: '2拠点目を開設。' },
-    { year: '2020', title: 'サービス開始', description: '主力サービスの提供を開始。' },
-    { year: '2025', title: '現在', description: 'さらなる成長を目指して。' },
-  ],
 };
 
 export const sampleInfoTable: InfoTableProps = {

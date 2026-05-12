@@ -4,7 +4,7 @@ import { VisualSlideshow } from '@/components/visual-slideshow';
 import { StatsCounter } from '@/components/stats-counter';
 import { LogoCloud } from '@/components/logo-cloud';
 import { ImageGallery } from '@/components/image-gallery';
-import { ProcessSteps } from '@/components/process-steps';
+import { StepList } from '@/components/step-list';
 import { TextCardGrid } from '@/components/text-card-grid';
 import { FaqList } from '@/components/faq-list';
 import { Testimonial } from '@/components/testimonial';
@@ -13,7 +13,6 @@ import { ImageBreak } from '@/components/image-break';
 import { InfoGrid } from '@/components/info-grid';
 import { MapEmbed } from '@/components/map-embed';
 import { MapWithInfo } from '@/components/map-with-info';
-import { Timeline } from '@/components/timeline';
 import { InfoTable } from '@/components/info-table';
 import { NewsList } from '@/components/news-list';
 import DemoBanner from '@/components/$demo-banner';
@@ -28,7 +27,8 @@ import {
   sampleStatsCounter,
   sampleLogoCloud,
   sampleImageGallery,
-  sampleProcessSteps,
+  sampleStepListNumbered,
+  sampleStepListDated,
   sampleTextCardGrid,
   sampleTextCardGridWithImage,
   sampleFaq,
@@ -37,7 +37,6 @@ import {
   sampleImageBreak,
   sampleInfoGrid,
   sampleMapWithInfo,
-  sampleTimeline,
   sampleInfoTable,
   sampleNewsList,
 } from './_data';
@@ -54,8 +53,7 @@ const catalogNavSections = [
   { id: 'catalog-info-grid', label: 'InfoGrid' },
   { id: 'catalog-info-table', label: 'InfoTable' },
   { id: 'catalog-stats-counter', label: 'StatsCounter' },
-  { id: 'catalog-process-steps', label: 'ProcessSteps' },
-  { id: 'catalog-timeline', label: 'Timeline' },
+  { id: 'catalog-step-list', label: 'StepList' },
   { id: 'catalog-news-list', label: 'NewsList' },
   { id: 'catalog-faq', label: 'FaqList' },
   { id: 'catalog-testimonial', label: 'Testimonial' },
@@ -294,43 +292,26 @@ export default createRoute((c) => {
       {/** ── Step / Timeline ── */}
       <Section
         class='w-full section-pad-relaxed section-divider'
-        id='catalog-process-steps'
-        label='ProcessSteps'
+        id='catalog-step-list'
+        label='StepList'
       >
         <div class={container}>
           <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
-            ProcessSteps
+            StepList
           </h2>
           <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60'>
-            時系列ステップ。variant で horizontal / vertical 切替。text-card-grid
-            の代替として使用可能。
+            時系列・処理ステップ。variant で dated / numbered 切替。
           </p>
           <div class='flex flex-col gap-8'>
             <div>
-              <p class='text-sm text-base-content/50 mb-3'>variant: horizontal</p>
-              <ProcessSteps {...sampleProcessSteps} variant='horizontal' />
+              <p class='text-sm text-base-content/50 mb-3'>variant: dated</p>
+              <StepList {...sampleStepListDated} />
             </div>
             <div>
-              <p class='text-sm text-base-content/50 mb-3'>variant: vertical</p>
-              <ProcessSteps {...sampleProcessSteps} variant='vertical' />
+              <p class='text-sm text-base-content/50 mb-3'>variant: numbered</p>
+              <StepList {...sampleStepListNumbered} direction='horizontal' />
             </div>
           </div>
-        </div>
-      </Section>
-
-      <Section
-        class='w-full section-pad-relaxed section-divider'
-        id='catalog-timeline'
-        label='Timeline'
-      >
-        <div class={container}>
-          <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
-            Timeline
-          </h2>
-          <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60'>
-            沿革・実績の時系列表示。facts スロットなどで使用。
-          </p>
-          <Timeline {...sampleTimeline} />
         </div>
       </Section>
 
