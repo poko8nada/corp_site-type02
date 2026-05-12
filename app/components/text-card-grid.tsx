@@ -1,7 +1,9 @@
-/** Card grid with configurable cardStyle ('elevated'|'flat'|'outline'). */
+/** Card grid with configurable cardStyle ('elevated'|'flat'|'outline') and optional image. */
 export interface TextCardGridItem {
   heading?: string;
   body: readonly string[];
+  imageSrc?: string;
+  imageAlt?: string;
 }
 
 export type CardStyle = 'elevated' | 'flat' | 'outline';
@@ -12,17 +14,23 @@ const CARD_CLASS: Record<CardStyle, string> = {
   outline: 'border border-base-300 rounded-xl',
 };
 
+const GRID_COLS: Record<number, string> = {
+  2: 'md:grid-cols-2',
+  3: 'md:grid-cols-2 lg:grid-cols-3',
+  4: 'sm:grid-cols-2 lg:grid-cols-4',
+};
+
 export interface TextCardGridProps {
   sectionHeading: string;
   items: readonly TextCardGridItem[];
-  columns?: 2 | 3;
+  columns?: 2 | 3 | 4;
   cardStyle?: CardStyle;
   revealOnScroll?: boolean;
 }
 
 export function TextCardGrid(props: TextCardGridProps) {
   const { sectionHeading, items, columns = 3, cardStyle = 'elevated', revealOnScroll } = props;
-  const gridCols = columns === 2 ? 'md:grid-cols-2' : 'md:grid-cols-3';
+  const gridCols = GRID_COLS[columns];
   const revealDelayByIndex = [
     '[--reveal-delay:0ms]',
     '[--reveal-delay:70ms]',
@@ -41,6 +49,15 @@ export function TextCardGrid(props: TextCardGridProps) {
             class={`${revealOnScroll ? 'reveal-on-scroll ' + revealDelayByIndex[Math.min(index, revealDelayByIndex.length - 1)] + ' ' : ''}px-6 py-6 sm:py-8 lg:py-10 ${CARD_CLASS[cardStyle]}`}
             key={`${item.heading ?? ''}${index}`}
           >
+            {item.imageSrc && (
+              <figure class='-mx-6 -mt-6 mb-5 sm:-mt-8 sm:-mx-6 lg:-mt-10 lg:-mx-6'>
+                <img
+                  alt={item.imageAlt ?? ''}
+                  class='w-full h-48 object-cover'
+                  src={item.imageSrc}
+                />
+              </figure>
+            )}
             {item.heading ? (
               <p class='font-display text-xl tracking-tight text-base-content sm:text-2xl'>
                 {item.heading}

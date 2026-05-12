@@ -12,7 +12,6 @@ import type { LogoCloudProps } from '@/components/logo-cloud';
 import type { TestimonialProps } from '@/components/testimonial';
 import type { TextCardGridProps } from '@/components/text-card-grid';
 import type { TimelineProps } from '@/components/timeline';
-import type { TeamGridProps } from '@/components/team-grid';
 import type { InfoTableProps } from '@/components/info-table';
 import type { NewsListProps } from '@/components/news-list';
 import type { VisualLeadProps } from '@/components/visual-lead';
@@ -54,6 +53,33 @@ export const sampleTextCardGrid: TextCardGridProps = {
     { heading: '項目 01', body: ['1つ目の項目の説明文です。'] },
     { heading: '項目 02', body: ['2つ目の項目の説明文です。'] },
     { heading: '項目 03', body: ['3つ目の項目の説明文です。'] },
+  ],
+};
+
+export const sampleTextCardGridWithImage: TextCardGridProps = {
+  sectionHeading: '画像付きカードサンプル',
+  columns: 3,
+  cardStyle: 'elevated',
+  revealOnScroll: true,
+  items: [
+    {
+      heading: 'スタッフ A',
+      body: ['担当業務の説明文です。'],
+      imageSrc: '/images/placeholder-content.svg',
+      imageAlt: 'スタッフ A の写真',
+    },
+    {
+      heading: 'スタッフ B',
+      body: ['担当業務の説明文です。'],
+      imageSrc: '/images/placeholder-content.svg',
+      imageAlt: 'スタッフ B の写真',
+    },
+    {
+      heading: 'スタッフ C',
+      body: ['担当業務の説明文です。'],
+      imageSrc: '/images/placeholder-content.svg',
+      imageAlt: 'スタッフ C の写真',
+    },
   ],
 };
 
@@ -207,18 +233,6 @@ export const sampleTimeline: TimelineProps = {
     { year: '2015', title: '事業拡大', description: '2拠点目を開設。' },
     { year: '2020', title: 'サービス開始', description: '主力サービスの提供を開始。' },
     { year: '2025', title: '現在', description: 'さらなる成長を目指して。' },
-  ],
-};
-
-export const sampleTeamGrid: TeamGridProps = {
-  sectionHeading: 'スタッフ紹介 サンプル',
-  columns: 3,
-  cardStyle: 'elevated',
-  revealOnScroll: true,
-  members: [
-    { name: 'サンプル 太郎', role: '代表取締役', description: '経営全般を担当。' },
-    { name: 'サンプル 花子', role: '取締役', description: '営業・マーケティングを統括。' },
-    { name: 'サンプル 次郎', role: 'マネージャー', description: '現場の取りまとめを担当。' },
   ],
 };
 

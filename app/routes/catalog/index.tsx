@@ -14,7 +14,6 @@ import { InfoGrid } from '@/components/info-grid';
 import { MapEmbed } from '@/components/map-embed';
 import { MapWithInfo } from '@/components/map-with-info';
 import { Timeline } from '@/components/timeline';
-import { TeamGrid } from '@/components/team-grid';
 import { InfoTable } from '@/components/info-table';
 import { NewsList } from '@/components/news-list';
 import DemoBanner from '@/components/$demo-banner';
@@ -31,6 +30,7 @@ import {
   sampleImageGallery,
   sampleProcessSteps,
   sampleTextCardGrid,
+  sampleTextCardGridWithImage,
   sampleFaq,
   sampleTestimonial,
   sampleCta,
@@ -38,7 +38,6 @@ import {
   sampleInfoGrid,
   sampleMapWithInfo,
   sampleTimeline,
-  sampleTeamGrid,
   sampleInfoTable,
   sampleNewsList,
 } from './_data';
@@ -50,7 +49,6 @@ const catalogNavSections = [
   { id: 'catalog-media-block', label: 'MediaBlock' },
   { id: 'catalog-image-break', label: 'ImageBreak' },
   { id: 'catalog-text-card-grid', label: 'TextCardGrid' },
-  { id: 'catalog-team-grid', label: 'TeamGrid' },
   { id: 'catalog-logo-cloud', label: 'LogoCloud' },
   { id: 'catalog-image-gallery', label: 'ImageGallery' },
   { id: 'catalog-info-grid', label: 'InfoGrid' },
@@ -182,25 +180,15 @@ export default createRoute((c) => {
             TextCardGrid
           </h2>
           <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60'>
-            カードグリッド。strengths スロットで使用。
+            カードグリッド。カードに任意画像も設定可能。strengths スロットで使用。
           </p>
-          <TextCardGrid {...sampleTextCardGrid} />
-        </div>
-      </Section>
-
-      <Section
-        class='w-full section-pad-relaxed section-divider'
-        id='catalog-team-grid'
-        label='TeamGrid'
-      >
-        <div class={container}>
-          <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
-            TeamGrid
-          </h2>
-          <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60'>
-            スタッフ紹介カードグリッド。strengths スロットなどで使用。
-          </p>
-          <TeamGrid {...sampleTeamGrid} />
+          <div class='flex flex-col gap-8'>
+            <TextCardGrid {...sampleTextCardGrid} />
+            <div>
+              <p class='text-sm text-base-content/50 mb-3'>画像あり variant</p>
+              <TextCardGrid {...sampleTextCardGridWithImage} />
+            </div>
+          </div>
         </div>
       </Section>
 
