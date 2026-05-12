@@ -17,7 +17,7 @@ import { Timeline } from '@/components/timeline';
 import { TeamGrid } from '@/components/team-grid';
 import { InfoTable } from '@/components/info-table';
 import { NewsList } from '@/components/news-list';
-import DemoBanner from '@/islands/demo-banner';
+import DemoBanner from '@/components/$demo-banner';
 import CatalogNav from '@/islands/catalog-nav';
 import { frameIsDemo } from '@/sections/frame';
 import { createRoute } from 'honox/factory';
