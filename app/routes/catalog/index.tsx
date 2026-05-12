@@ -1,6 +1,6 @@
 import { Section } from '@/components/section';
 import { VisualLead } from '@/components/visual-lead';
-import VisualSlideshow from '@/components/$visual-slideshow';
+import { VisualSlideshow } from '@/components/visual-slideshow';
 import { StatsCounter } from '@/components/stats-counter';
 import { LogoCloud } from '@/components/logo-cloud';
 import { ImageGallery } from '@/components/image-gallery';

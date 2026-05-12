@@ -1,6 +1,7 @@
 import { createClient } from 'honox/client';
 import { initContactForm } from '@/sections/contact/form-init';
 import { initScrollReveal } from '@/sections/home/scroll-reveal';
+import { initVisualSlideshow } from '@/sections/catalog/visual-slideshow';
 
 createClient();
 
@@ -12,6 +13,7 @@ export interface ClientInitOptions {
 export function initAll(options: ClientInitOptions = {}): void {
   if (options.scrollReveal !== false) initScrollReveal();
   if (options.contactForm !== false) initContactForm();
+  initVisualSlideshow();
 }
 
 initAll();

@@ -15,7 +15,7 @@ import type { TimelineProps } from '@/components/timeline';
 import type { InfoTableProps } from '@/components/info-table';
 import type { NewsListProps } from '@/components/news-list';
 import type { VisualLeadProps } from '@/components/visual-lead';
-import type { VisualSlideshowProps } from '@/components/$visual-slideshow';
+import type { VisualSlideshowProps } from '@/components/visual-slideshow';
 
 export const sampleLead: VisualLeadProps = {
   eyebrow: '事業カテゴリ',
