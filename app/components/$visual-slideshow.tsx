@@ -99,17 +99,23 @@ export default function VisualSlideshow(props: VisualSlideshowProps) {
               {slide.caption && (
                 <div class='relative z-10 mx-auto w-full max-w-5xl px-6 pb-32 sm:px-8 sm:pb-48 lg:px-10 lg:pb-50'>
                   {slide.caption.eyebrow && (
-                    <p class={`lead-reveal ${captionDelays[0]} text-white/68 mb-2 text-sm tracking-[0.14em] uppercase`}>
+                    <p
+                      class={`lead-reveal ${captionDelays[0]} text-white/68 mb-2 text-sm tracking-[0.14em] uppercase`}
+                    >
                       {slide.caption.eyebrow}
                     </p>
                   )}
                   {slide.caption.headline && (
-                    <h2 class={`lead-reveal ${captionDelays[1]} font-display text-white text-4xl leading-tight tracking-tight sm:text-5xl lg:text-6xl`}>
+                    <h2
+                      class={`lead-reveal ${captionDelays[1]} font-display text-white text-4xl leading-tight tracking-tight sm:text-5xl lg:text-6xl`}
+                    >
                       {slide.caption.headline}
                     </h2>
                   )}
                   {slide.caption.description && (
-                    <p class={`lead-reveal ${captionDelays[2]} text-white/78 mt-4 max-w-lg text-base leading-relaxed sm:text-lg`}>
+                    <p
+                      class={`lead-reveal ${captionDelays[2]} text-white/78 mt-4 max-w-lg text-base leading-relaxed sm:text-lg`}
+                    >
                       {slide.caption.description}
                     </p>
                   )}
