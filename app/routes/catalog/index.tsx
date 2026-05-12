@@ -13,7 +13,12 @@ import { ImageBreak } from '@/components/image-break';
 import { InfoGrid } from '@/components/info-grid';
 import { MapEmbed } from '@/components/map-embed';
 import { MapWithInfo } from '@/components/map-with-info';
+import { Timeline } from '@/components/timeline';
+import { TeamGrid } from '@/components/team-grid';
+import { InfoTable } from '@/components/info-table';
+import { NewsList } from '@/components/news-list';
 import DemoBanner from '@/islands/demo-banner';
+import CatalogNav from '@/islands/catalog-nav';
 import { frameIsDemo } from '@/sections/frame';
 import { createRoute } from 'honox/factory';
 import FramePanel from '@/islands/frame-panel';
@@ -32,7 +37,34 @@ import {
   sampleImageBreak,
   sampleInfoGrid,
   sampleMapWithInfo,
+  sampleTimeline,
+  sampleTeamGrid,
+  sampleInfoTable,
+  sampleNewsList,
 } from './_data';
+
+const catalogNavSections = [
+  { id: 'catalog-header/footer', label: 'Header/Footer' },
+  { id: 'catalog-lead', label: 'VisualLead' },
+  { id: 'catalog-visual-slideshow', label: 'VisualSlideshow' },
+  { id: 'catalog-image-break', label: 'ImageBreak' },
+  { id: 'catalog-image-gallery', label: 'ImageGallery' },
+  { id: 'catalog-stats-counter', label: 'StatsCounter' },
+  { id: 'catalog-logo-cloud', label: 'LogoCloud' },
+  { id: 'catalog-media-block', label: 'MediaBlock' },
+  { id: 'catalog-text-card-grid', label: 'TextCardGrid' },
+  { id: 'catalog-process-steps', label: 'ProcessSteps' },
+  { id: 'catalog-faq', label: 'FaqList' },
+  { id: 'catalog-testimonial', label: 'Testimonial' },
+  { id: 'catalog-info-grid', label: 'InfoGrid' },
+  { id: 'catalog-map', label: 'Map' },
+  { id: 'catalog-cta', label: 'CtaBand' },
+  { id: 'catalog-demo-banner', label: 'DemoBanner' },
+  { id: 'catalog-timeline', label: 'Timeline' },
+  { id: 'catalog-team-grid', label: 'TeamGrid' },
+  { id: 'catalog-info-table', label: 'InfoTable' },
+  { id: 'catalog-news-list', label: 'NewsList' },
+] as const;
 
 export default createRoute((c) => {
   if (!frameIsDemo) {
@@ -334,6 +366,72 @@ export default createRoute((c) => {
           <DemoBanner isDemo />
         </div>
       </Section>
+
+      <Section
+        class='w-full section-pad-relaxed section-divider'
+        id='catalog-timeline'
+        label='Timeline'
+      >
+        <div class={container}>
+          <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
+            Timeline
+          </h2>
+          <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60'>
+            沿革・実績の時系列表示。facts スロットなどで使用。
+          </p>
+          <Timeline {...sampleTimeline} />
+        </div>
+      </Section>
+
+      <Section
+        class='w-full section-pad-relaxed section-divider'
+        id='catalog-team-grid'
+        label='TeamGrid'
+      >
+        <div class={container}>
+          <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
+            TeamGrid
+          </h2>
+          <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60'>
+            スタッフ紹介カードグリッド。strengths スロットなどで使用。
+          </p>
+          <TeamGrid {...sampleTeamGrid} />
+        </div>
+      </Section>
+
+      <Section
+        class='w-full section-pad-relaxed section-divider'
+        id='catalog-info-table'
+        label='InfoTable'
+      >
+        <div class={container}>
+          <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
+            InfoTable
+          </h2>
+          <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60'>
+            料金表・スペック表。facts スロットなどで使用。
+          </p>
+          <InfoTable {...sampleInfoTable} />
+        </div>
+      </Section>
+
+      <Section
+        class='w-full section-pad-relaxed section-divider'
+        id='catalog-news-list'
+        label='NewsList'
+      >
+        <div class={container}>
+          <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
+            NewsList
+          </h2>
+          <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60'>
+            お知らせ一覧。info スロットなどで使用。
+          </p>
+          <NewsList {...sampleNewsList} />
+        </div>
+      </Section>
+
+      <CatalogNav sections={catalogNavSections} />
     </>,
     {
       title: 'Components Catalog',

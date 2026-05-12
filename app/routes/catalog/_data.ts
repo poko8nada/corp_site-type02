@@ -11,6 +11,10 @@ import type { StatsCounterProps } from '@/components/stats-counter';
 import type { LogoCloudProps } from '@/components/logo-cloud';
 import type { TestimonialProps } from '@/components/testimonial';
 import type { TextCardGridProps } from '@/components/text-card-grid';
+import type { TimelineProps } from '@/components/timeline';
+import type { TeamGridProps } from '@/components/team-grid';
+import type { InfoTableProps } from '@/components/info-table';
+import type { NewsListProps } from '@/components/news-list';
 import type { VisualLeadProps } from '@/components/visual-lead';
 import type { VisualSlideshowProps } from '@/islands/visual-slideshow';
 
@@ -193,4 +197,63 @@ export const sampleTestimonial: TestimonialProps = {
   author: 'サンプル太郎',
   role: '株式会社サンプル 代表取締役',
   revealOnScroll: true,
+};
+
+export const sampleTimeline: TimelineProps = {
+  sectionHeading: '沿革 サンプル',
+  revealOnScroll: true,
+  items: [
+    { year: '2010', title: '創業', description: 'サンプル企業を設立。' },
+    { year: '2015', title: '事業拡大', description: '2拠点目を開設。' },
+    { year: '2020', title: 'サービス開始', description: '主力サービスの提供を開始。' },
+    { year: '2025', title: '現在', description: 'さらなる成長を目指して。' },
+  ],
+};
+
+export const sampleTeamGrid: TeamGridProps = {
+  sectionHeading: 'スタッフ紹介 サンプル',
+  columns: 3,
+  cardStyle: 'elevated',
+  revealOnScroll: true,
+  members: [
+    { name: 'サンプル 太郎', role: '代表取締役', description: '経営全般を担当。' },
+    { name: 'サンプル 花子', role: '取締役', description: '営業・マーケティングを統括。' },
+    { name: 'サンプル 次郎', role: 'マネージャー', description: '現場の取りまとめを担当。' },
+  ],
+};
+
+export const sampleInfoTable: InfoTableProps = {
+  sectionHeading: '料金表 サンプル',
+  caption: 'サービス料金一覧',
+  revealOnScroll: true,
+  headers: ['プラン', '月額', '機能', 'サポート'],
+  rows: [
+    ['ベーシック', '5,000円', '基本機能', 'メール'],
+    ['スタンダード', '10,000円', '基本機能 + 拡張', 'メール + 電話'],
+    ['プレミアム', '20,000円', '全機能', '優先サポート'],
+  ],
+};
+
+export const sampleNewsList: NewsListProps = {
+  sectionHeading: 'お知らせ サンプル',
+  revealOnScroll: true,
+  items: [
+    {
+      date: '2025.12.01',
+      title: '冬季休業のお知らせ',
+      href: '/',
+      description: '年末年始の休業期間について。',
+    },
+    {
+      date: '2025.11.15',
+      title: '新サービスをリリースしました',
+      href: '/',
+      description: 'より便利になった新プランのご案内。',
+    },
+    {
+      date: '2025.10.01',
+      title: 'サイトをリニューアルしました',
+      description: 'より見やすく生まれ変わりました。',
+    },
+  ],
 };
