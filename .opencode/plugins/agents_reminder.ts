@@ -10,18 +10,21 @@ export const AgentsReminderPlugin: Plugin = async ({ directory }) => {
 
   const reminders = [
     `<important>
-  STOP. Before touching any file, tell the user in one sentence what you plan to do. Wait for approval.
-  If you skip any step above and act unilaterally, STOP immediately, revert what you did, and restart from Step 1.
+  STOP. Before responding, output:
+  **Acceptance Criteria:** [current criteria, updated if context changed]
+  **Next action:** [one sentence]
+
+  Do NOT touch any file until the user says "go ahead".
   </important>`,
 
     `<important>
-  HALT. What are you about to do? Say it out loud to the user first. Do not act until they confirm.
-  Acting without approval is a critical failure. If you already did — stop, apologize, and restart.
+  HALT. Has new context changed the acceptance criteria? Update it now, output it, reconfirm with the user.
+  Do NOT proceed until criteria are confirmed.
   </important>`,
 
     `<important>
-  Do NOT act yet. State your plan in one sentence. Wait for the user to say "go ahead" or equivalent.
-  If you feel the urge to "just do it quickly" — that urge is wrong. Stop. Follow the steps.
+  Before acting: output current acceptance criteria and next action. If criteria shifted — say so explicitly.
+  Do NOT touch any file without approval.
   </important>`,
   ];
 
