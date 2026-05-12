@@ -1,6 +1,6 @@
 import { Section } from '@/components/section';
 import { VisualLead } from '@/components/visual-lead';
-import VisualSlideshow from '@/islands/visual-slideshow';
+import VisualSlideshow from '@/components/$visual-slideshow';
 import { StatsCounter } from '@/components/stats-counter';
 import { LogoCloud } from '@/components/logo-cloud';
 import { ImageGallery } from '@/components/image-gallery';
@@ -44,26 +44,26 @@ import {
 } from './_data';
 
 const catalogNavSections = [
-  { id: 'catalog-header/footer', label: 'Header/Footer' },
+  { id: 'catalog-header/footer', label: 'Frame' },
   { id: 'catalog-lead', label: 'VisualLead' },
   { id: 'catalog-visual-slideshow', label: 'VisualSlideshow' },
-  { id: 'catalog-image-break', label: 'ImageBreak' },
-  { id: 'catalog-image-gallery', label: 'ImageGallery' },
-  { id: 'catalog-stats-counter', label: 'StatsCounter' },
-  { id: 'catalog-logo-cloud', label: 'LogoCloud' },
   { id: 'catalog-media-block', label: 'MediaBlock' },
+  { id: 'catalog-image-break', label: 'ImageBreak' },
   { id: 'catalog-text-card-grid', label: 'TextCardGrid' },
+  { id: 'catalog-team-grid', label: 'TeamGrid' },
+  { id: 'catalog-logo-cloud', label: 'LogoCloud' },
+  { id: 'catalog-image-gallery', label: 'ImageGallery' },
+  { id: 'catalog-info-grid', label: 'InfoGrid' },
+  { id: 'catalog-info-table', label: 'InfoTable' },
+  { id: 'catalog-stats-counter', label: 'StatsCounter' },
   { id: 'catalog-process-steps', label: 'ProcessSteps' },
+  { id: 'catalog-timeline', label: 'Timeline' },
+  { id: 'catalog-news-list', label: 'NewsList' },
   { id: 'catalog-faq', label: 'FaqList' },
   { id: 'catalog-testimonial', label: 'Testimonial' },
-  { id: 'catalog-info-grid', label: 'InfoGrid' },
   { id: 'catalog-map', label: 'Map' },
   { id: 'catalog-cta', label: 'CtaBand' },
   { id: 'catalog-demo-banner', label: 'DemoBanner' },
-  { id: 'catalog-timeline', label: 'Timeline' },
-  { id: 'catalog-team-grid', label: 'TeamGrid' },
-  { id: 'catalog-info-table', label: 'InfoTable' },
-  { id: 'catalog-news-list', label: 'NewsList' },
 ] as const;
 
 export default createRoute((c) => {
@@ -87,6 +87,7 @@ export default createRoute((c) => {
         </div>
       </Section>
 
+      {/** ── Frame ── */}
       <Section
         class='w-full section-pad-relaxed section-divider'
         id='catalog-header/footer'
@@ -102,6 +103,7 @@ export default createRoute((c) => {
         </div>
       </Section>
 
+      {/** ── Hero / Lead ── */}
       <Section
         class='w-full section-pad-relaxed section-divider'
         id='catalog-lead'
@@ -136,6 +138,23 @@ export default createRoute((c) => {
         </div>
       </Section>
 
+      {/** ── Content ── */}
+      <Section
+        class='w-full section-pad-relaxed section-divider'
+        id='catalog-media-block'
+        label='MediaBlock + RichText'
+      >
+        <div class={container}>
+          <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
+            MediaBlock + RichText
+          </h2>
+          <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60'>
+            画像とテキストの組み合わせ。explanation スロットで使用。variant でレイアウト切替。
+          </p>
+          <MediaBlockDemo />
+        </div>
+      </Section>
+
       <Section
         class='w-full section-pad-relaxed section-divider'
         id='catalog-image-break'
@@ -152,44 +171,36 @@ export default createRoute((c) => {
         </div>
       </Section>
 
+      {/** ── Cards ── */}
       <Section
         class='w-full section-pad-relaxed section-divider'
-        id='catalog-image-gallery'
-        label='ImageGallery'
+        id='catalog-text-card-grid'
+        label='TextCardGrid'
       >
         <div class={container}>
           <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
-            ImageGallery
+            TextCardGrid
           </h2>
           <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60'>
-            画像ギャラリー。variant で carousel / grid 切替。image-break の代替として使用可能。
+            カードグリッド。strengths スロットで使用。
           </p>
-          <div class='flex flex-col gap-8'>
-            <div>
-              <p class='text-sm text-base-content/50 mb-3'>variant: carousel</p>
-              <ImageGallery {...sampleImageGallery} />
-            </div>
-            <div>
-              <p class='text-sm text-base-content/50 mb-3'>variant: grid</p>
-              <ImageGallery {...sampleImageGallery} variant='grid' />
-            </div>
-          </div>
+          <TextCardGrid {...sampleTextCardGrid} />
         </div>
       </Section>
 
       <Section
         class='w-full section-pad-relaxed section-divider'
-        id='catalog-stats-counter'
-        label='StatsCounter'
+        id='catalog-team-grid'
+        label='TeamGrid'
       >
         <div class={container}>
           <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
-            StatsCounter
+            TeamGrid
           </h2>
           <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60'>
-            数字＋ラベルの実績表示。facts スロットなどで使用。
+            スタッフ紹介カードグリッド。strengths スロットなどで使用。
           </p>
-          <StatsCounter {...sampleStatsCounter} />
+          <TeamGrid {...sampleTeamGrid} />
         </div>
       </Section>
 
@@ -220,36 +231,79 @@ export default createRoute((c) => {
 
       <Section
         class='w-full section-pad-relaxed section-divider'
-        id='catalog-media-block'
-        label='MediaBlock + RichText'
+        id='catalog-image-gallery'
+        label='ImageGallery'
       >
         <div class={container}>
           <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
-            MediaBlock + RichText
+            ImageGallery
           </h2>
           <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60'>
-            画像とテキストの組み合わせ。explanation スロットで使用。variant でレイアウト切替。
+            画像ギャラリー。variant で carousel / grid 切替。image-break の代替として使用可能。
           </p>
-          <MediaBlockDemo />
+          <div class='flex flex-col gap-8'>
+            <div>
+              <p class='text-sm text-base-content/50 mb-3'>variant: carousel</p>
+              <ImageGallery {...sampleImageGallery} />
+            </div>
+            <div>
+              <p class='text-sm text-base-content/50 mb-3'>variant: grid</p>
+              <ImageGallery {...sampleImageGallery} variant='grid' />
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/** ── Data ── */}
+      <Section
+        class='w-full section-pad-relaxed section-divider'
+        id='catalog-info-grid'
+        label='InfoGrid'
+      >
+        <div class={container}>
+          <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
+            InfoGrid
+          </h2>
+          <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60'>
+            2カラム情報グリッド。facts スロットなどで使用。
+          </p>
+          <InfoGrid {...sampleInfoGrid} />
         </div>
       </Section>
 
       <Section
         class='w-full section-pad-relaxed section-divider'
-        id='catalog-text-card-grid'
-        label='TextCardGrid'
+        id='catalog-info-table'
+        label='InfoTable'
       >
         <div class={container}>
           <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
-            TextCardGrid
+            InfoTable
           </h2>
           <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60'>
-            カードグリッド。strengths スロットで使用。
+            料金表・スペック表。facts スロットなどで使用。
           </p>
-          <TextCardGrid {...sampleTextCardGrid} />
+          <InfoTable {...sampleInfoTable} />
         </div>
       </Section>
 
+      <Section
+        class='w-full section-pad-relaxed section-divider'
+        id='catalog-stats-counter'
+        label='StatsCounter'
+      >
+        <div class={container}>
+          <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
+            StatsCounter
+          </h2>
+          <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60'>
+            数字＋ラベルの実績表示。facts スロットなどで使用。
+          </p>
+          <StatsCounter {...sampleStatsCounter} />
+        </div>
+      </Section>
+
+      {/** ── Step / Timeline ── */}
       <Section
         class='w-full section-pad-relaxed section-divider'
         id='catalog-process-steps'
@@ -275,6 +329,40 @@ export default createRoute((c) => {
           </div>
         </div>
       </Section>
+
+      <Section
+        class='w-full section-pad-relaxed section-divider'
+        id='catalog-timeline'
+        label='Timeline'
+      >
+        <div class={container}>
+          <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
+            Timeline
+          </h2>
+          <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60'>
+            沿革・実績の時系列表示。facts スロットなどで使用。
+          </p>
+          <Timeline {...sampleTimeline} />
+        </div>
+      </Section>
+
+      {/** ── List ── */}
+      <Section
+        class='w-full section-pad-relaxed section-divider'
+        id='catalog-news-list'
+        label='NewsList'
+      >
+        <div class={container}>
+          <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
+            NewsList
+          </h2>
+          <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60'>
+            お知らせ一覧。info スロットなどで使用。
+          </p>
+          <NewsList {...sampleNewsList} />
+        </div>
+      </Section>
+
       <Section class='w-full section-pad-relaxed section-divider' id='catalog-faq' label='FaqList'>
         <div class={container}>
           <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
@@ -287,6 +375,7 @@ export default createRoute((c) => {
         </div>
       </Section>
 
+      {/** ── Quote ── */}
       <Section
         class='w-full section-pad-relaxed section-divider'
         id='catalog-testimonial'
@@ -305,22 +394,7 @@ export default createRoute((c) => {
         </div>
       </Section>
 
-      <Section
-        class='w-full section-pad-relaxed section-divider'
-        id='catalog-info-grid'
-        label='InfoGrid'
-      >
-        <div class={container}>
-          <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
-            InfoGrid
-          </h2>
-          <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60'>
-            2カラム情報グリッド。facts スロットなどで使用。
-          </p>
-          <InfoGrid {...sampleInfoGrid} />
-        </div>
-      </Section>
-
+      {/** ── Map ── */}
       <Section
         class='w-full section-pad-relaxed section-divider'
         id='catalog-map'
@@ -339,6 +413,7 @@ export default createRoute((c) => {
         </div>
       </Section>
 
+      {/** ── CTA ── */}
       <Section class='w-full section-pad-relaxed section-divider' id='catalog-cta' label='CtaBand'>
         <div class={container}>
           <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
@@ -351,6 +426,7 @@ export default createRoute((c) => {
         </div>
       </Section>
 
+      {/** ── Demo ── */}
       <Section
         class='w-full section-pad-relaxed section-divider'
         id='catalog-demo-banner'
@@ -364,70 +440,6 @@ export default createRoute((c) => {
             デモサイト警告バナー。フレームに内蔵。frameIsDemo で制御。
           </p>
           <DemoBanner isDemo />
-        </div>
-      </Section>
-
-      <Section
-        class='w-full section-pad-relaxed section-divider'
-        id='catalog-timeline'
-        label='Timeline'
-      >
-        <div class={container}>
-          <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
-            Timeline
-          </h2>
-          <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60'>
-            沿革・実績の時系列表示。facts スロットなどで使用。
-          </p>
-          <Timeline {...sampleTimeline} />
-        </div>
-      </Section>
-
-      <Section
-        class='w-full section-pad-relaxed section-divider'
-        id='catalog-team-grid'
-        label='TeamGrid'
-      >
-        <div class={container}>
-          <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
-            TeamGrid
-          </h2>
-          <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60'>
-            スタッフ紹介カードグリッド。strengths スロットなどで使用。
-          </p>
-          <TeamGrid {...sampleTeamGrid} />
-        </div>
-      </Section>
-
-      <Section
-        class='w-full section-pad-relaxed section-divider'
-        id='catalog-info-table'
-        label='InfoTable'
-      >
-        <div class={container}>
-          <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
-            InfoTable
-          </h2>
-          <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60'>
-            料金表・スペック表。facts スロットなどで使用。
-          </p>
-          <InfoTable {...sampleInfoTable} />
-        </div>
-      </Section>
-
-      <Section
-        class='w-full section-pad-relaxed section-divider'
-        id='catalog-news-list'
-        label='NewsList'
-      >
-        <div class={container}>
-          <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
-            NewsList
-          </h2>
-          <p class='mt-1 mb-6 text-sm leading-relaxed text-base-content/60'>
-            お知らせ一覧。info スロットなどで使用。
-          </p>
-          <NewsList {...sampleNewsList} />
         </div>
       </Section>
 

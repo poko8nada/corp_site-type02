@@ -18,18 +18,46 @@ export interface VisualSlideshowProps {
   revealOnScroll?: boolean;
 }
 
+const captionDelays = [
+  '[--lead-delay:0ms]',
+  '[--lead-delay:100ms]',
+  '[--lead-delay:200ms]',
+  '[--lead-delay:280ms]',
+] as const;
+
 export default function VisualSlideshow(props: VisualSlideshowProps) {
   const { items, showArrows = true, showDots = true, interval = 5000, revealOnScroll } = props;
   const [current, setCurrent] = useState(0);
+  const [ready, setReady] = useState(!revealOnScroll);
 
   useEffect(() => {
+    if (!revealOnScroll) return;
+    const el = document.querySelector('[data-vs-root]');
+    if (!el) return;
+    if (el.classList.contains('is-visible')) {
+      setReady(true);
+      return;
+    }
+    const mo = new MutationObserver(() => {
+      if (el.classList.contains('is-visible')) {
+        setReady(true);
+        mo.disconnect();
+      }
+    });
+    mo.observe(el, { attributes: true, attributeFilter: ['class'] });
+    return () => mo.disconnect();
+  }, [revealOnScroll]);
+
+  useEffect(() => {
+    if (!ready) return;
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % items.length);
     }, interval);
     return () => clearInterval(timer);
-  }, [interval, items.length]);
+  }, [interval, items.length, ready]);
 
   useEffect(() => {
+    if (!ready) return;
     const raf = requestAnimationFrame(() => {
       const el = document.getElementById(`vslide-${current}`);
       if (!el) return;
@@ -38,7 +66,7 @@ export default function VisualSlideshow(props: VisualSlideshowProps) {
       carousel.scrollLeft = el.offsetLeft;
     });
     return () => cancelAnimationFrame(raf);
-  }, [current]);
+  }, [current, ready]);
 
   function goPrev() {
     setCurrent((prev) => (prev === 0 ? items.length - 1 : prev - 1));
@@ -49,7 +77,10 @@ export default function VisualSlideshow(props: VisualSlideshowProps) {
   }
 
   return (
-    <div class={`relative ${revealOnScroll ? 'reveal-on-scroll [--reveal-delay:20ms]' : ''}`}>
+    <div
+      data-vs-root
+      class={`relative ${revealOnScroll ? 'reveal-on-scroll [--reveal-delay:20ms]' : ''}`}
+    >
       <div class='carousel w-full'>
         {items.map((slide, i) => (
           <div class='carousel-item relative w-full' id={`vslide-${i}`} key={slide.imageSrc}>
@@ -68,17 +99,17 @@ export default function VisualSlideshow(props: VisualSlideshowProps) {
               {slide.caption && (
                 <div class='relative z-10 mx-auto w-full max-w-5xl px-6 pb-32 sm:px-8 sm:pb-48 lg:px-10 lg:pb-50'>
                   {slide.caption.eyebrow && (
-                    <p class='text-white/68 mb-2 text-sm tracking-[0.14em] uppercase'>
+                    <p class={`lead-reveal ${captionDelays[0]} text-white/68 mb-2 text-sm tracking-[0.14em] uppercase`}>
                       {slide.caption.eyebrow}
                     </p>
                   )}
                   {slide.caption.headline && (
-                    <h2 class='font-display text-white text-4xl leading-tight tracking-tight sm:text-5xl lg:text-6xl'>
+                    <h2 class={`lead-reveal ${captionDelays[1]} font-display text-white text-4xl leading-tight tracking-tight sm:text-5xl lg:text-6xl`}>
                       {slide.caption.headline}
                     </h2>
                   )}
                   {slide.caption.description && (
-                    <p class='text-white/78 mt-4 max-w-lg text-base leading-relaxed sm:text-lg'>
+                    <p class={`lead-reveal ${captionDelays[2]} text-white/78 mt-4 max-w-lg text-base leading-relaxed sm:text-lg`}>
                       {slide.caption.description}
                     </p>
                   )}
