@@ -105,7 +105,13 @@ export default function CatalogNav({ sections }: Props) {
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? '閉じる' : '目次を開く'}
         >
-          <svg aria-hidden='true' class='h-5 w-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+          <svg
+            aria-hidden='true'
+            class='h-5 w-5'
+            fill='none'
+            stroke='currentColor'
+            viewBox='0 0 24 24'
+          >
             {isOpen ? (
               <path
                 d='M18 6L6 18M6 6l12 12'
