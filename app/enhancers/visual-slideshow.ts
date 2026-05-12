@@ -120,7 +120,7 @@ function setupSlideshow(root: HTMLElement): void {
   observer.observe(root);
 
   let scrollTimer: number | undefined;
-  carousel.addEventListener('scrollend', () => {
+  carousel.addEventListener('scroll', () => {
     if (scrollTimer !== undefined) window.clearTimeout(scrollTimer);
     scrollTimer = window.setTimeout(() => {
       const snapped = Math.round(carousel.scrollLeft / carousel.clientWidth);
@@ -128,7 +128,7 @@ function setupSlideshow(root: HTMLElement): void {
         sync(snapped);
         restartTimer();
       }
-    }, 80);
+    }, 100);
   });
 }
 
