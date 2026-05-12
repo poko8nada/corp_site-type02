@@ -32,55 +32,53 @@ export function VisualSlideshow(props: VisualSlideshowProps) {
       data-visual-slideshow
       data-vs-interval={interval}
     >
-      <div class='overflow-hidden'>
-        <div
-          class='flex transition-transform duration-700 ease-in-out motion-reduce:transition-none'
-          data-vs-track
-          style={{ transform: 'translateX(calc(-100% * var(--vs-current, 0)))' }}
-        >
-          {items.map((slide, i) => (
-            <div class='shrink-0 w-full' data-vs-slide id={`vslide-${i}`} key={slide.imageSrc}>
-              <div class='relative flex min-h-[60svh] w-full items-end sm:min-h-[65svh]'>
-                <img
-                  alt={slide.imageAlt}
-                  class='absolute inset-0 h-full w-full object-cover'
-                  decoding='async'
-                  loading={i === 0 ? 'eager' : 'lazy'}
-                  src={slide.imageSrc}
-                />
-                <div class='pointer-events-none absolute inset-0' aria-hidden='true'>
-                  <div class='absolute inset-0 bg-radial-[ellipse_65%_55%_at_50%_78%] from-primary/22 to-transparent' />
-                  <div class='absolute inset-0 bg-radial-[ellipse_55%_38%_at_30%_92%] from-secondary/12 to-transparent' />
-                </div>
-                {slide.caption && (
-                  <div class='relative z-10 mx-auto w-full max-w-5xl px-6 pb-32 sm:px-8 sm:pb-48 lg:px-10 lg:pb-50'>
-                    {slide.caption.eyebrow && (
-                      <p
-                        class={`lead-reveal ${captionDelays[0]} text-white/68 mb-2 text-sm tracking-[0.14em] uppercase`}
-                      >
-                        {slide.caption.eyebrow}
-                      </p>
-                    )}
-                    {slide.caption.headline && (
-                      <h2
-                        class={`lead-reveal ${captionDelays[1]} font-display text-white text-4xl leading-tight tracking-tight sm:text-5xl lg:text-6xl`}
-                      >
-                        {slide.caption.headline}
-                      </h2>
-                    )}
-                    {slide.caption.description && (
-                      <p
-                        class={`lead-reveal ${captionDelays[2]} text-white/78 mt-4 max-w-lg text-base leading-relaxed sm:text-lg`}
-                      >
-                        {slide.caption.description}
-                      </p>
-                    )}
-                  </div>
-                )}
+      <div
+        class='carousel w-full scroll-smooth'
+        data-vs-carousel
+        style={{ overflowAnchor: 'none' }}
+      >
+        {items.map((slide, i) => (
+          <div class='carousel-item w-full' data-vs-slide id={`vslide-${i}`} key={slide.imageSrc}>
+            <div class='relative flex min-h-[60svh] w-full items-end sm:min-h-[65svh]'>
+              <img
+                alt={slide.imageAlt}
+                class='absolute inset-0 h-full w-full object-cover'
+                decoding='async'
+                loading={i === 0 ? 'eager' : 'lazy'}
+                src={slide.imageSrc}
+              />
+              <div class='pointer-events-none absolute inset-0' aria-hidden='true'>
+                <div class='absolute inset-0 bg-radial-[ellipse_65%_55%_at_50%_78%] from-primary/22 to-transparent' />
+                <div class='absolute inset-0 bg-radial-[ellipse_55%_38%_at_30%_92%] from-secondary/12 to-transparent' />
               </div>
+              {slide.caption && (
+                <div class='relative z-10 mx-auto w-full max-w-5xl px-6 pb-32 sm:px-8 sm:pb-48 lg:px-10 lg:pb-50'>
+                  {slide.caption.eyebrow && (
+                    <p
+                      class={`lead-reveal ${captionDelays[0]} text-white/68 mb-2 text-sm tracking-[0.14em] uppercase`}
+                    >
+                      {slide.caption.eyebrow}
+                    </p>
+                  )}
+                  {slide.caption.headline && (
+                    <h2
+                      class={`lead-reveal ${captionDelays[1]} font-display text-white text-4xl leading-tight tracking-tight sm:text-5xl lg:text-6xl`}
+                    >
+                      {slide.caption.headline}
+                    </h2>
+                  )}
+                  {slide.caption.description && (
+                    <p
+                      class={`lead-reveal ${captionDelays[2]} text-white/78 mt-4 max-w-lg text-base leading-relaxed sm:text-lg`}
+                    >
+                      {slide.caption.description}
+                    </p>
+                  )}
+                </div>
+              )}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
       {showArrows && (
         <div class='absolute inset-0 z-10 flex items-center justify-between px-4 pointer-events-none'>

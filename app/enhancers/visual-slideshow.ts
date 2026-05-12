@@ -26,11 +26,13 @@ function setupSlideshow(root: HTMLElement): void {
   const slides = Array.from(root.querySelectorAll<HTMLElement>('[data-vs-slide]'));
   if (slides.length < 2) return;
 
-  const track = root.querySelector<HTMLElement>('[data-vs-track]');
-  if (!track) return;
+  const carousel = root.querySelector<HTMLElement>('[data-vs-carousel]');
+  if (!carousel) return;
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const interval = Number(root.dataset.vsInterval ?? '3600');
+  if (reduceMotion) carousel.style.scrollBehavior = 'auto';
+
+  const interval = Number(root.dataset.vsInterval ?? '5000');
   let current = 0;
   let timer: number | undefined;
   let started = false;
@@ -42,7 +44,8 @@ function setupSlideshow(root: HTMLElement): void {
 
   const goTo = (nextIndex: number) => {
     current = (nextIndex + slides.length) % slides.length;
-    track.style.setProperty('--vs-current', String(current));
+    const slide = slides[current];
+    carousel.scrollLeft = slide.offsetLeft;
     sync(current);
     restartTimer();
   };
@@ -90,6 +93,7 @@ function setupSlideshow(root: HTMLElement): void {
     'pagehide',
     () => {
       if (timer !== undefined) window.clearInterval(timer);
+      if (scrollTimer !== undefined) window.clearTimeout(scrollTimer);
     },
     { once: true },
   );
@@ -114,6 +118,18 @@ function setupSlideshow(root: HTMLElement): void {
   );
 
   observer.observe(root);
+
+  let scrollTimer: number | undefined;
+  carousel.addEventListener('scrollend', () => {
+    if (scrollTimer !== undefined) window.clearTimeout(scrollTimer);
+    scrollTimer = window.setTimeout(() => {
+      const snapped = Math.round(carousel.scrollLeft / carousel.clientWidth);
+      if (snapped !== current) {
+        sync(snapped);
+        restartTimer();
+      }
+    }, 80);
+  });
 }
 
 export function initVisualSlideshow(): void {
