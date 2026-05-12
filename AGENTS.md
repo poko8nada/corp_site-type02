@@ -12,8 +12,11 @@
 
 **At every turn, before responding, you MUST output:**
 
+```markdown
 - **Acceptance Criteria:** [current criteria, updated if context changed]
 - **Next action:** [one sentence]
+- **May be related skills:** [list of skills that may apply]
+```
 
 Repeat until ready:
 
