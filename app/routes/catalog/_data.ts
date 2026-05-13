@@ -26,6 +26,7 @@ export const sampleLead: VisualLeadProps = {
   ],
   imageSrc: '/images/placeholder-hero.svg',
   imageAlt: 'ヒーローイメージ プレースホルダー',
+  headingLevel: 1,
   revealOnScroll: true,
 };
 
@@ -38,6 +39,7 @@ export const sampleMediaBlock: Omit<MediaBlockProps, 'children'> = {
 
 export const sampleRichText: RichTextProps = {
   heading: 'セクション見出し',
+  headingLevel: 2,
   paragraphs: [
     '内容を説明するテキストをここに記述します。訪問者に伝えたい情報を簡潔にまとめてください。',
     '2段落目：より詳細な説明や補足を加えると効果的です。',
@@ -103,7 +105,6 @@ export const sampleImageBreak: ImageBreakProps = {
 };
 
 export const sampleInfoGrid: InfoGridProps = {
-  sectionHeading: '情報グリッド サンプル',
   revealOnScroll: true,
   groups: [
     {
@@ -202,7 +203,6 @@ export const sampleImageGallery: ImageGalleryProps = {
 };
 
 export const sampleStepListNumbered: StepListProps = {
-  sectionHeading: 'ステップ サンプル',
   variant: 'numbered',
   revealOnScroll: true,
   items: [
@@ -214,7 +214,6 @@ export const sampleStepListNumbered: StepListProps = {
 };
 
 export const sampleStepListDated: StepListProps = {
-  sectionHeading: '沿革 サンプル',
   variant: 'dated',
   revealOnScroll: true,
   items: [
@@ -234,7 +233,6 @@ export const sampleTestimonial: TestimonialProps = {
 };
 
 export const sampleInfoTable: InfoTableProps = {
-  sectionHeading: '料金表 サンプル',
   caption: 'サービス料金一覧',
   revealOnScroll: true,
   headers: ['プラン', '月額', '機能', 'サポート'],
@@ -246,7 +244,6 @@ export const sampleInfoTable: InfoTableProps = {
 };
 
 export const sampleNewsList: NewsListProps = {
-  sectionHeading: 'お知らせ サンプル',
   revealOnScroll: true,
   items: [
     {

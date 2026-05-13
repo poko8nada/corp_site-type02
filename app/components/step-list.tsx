@@ -5,7 +5,6 @@ export interface StepListItem {
 }
 
 export interface StepListProps {
-  sectionHeading?: string;
   items: readonly StepListItem[];
   variant?: 'dated' | 'numbered';
   direction?: 'vertical' | 'horizontal';

@@ -38,6 +38,7 @@ export default function MediaBlockDemo() {
       >
         <RichText
           heading='メディアブロックサンプル'
+          headingLevel={2}
           paragraphs={[
             '画像とテキストを組み合わせたセクションです。variant プロパティでレイアウトを切り替えられます。',
             'standard: 横並び / overlay: テキスト重ね / wall: 画像壁面 / float: テキスト回り込み',

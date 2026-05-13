@@ -1,6 +1,5 @@
 /** daisyUI table wrapper. For pricing tables, spec sheets, comparison. */
 export interface InfoTableProps {
-  sectionHeading: string;
   headers: readonly string[];
   rows: readonly (readonly string[])[];
   caption?: string;
@@ -17,13 +16,10 @@ const revealDelayByIndex = [
 ] as const;
 
 export function InfoTable(props: InfoTableProps) {
-  const { sectionHeading, headers, rows, caption, revealOnScroll } = props;
+  const { headers, rows, caption, revealOnScroll } = props;
 
   return (
     <div>
-      <h3 class='font-display text-base-content text-3xl leading-snug tracking-tight sm:text-4xl'>
-        {sectionHeading}
-      </h3>
       <div class='mt-10 overflow-x-auto sm:mt-12'>
         <table class='table w-full'>
           {caption && <caption class='sr-only'>{caption}</caption>}

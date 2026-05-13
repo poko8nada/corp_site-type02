@@ -11,20 +11,16 @@ export interface InfoGroup {
 }
 
 export interface InfoGridProps {
-  sectionHeading: string;
   groups: readonly InfoGroup[];
   revealOnScroll?: boolean;
 }
 
 export function InfoGrid(props: InfoGridProps) {
-  const { sectionHeading, groups, revealOnScroll } = props;
+  const { groups, revealOnScroll } = props;
   const revealDelayByIndex = ['[--reveal-delay:0ms]', '[--reveal-delay:90ms]'] as const;
 
   return (
     <div>
-      <h3 class='font-display text-base-content text-3xl leading-snug tracking-tight sm:text-4xl'>
-        {sectionHeading}
-      </h3>
       <div class='mt-10 grid gap-10 md:mt-12 md:grid-cols-2 lg:gap-14'>
         {groups.map((group, index) => (
           <div

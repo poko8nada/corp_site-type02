@@ -7,7 +7,6 @@ export interface NewsItem {
 }
 
 export interface NewsListProps {
-  sectionHeading: string;
   items: readonly NewsItem[];
   revealOnScroll?: boolean;
 }
@@ -23,13 +22,10 @@ const revealDelayByIndex = [
 ] as const;
 
 export function NewsList(props: NewsListProps) {
-  const { sectionHeading, items, revealOnScroll } = props;
+  const { items, revealOnScroll } = props;
 
   return (
     <div>
-      <h3 class='font-display text-base-content text-3xl leading-snug tracking-tight sm:text-4xl'>
-        {sectionHeading}
-      </h3>
       <ul class='mt-10 divide-y divide-base-300/60 sm:mt-12'>
         {items.map((item, index) => (
           <li
