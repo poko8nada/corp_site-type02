@@ -2,7 +2,6 @@
 export type CtaButtonVariant = 'primary' | 'outline';
 
 export interface CtaBandProps {
-  heading: string;
   description: string;
   ctaLabel: string;
   ctaHref: string;
@@ -21,7 +20,6 @@ const BTN_CLASS: Record<CtaButtonVariant, string> = {
 
 export function CtaBand(props: CtaBandProps) {
   const {
-    heading,
     description,
     ctaLabel,
     ctaHref,
@@ -35,10 +33,7 @@ export function CtaBand(props: CtaBandProps) {
     <div
       class={`${revealOnScroll ? 'reveal-on-scroll [--reveal-delay:80ms] ' : ''}flex flex-col items-center gap-6 text-center`}
     >
-      <h3 class='font-display text-base-content text-3xl leading-snug tracking-tight sm:text-4xl'>
-        {heading}
-      </h3>
-      <p class='text-base-content/80 max-w-md text-base leading-relaxed'>{description}</p>
+      <p class='text-base-content/80 max-w-xl text-base leading-relaxed'>{description}</p>
       <a class={BTN_CLASS[buttonVariant]} href={ctaHref}>
         {ctaLabel}
       </a>

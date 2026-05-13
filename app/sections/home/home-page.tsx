@@ -14,7 +14,6 @@ import {
   homeConversionCatalog,
   homeExplanationCatalog,
   homeExplanationImage,
-  homeFactsHeading,
   homeFactsMapNote,
   homeFactsRows,
   homeImageBreaks,
@@ -72,12 +71,8 @@ export function HomePage() {
       >
         <div class={container}>
           <div class='reveal-on-scroll [--reveal-delay:60ms]'>
-            <MapWithInfo
-              heading={homeFactsHeading}
-              mapNote={homeFactsMapNote}
-              rows={homeFactsRows}
-              revealOnScroll
-            >
+            <Heading level={2}>会社概要・アクセス</Heading>
+            <MapWithInfo mapNote={homeFactsMapNote} rows={homeFactsRows} revealOnScroll>
               <MapEmbed />
             </MapWithInfo>
           </div>
@@ -92,6 +87,7 @@ export function HomePage() {
       >
         <div class={container}>
           <div class='reveal-on-scroll [--reveal-delay:80ms]'>
+            <Heading level={2}>よくあるご質問</Heading>
             <FaqList {...homeInfoFaq} revealOnScroll />
           </div>
         </div>
@@ -107,7 +103,10 @@ export function HomePage() {
         label='お問い合わせ'
         layer={{ depth: 1, surface: 'cta-surface section-pattern-cross' }}
       >
-        <div class='mx-auto w-full max-w-lg px-4 sm:px-6 lg:px-8 relative'>
+        <div class='mx-auto w-full max-w-xl px-4 sm:px-6 lg:px-8 relative'>
+          <Heading level={2} class='text-center'>
+            お問い合わせ
+          </Heading>
           <CtaBand {...homeConversionCatalog} revealOnScroll />
         </div>
       </Section>

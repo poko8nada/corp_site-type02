@@ -4,6 +4,7 @@ export type OverlayStyle = 'dark' | 'light' | 'none';
 export interface VisualLeadProps {
   eyebrow: string;
   headline: string;
+  headingLevel: 1 | 2 | 3 | 4 | 5 | 6;
   subhead?: string;
   description: readonly string[];
   imageSrc: string;
@@ -18,6 +19,7 @@ export function VisualLead(props: VisualLeadProps) {
   const {
     eyebrow,
     headline,
+    headingLevel = 1,
     subhead,
     description,
     imageSrc,
@@ -35,6 +37,24 @@ export function VisualLead(props: VisualLeadProps) {
   const textFull = isDark ? 'text-white' : 'text-base-content';
   const scrollBorder = isDark ? 'border-white/35' : 'border-base-content/25';
   const scrollColor = isDark ? 'text-white/75' : 'text-base-content/60';
+
+  const headlineEl = (() => {
+    const cls = `lead-reveal [--lead-delay:100ms] font-display mt-4 text-5xl leading-[0.95] tracking-tight ${textFull} sm:text-7xl lg:text-8xl`;
+    switch (headingLevel) {
+      case 1:
+        return <h1 class={cls}>{headline}</h1>;
+      case 2:
+        return <h2 class={cls}>{headline}</h2>;
+      case 3:
+        return <h3 class={cls}>{headline}</h3>;
+      case 4:
+        return <h4 class={cls}>{headline}</h4>;
+      case 5:
+        return <h5 class={cls}>{headline}</h5>;
+      case 6:
+        return <h6 class={cls}>{headline}</h6>;
+    }
+  })();
 
   return (
     <div
@@ -69,11 +89,7 @@ export function VisualLead(props: VisualLeadProps) {
         <p class={`lead-reveal text-sm font-semibold tracking-[0.2em] uppercase ${textMuted}`}>
           {eyebrow}
         </p>
-        <h1
-          class={`lead-reveal [--lead-delay:100ms] font-display mt-4 text-5xl leading-[0.95] tracking-tight ${textFull} sm:text-7xl lg:text-8xl`}
-        >
-          {headline}
-        </h1>
+        {headlineEl}
         {subhead ? (
           <p
             class={`lead-reveal [--lead-delay:160ms] mt-5 font-display text-xl tracking-wide ${textFull} sm:text-2xl lg:text-3xl`}

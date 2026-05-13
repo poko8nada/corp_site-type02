@@ -46,12 +46,12 @@ Research findings and existing site content are raw material — the philosophy 
 ls content/
 ```
 
-| File                       | Required / Optional | Purpose                                              |
-| -------------------------- | ------------------- | ---------------------------------------------------- |
-| `README.md`                | Required            | Project philosophy - read `## Concept & Goals`       |
-| `content/pre_survey.md`    | Required            | Market, competitor, and client data                  |
-| `content/interview.md`     | Optional            | Client interview notes                               |
-| `content/investigate_*.md` | Optional            | Existing site investigation - triggers redesign mode |
+| File                       | Required / Optional | Purpose                                        |
+| -------------------------- | ------------------- | ---------------------------------------------- |
+| `README.md`                | Required            | Project philosophy - read `## Concept & Goals` |
+| `content/pre_survey.md`    | Required            | Market, competitor, and client data            |
+| `content/interview.md`     | Optional            | Client interview notes                         |
+| `content/investigate_*.md` | Optional            | Site investigation - triggers redesign mode    |
 
 If `pre_survey.md` is missing, stop and ask the user to run the pre-survey skill first.
 

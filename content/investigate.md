@@ -45,7 +45,7 @@ focus: full
 ## Pages
 
 | route | label | sections | notes |
-|---|---|---|---|
+| ----- | ----- | -------- | ----- |
 
 ---
 

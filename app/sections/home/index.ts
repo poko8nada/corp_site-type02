@@ -30,6 +30,7 @@ export const homeLeadCatalog: VisualLeadProps = {
   ],
   imageSrc: '/images/placeholder-hero.svg',
   imageAlt: 'ヒーローイメージプレースホルダー',
+  headingLevel: 1,
 };
 
 export const homeExplanationImage: Omit<MediaBlockProps, 'children'> = {
@@ -45,6 +46,7 @@ export const homeExplanationCatalog: RichTextProps = {
     '2段落目：さらに詳細な説明や、ターゲットとする顧客層についての補足を加えると、信頼感が高まります。',
     '必要に応じて段落を追加・編集してください。',
   ],
+  headingLevel: 2,
 };
 
 export const homeStrengthsCatalog: TextCardGridProps = {
@@ -74,8 +76,6 @@ export const homeStrengthsCatalog: TextCardGridProps = {
   ],
 };
 
-export const homeFactsHeading = '会社概要・アクセス' as const;
-
 export const homeFactsMapNote = '訪問前に地図アプリで所在地と周辺動線をご確認ください。' as const;
 
 export const homeFactsRows: readonly MapInfoRow[] = [
@@ -104,7 +104,6 @@ export const homeFactsRows: readonly MapInfoRow[] = [
 ];
 
 export const homeInfoFaq: FaqListProps = {
-  sectionHeading: 'よくあるご質問',
   items: [
     {
       question: '見積もりは無料ですか？',
@@ -136,7 +135,6 @@ export const homeSectionLayers: Record<string, LayerConfig | undefined> = {
 };
 
 export const homeConversionCatalog: CtaBandProps = {
-  heading: 'お問い合わせ',
   description: 'ご質問やご依頼のご相談は、専用ページからお気軽にお送りください。',
   ctaLabel: 'お問い合わせ',
   ctaHref: '/contact',

@@ -81,7 +81,6 @@ export const sampleTextCardGridWithImage: TextCardGridProps = {
 };
 
 export const sampleFaq: FaqListProps = {
-  sectionHeading: 'よくある質問 サンプル',
   revealOnScroll: true,
   items: [
     { question: 'Q1. サンプルの質問ですか？', answer: 'A1. はい、サンプルの回答です。' },
@@ -90,7 +89,6 @@ export const sampleFaq: FaqListProps = {
 };
 
 export const sampleCta: CtaBandProps = {
-  heading: 'お問い合わせサンプル',
   description: 'ご質問やご依頼はお気軽にどうぞ。',
   ctaLabel: 'お問い合わせ',
   ctaHref: '/contact',
@@ -131,7 +129,6 @@ const sampleMapRows: readonly MapInfoRow[] = [
 ];
 
 export const sampleMapWithInfo: MapWithInfoProps = {
-  heading: 'マップサンプル',
   mapNote: 'こちらはプレースホルダーです。',
   rows: sampleMapRows,
   revealOnScroll: true,

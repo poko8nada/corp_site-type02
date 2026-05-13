@@ -464,14 +464,14 @@ focus: { full / tech-stack / ia / features }
 
 ## Technical Stack
 
-| Layer              | Technology                                            | Confidence      | Evidence                 |
-| ------------------ | ----------------------------------------------------- | --------------- | ------------------------ |
-| Frontend framework | { }                                                   | High/Medium/Low | { code snippet or path } |
-| CMS / Platform     | { }                                                   | High/Medium/Low | { }                      |
-| Rendering strategy | { SSR / SSG / CSR / hybrid }                          | High/Medium/Low | { }                      |
-| Styling            | { Tailwind / CSS Modules / Styled Components / etc. } | High/Medium/Low | { }                      |
-| Hosting / CDN      | { }                                                   | High/Medium/Low | { }                      |
-| Backend / API      | { }                                                   | High/Medium/Low | { }                      |
+| Layer              | Technology                        | Confidence      | Evidence                 |
+| ------------------ | --------------------------------- | --------------- | ------------------------ |
+| Frontend framework | { }                               | High/Medium/Low | { code snippet or path } |
+| CMS / Platform     | { }                               | High/Medium/Low | { }                      |
+| Rendering strategy | { SSR / SSG / CSR / hybrid }      | High/Medium/Low | { }                      |
+| Styling            | { Tailwind / CSS Modules / etc. } | High/Medium/Low | { }                      |
+| Hosting / CDN      | { }                               | High/Medium/Low | { }                      |
+| Backend / API      | { }                               | High/Medium/Low | { }                      |
 
 ### CMS / Platform
 
