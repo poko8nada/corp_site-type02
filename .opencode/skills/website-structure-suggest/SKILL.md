@@ -1,13 +1,13 @@
 ---
-name: structure
+name: website-structure-suggest
 description: >
-  Reads pre_survey.md and README.md ## Concept & Goals to generate a site structure (structure.md).
-  Automatically runs in redesign mode with diff analysis if content/investigate_<domain>.md exists.
+  Reads pre_survey.md and README.md ## Concept & Goals to generate a website structure (structure.md).
+  Automatically runs in redesign mode with diff analysis if content/investigate.md exists.
   Use when: "create site structure", "make structure.md", "plan the page layout".
   Output: content/structure.md
 ---
 
-# Structure
+# Website-structure-suggest
 
 This skill derives the **minimum viable site structure** from research and interview memos,
 filtered through this project's philosophy, and outputs it as `content/structure.md`.

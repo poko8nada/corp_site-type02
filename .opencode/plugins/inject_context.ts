@@ -3,7 +3,6 @@ import type { Plugin } from '@opencode-ai/plugin';
 import * as fs from 'fs';
 import * as path from 'path';
 import { execFileSync } from 'child_process';
-import { appendFileSync, mkdirSync } from 'fs';
 
 const MAX_CONTEXT_CHARS = 4000;
 const MAX_LINE_LENGTH = 120;
@@ -17,18 +16,6 @@ const IGNORE_DIRS = new Set([
   '.next',
   'coverage',
 ]);
-
-// ── logging ──────────────────────────────────────────────────────────────────
-
-let LOG_PATH = '';
-
-function log(label: string, data?: unknown) {
-  if (!LOG_PATH) return;
-  const line = `[${new Date().toISOString()}] ${label}${data !== undefined ? ': ' + JSON.stringify(data) : ''}\n`;
-  try {
-    appendFileSync(LOG_PATH, line);
-  } catch {}
-}
 
 // ── helpers ───────────────────────────────────────────────────────────────────
 
@@ -123,7 +110,6 @@ async function buildContext(worktree: string): Promise<string> {
   const sections: string[] = [];
 
   const issues = readGithubIssues(worktree);
-  log('issues', issues.slice(0, 200));
   if (issues) sections.push(['## Open GitHub Issues', '', '```text', issues, '```'].join('\n'));
 
   const readme = readReadme(worktree);
@@ -136,17 +122,12 @@ async function buildContext(worktree: string): Promise<string> {
   if (tree) sections.push(['## Project Structure', '', '```text', tree, '```'].join('\n'));
 
   const result = sections.join('\n\n---\n\n').slice(0, MAX_CONTEXT_CHARS);
-  log('context total chars', result.length);
   return result;
 }
 
 // ── plugin ────────────────────────────────────────────────────────────────────
 
 export const InjectContextPlugin: Plugin = async ({ worktree }) => {
-  LOG_PATH = path.join(worktree, 'inject_context.log');
-  mkdirSync(path.dirname(LOG_PATH), { recursive: true });
-  log('plugin initialized', { worktree });
-
   const contextCache = new Map<string, Promise<string>>();
 
   return {
@@ -154,12 +135,10 @@ export const InjectContextPlugin: Plugin = async ({ worktree }) => {
       if (event.type === 'session.created') {
         const info = event.properties.info;
         if (info.parentID) return;
-        log('session.created', info.id);
         contextCache.set(info.id, buildContext(worktree));
       }
       if (event.type === 'session.compacted') {
         const { sessionID } = event.properties;
-        log('session.compacted', sessionID);
         contextCache.set(sessionID, buildContext(worktree));
       }
     },
@@ -170,23 +149,15 @@ export const InjectContextPlugin: Plugin = async ({ worktree }) => {
 
       const ctxPromise = contextCache.get(sessionID);
       if (!ctxPromise) {
-        log('transform: no cache for session', sessionID);
         return;
       }
 
       const ctx = await ctxPromise;
       if (!ctx?.trim()) {
-        log('transform: empty context');
         return;
       }
 
-      log('transform: injecting', {
-        sessionID,
-        chars: ctx.length,
-        systemLengthBefore: output.system.length,
-      });
       output.system.push(['# Project Context', '', ctx].join('\n'));
-      log('transform: done', { systemLengthAfter: output.system.length });
     },
   };
 };

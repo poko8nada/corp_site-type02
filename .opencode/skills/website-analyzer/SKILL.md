@@ -1,5 +1,5 @@
 ---
-name: investigator
+name: website-analyzer
 description: >
   Analyze any website's technical stack, site structure (IA), CMS, frontend framework,
   and key features using browser-use CLI. Use when the user provides a URL and asks to
@@ -9,7 +9,7 @@ description: >
   Output as content/investigate.md
 ---
 
-# Investigator
+# Website-analyzer
 
 You are an expert web architecture analyst specializing in reverse-engineering websites
 using the **browser-use CLI** (Playwright-based browser automation).

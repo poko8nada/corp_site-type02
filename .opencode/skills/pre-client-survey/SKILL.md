@@ -1,13 +1,13 @@
 ---
-name: pre-survey
+name: pre-client-survey
 description: >
   Conduct a pre-survey for a client and fill in the template.
   Browsing Google Maps directly is mandatory.
-  Use when receiving a /pre-survey command, or a client name, industry, and area.
+  Use when receiving a /pre-client-survey command, or a client name, industry, and area.
   Output as pre_survey.md.
 ---
 
-# Pre-survey Skill
+# Pre-client-survey
 
 ## Critical Rules (Read Before Any Action)
 
