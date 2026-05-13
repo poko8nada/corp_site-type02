@@ -14,7 +14,7 @@ const container = 'mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8';
 
 export default createRoute((c) => {
   return c.render(
-    <Section class='w-full section-pad-relaxed' id='privacy-section' label='プライバシーポリシー'>
+    <Section wrapperClass='section-pad-relaxed' id='privacy-section' label='プライバシーポリシー'>
       <div class={container}>
         <h3 class='font-display text-base-content text-2xl leading-snug tracking-tight sm:text-3xl'>
           プライバシーポリシー

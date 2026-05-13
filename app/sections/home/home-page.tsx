@@ -1,5 +1,6 @@
 import { CtaBand } from '@/components/cta-band';
 import { FaqList } from '@/components/faq-list';
+import { Heading } from '@/components/heading';
 import { ImageBreak } from '@/components/image-break';
 import { MapEmbed } from '@/components/map-embed';
 import { MapWithInfo } from '@/components/map-with-info';
@@ -28,12 +29,12 @@ const container = 'mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8';
 export function HomePage() {
   return (
     <div class='text-base-content flex flex-col'>
-      <Section class='w-full' id='home-section-lead' label='リード'>
+      <Section id='home-section-lead' label='リード'>
         <VisualLead {...homeLeadCatalog} />
       </Section>
 
       <Section
-        class='w-full section-divider section-pad-relaxed'
+        wrapperClass='section-divider section-pad-relaxed'
         id='home-section-explanation'
         label='ご案内'
       >
@@ -47,13 +48,14 @@ export function HomePage() {
       </Section>
 
       <Section
-        class='w-full section-divider section-pad-relaxed'
+        wrapperClass='section-divider section-pad-relaxed'
         id='home-section-strengths'
         label='強み・信頼'
         layer={homeSectionLayers.strengths}
       >
         <div class={container}>
           <div class='reveal-on-scroll [--reveal-delay:60ms]'>
+            <Heading level={2}>3つの強み</Heading>
             <TextCardGrid {...homeStrengthsCatalog} revealOnScroll />
           </div>
         </div>
@@ -64,7 +66,7 @@ export function HomePage() {
       </div>
 
       <Section
-        class='w-full section-divider section-pad-relaxed'
+        wrapperClass='section-divider section-pad-relaxed'
         id='home-section-facts'
         label='店舗・アクセス'
       >
@@ -83,7 +85,7 @@ export function HomePage() {
       </Section>
 
       <Section
-        class='w-full section-divider section-pad-compact'
+        wrapperClass='section-divider section-pad-compact'
         id='home-section-info'
         label='営業・ご利用案内'
         layer={homeSectionLayers.info}
@@ -100,7 +102,7 @@ export function HomePage() {
       </div>
 
       <Section
-        class='w-full section-divider section-pad-relaxed'
+        wrapperClass='section-divider section-pad-relaxed'
         id='home-section-conversion'
         label='お問い合わせ'
         layer={{ depth: 1, surface: 'cta-surface section-pattern-cross' }}

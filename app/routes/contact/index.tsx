@@ -7,7 +7,7 @@ export default createRoute((c) => {
   return c.render(
     <div class='text-base-content flex flex-col'>
       <Section
-        class='w-full section-pad-relaxed'
+        wrapperClass='section-pad-relaxed'
         id='contact-section-context'
         label='お問い合わせにあたって'
       >
@@ -15,7 +15,7 @@ export default createRoute((c) => {
       </Section>
 
       <Section
-        class='w-full surface-emphasis section-pattern-grid section-pad-relaxed section-divider'
+        wrapperClass='surface-emphasis section-pattern-grid section-pad-relaxed section-divider'
         id='contact-section-form'
         label='お問い合わせフォーム'
       >

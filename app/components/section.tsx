@@ -1,33 +1,37 @@
 import type { PropsWithChildren } from 'hono/jsx';
 
-/** Layer config for parallax / rich background effects. Renders an absolute background div inside the section. */
+const WRAPPER_BASE = 'w-full' as const;
+
 export interface LayerConfig {
-  /** translateZ(-Npx) の N. depth=1 → 弱, depth=2 → 強. */
   depth: number;
-  /** 背景層に付与する surface クラス（surface-emphasis 等） */
   surface?: string;
-  /** 背景層に付与する pattern クラス（section-pattern-dots 等） */
   pattern?: string;
 }
 
-/** Wrapper that provides an sr-only heading for accessibility. Add a surface class for visual distinction. */
 export interface SectionProps extends PropsWithChildren {
-  /** sr-only 見出しに使うテキスト */
-  label: string;
-  /** DOM の id 属性 */
   id: string;
-  /** outer 要素に付与するクラス */
-  class?: string;
-  /** layer を指定すると、absolute な背景 div を描画 + parallax 対応になる */
+  wrapperClass?: string;
+  containerClass?: string;
+  label?: string;
   layer?: LayerConfig;
 }
 
 export function Section(props: SectionProps) {
-  const { label, id, class: className = '', children, layer } = props;
+  const { id, wrapperClass = '', label, layer, children } = props;
   const headingId = `${id}-heading`;
 
+  const wrapperCls = layer
+    ? `relative overflow-hidden ${WRAPPER_BASE} ${wrapperClass}`.trim()
+    : `${WRAPPER_BASE} ${wrapperClass}`.trim();
+
+  const srHeading = label && (
+    <h2 class='sr-only' id={headingId}>
+      {label}
+    </h2>
+  );
+
   if (layer) {
-    const layerClass = [
+    const layerCls = [
       'parallax-layer',
       `parallax-layer--d${layer.depth}`,
       layer.surface ?? '',
@@ -37,12 +41,10 @@ export function Section(props: SectionProps) {
       .join(' ');
 
     return (
-      <section aria-labelledby={headingId} class={`relative overflow-hidden ${className}`} id={id}>
-        <div aria-hidden='true' class={layerClass} />
+      <section aria-labelledby={headingId} class={wrapperCls} id={id}>
+        <div aria-hidden='true' class={layerCls} />
         <div class='relative z-10'>
-          <h2 class='sr-only' id={headingId}>
-            {label}
-          </h2>
+          {srHeading}
           {children}
         </div>
       </section>
@@ -50,10 +52,8 @@ export function Section(props: SectionProps) {
   }
 
   return (
-    <section aria-labelledby={headingId} class={className} id={id}>
-      <h2 class='sr-only' id={headingId}>
-        {label}
-      </h2>
+    <section aria-labelledby={headingId} class={wrapperCls} id={id}>
+      {srHeading}
       {children}
     </section>
   );

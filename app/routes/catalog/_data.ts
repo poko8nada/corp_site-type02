@@ -45,7 +45,6 @@ export const sampleRichText: RichTextProps = {
 };
 
 export const sampleTextCardGrid: TextCardGridProps = {
-  sectionHeading: 'カード一覧サンプル',
   columns: 3,
   revealOnScroll: true,
   items: [
@@ -56,7 +55,6 @@ export const sampleTextCardGrid: TextCardGridProps = {
 };
 
 export const sampleTextCardGridWithImage: TextCardGridProps = {
-  sectionHeading: '画像付きカードサンプル',
   columns: 3,
   cardStyle: 'elevated',
   revealOnScroll: true,

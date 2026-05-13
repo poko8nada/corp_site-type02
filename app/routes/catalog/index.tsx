@@ -71,7 +71,7 @@ export default createRoute((c) => {
 
   return c.render(
     <>
-      <Section class='w-full section-pad-relaxed' id='catalog-intro' label='カタログ説明'>
+      <Section wrapperClass='section-pad-relaxed' id='catalog-intro' label='カタログ説明'>
         <div class={container}>
           <h1 class='font-display text-4xl leading-tight tracking-tight sm:text-5xl'>
             Components Catalog
@@ -85,7 +85,7 @@ export default createRoute((c) => {
 
       {/** ── Frame ── */}
       <Section
-        class='w-full section-pad-relaxed section-divider'
+        wrapperClass='section-pad-relaxed section-divider'
         id='catalog-header/footer'
         label='Header / Footer'
       >
@@ -101,7 +101,7 @@ export default createRoute((c) => {
 
       {/** ── Hero / Lead ── */}
       <Section
-        class='w-full section-pad-relaxed section-divider'
+        wrapperClass='section-pad-relaxed section-divider'
         id='catalog-lead'
         label='VisualLead'
       >
@@ -117,7 +117,7 @@ export default createRoute((c) => {
       </Section>
 
       <Section
-        class='w-full section-pad-relaxed section-divider'
+        wrapperClass='section-pad-relaxed section-divider'
         id='catalog-visual-slideshow'
         label='VisualSlideshow'
       >
@@ -136,7 +136,7 @@ export default createRoute((c) => {
 
       {/** ── Content ── */}
       <Section
-        class='w-full section-pad-relaxed section-divider'
+        wrapperClass='section-pad-relaxed section-divider'
         id='catalog-media-block'
         label='MediaBlock + RichText'
       >
@@ -152,7 +152,7 @@ export default createRoute((c) => {
       </Section>
 
       <Section
-        class='w-full section-pad-relaxed section-divider'
+        wrapperClass='section-pad-relaxed section-divider'
         id='catalog-image-break'
         label='ImageBreak'
       >
@@ -169,7 +169,7 @@ export default createRoute((c) => {
 
       {/** ── Cards ── */}
       <Section
-        class='w-full section-pad-relaxed section-divider'
+        wrapperClass='section-pad-relaxed section-divider'
         id='catalog-text-card-grid'
         label='TextCardGrid'
       >
@@ -191,7 +191,7 @@ export default createRoute((c) => {
       </Section>
 
       <Section
-        class='w-full section-pad-relaxed section-divider'
+        wrapperClass='section-pad-relaxed section-divider'
         id='catalog-logo-cloud'
         label='LogoCloud'
       >
@@ -216,7 +216,7 @@ export default createRoute((c) => {
       </Section>
 
       <Section
-        class='w-full section-pad-relaxed section-divider'
+        wrapperClass='section-pad-relaxed section-divider'
         id='catalog-image-gallery'
         label='ImageGallery'
       >
@@ -242,7 +242,7 @@ export default createRoute((c) => {
 
       {/** ── Data ── */}
       <Section
-        class='w-full section-pad-relaxed section-divider'
+        wrapperClass='section-pad-relaxed section-divider'
         id='catalog-info-grid'
         label='InfoGrid'
       >
@@ -258,7 +258,7 @@ export default createRoute((c) => {
       </Section>
 
       <Section
-        class='w-full section-pad-relaxed section-divider'
+        wrapperClass='section-pad-relaxed section-divider'
         id='catalog-info-table'
         label='InfoTable'
       >
@@ -274,7 +274,7 @@ export default createRoute((c) => {
       </Section>
 
       <Section
-        class='w-full section-pad-relaxed section-divider'
+        wrapperClass='section-pad-relaxed section-divider'
         id='catalog-stats-counter'
         label='StatsCounter'
       >
@@ -291,7 +291,7 @@ export default createRoute((c) => {
 
       {/** ── Step / Timeline ── */}
       <Section
-        class='w-full section-pad-relaxed section-divider'
+        wrapperClass='section-pad-relaxed section-divider'
         id='catalog-step-list'
         label='StepList'
       >
@@ -317,7 +317,7 @@ export default createRoute((c) => {
 
       {/** ── List ── */}
       <Section
-        class='w-full section-pad-relaxed section-divider'
+        wrapperClass='section-pad-relaxed section-divider'
         id='catalog-news-list'
         label='NewsList'
       >
@@ -332,7 +332,7 @@ export default createRoute((c) => {
         </div>
       </Section>
 
-      <Section class='w-full section-pad-relaxed section-divider' id='catalog-faq' label='FaqList'>
+      <Section wrapperClass='section-pad-relaxed section-divider' id='catalog-faq' label='FaqList'>
         <div class={container}>
           <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
             FaqList
@@ -346,7 +346,7 @@ export default createRoute((c) => {
 
       {/** ── Quote ── */}
       <Section
-        class='w-full section-pad-relaxed section-divider'
+        wrapperClass='section-pad-relaxed section-divider'
         id='catalog-testimonial'
         label='Testimonial'
       >
@@ -365,7 +365,7 @@ export default createRoute((c) => {
 
       {/** ── Map ── */}
       <Section
-        class='w-full section-pad-relaxed section-divider'
+        wrapperClass='section-pad-relaxed section-divider'
         id='catalog-map'
         label='MapWithInfo + MapEmbed'
       >
@@ -383,7 +383,7 @@ export default createRoute((c) => {
       </Section>
 
       {/** ── CTA ── */}
-      <Section class='w-full section-pad-relaxed section-divider' id='catalog-cta' label='CtaBand'>
+      <Section wrapperClass='section-pad-relaxed section-divider' id='catalog-cta' label='CtaBand'>
         <div class={container}>
           <h2 class='font-display text-2xl leading-snug tracking-tight sm:text-3xl mb-6'>
             CtaBand
@@ -397,7 +397,7 @@ export default createRoute((c) => {
 
       {/** ── Demo ── */}
       <Section
-        class='w-full section-pad-relaxed section-divider'
+        wrapperClass='section-pad-relaxed section-divider'
         id='catalog-demo-banner'
         label='DemoBanner'
       >

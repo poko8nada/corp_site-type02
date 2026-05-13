@@ -48,7 +48,6 @@ export const homeExplanationCatalog: RichTextProps = {
 };
 
 export const homeStrengthsCatalog: TextCardGridProps = {
-  sectionHeading: '3つの強み',
   columns: 3,
   items: [
     {
