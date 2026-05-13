@@ -24,6 +24,6 @@ export default createRoute((c) => {
       </div>
       <p class='text-base-content/50 mt-8 text-xs'>最終更新日: 2026年5月8日</p>
     </Section>,
-    { title: ROUTE_TITLES.privacy, footerPattern: 'minimal' },
+    { title: ROUTE_TITLES.privacy, footerPattern: 'standard' },
   );
 });

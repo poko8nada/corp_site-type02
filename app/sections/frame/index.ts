@@ -11,6 +11,7 @@ import {
 import type { FrameFooterCopy } from '@/sections/frame/footer/footer.types';
 import type { FrameNavEntry } from '@/sections/frame/header/header.types';
 
+export type { FrameBg } from './frame.types';
 export type { FrameFooterCopy } from '@/sections/frame/footer/footer.types';
 export type { FrameLegalEntry } from '@/sections/frame/footer/footer.types';
 export type { FrameNavEntry } from '@/sections/frame/header/header.types';

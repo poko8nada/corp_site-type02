@@ -2,15 +2,26 @@ import { LogoIcon } from '@/components/logo-icon';
 import type { HeaderProps } from './header.types';
 
 export function HeaderStandard(props: HeaderProps) {
-  const { brandText, drawerId, navEntries, primaryCta, glass = true } = props;
+  const { brandText, drawerId, navEntries, primaryCta, bg = 'solid' } = props;
 
-  const headerBg = glass
-    ? 'border-b border-base-300/80 bg-base-100/90 shadow-sm backdrop-blur'
-    : 'border-b border-base-300 bg-base-100';
+  const isGlass = bg !== 'solid' && bg !== 'transparent';
+
+  const headerBg =
+    bg === 'solid'
+      ? 'border-b border-base-300 bg-base-100'
+      : bg === 'transparent'
+        ? 'border-b border-base-100/10'
+        : 'relative border-b border-base-100/20 bg-base-100/30 shadow-sm';
 
   return (
     <header class={headerBg}>
-      <div class='mx-auto flex w-full max-w-6xl min-w-0 items-center justify-between gap-x-4 px-4 py-3.5 sm:gap-x-6 sm:px-6 sm:py-4 lg:gap-x-8 lg:px-8 min-h-14 sm:min-h-16'>
+      {isGlass && (
+        <div
+          aria-hidden='true'
+          class='absolute inset-0 backdrop-filter-[blur(16px)_saturate(150%)] [-webkit-backdrop-filter:blur(16px)_saturate(150%)]'
+        />
+      )}
+      <div class='relative z-10 mx-auto flex w-full max-w-6xl min-w-0 items-center justify-between gap-x-4 px-4 py-3.5 sm:gap-x-6 sm:px-6 sm:py-4 lg:gap-x-8 lg:px-8 min-h-14 sm:min-h-16'>
         <div class='flex min-w-0 items-center gap-3 sm:gap-4'>
           <label
             aria-label='メニューを開く'

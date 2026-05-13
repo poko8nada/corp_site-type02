@@ -23,8 +23,8 @@ export type SiteRenderProps = {
   title?: string;
   description?: string;
   parallax?: boolean;
-  headerPattern?: 'standard' | 'compact' | 'minimal' | 'none';
-  footerPattern?: 'standard' | 'minimal' | 'compact' | 'none';
+  headerPattern?: 'standard' | 'none';
+  footerPattern?: 'standard' | 'bar' | 'none';
 };
 
 export default jsxRenderer((props) => {

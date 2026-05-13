@@ -9,8 +9,8 @@ import {
 import { Header, type HeaderPattern } from '@/sections/frame/header';
 import { Footer, type FooterPattern } from '@/sections/frame/footer';
 
-const headerPatterns: HeaderPattern[] = ['standard', 'compact', 'minimal', 'none'];
-const footerPatterns: FooterPattern[] = ['standard', 'minimal', 'compact', 'none'];
+const headerPatterns: HeaderPattern[] = ['standard', 'none'];
+const footerPatterns: FooterPattern[] = ['standard', 'bar', 'none'];
 
 export default function FramePanel() {
   const [headerPattern, setHeaderPattern] = useState<HeaderPattern>('standard');

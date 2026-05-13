@@ -1,3 +1,4 @@
+import type { FrameBg } from '../frame.types';
 import type { FrameFooterCopy, FrameLegalEntry } from './footer.types';
 
 function currentYear(): number {
@@ -26,14 +27,21 @@ function legalRow(entry: FrameLegalEntry) {
   );
 }
 
-export function FooterStandard({ copy }: { copy: FrameFooterCopy }) {
+export function FooterStandard({ copy, bg = 'solid' }: { copy: FrameFooterCopy; bg?: FrameBg }) {
+  const footerBg =
+    bg === 'glass'
+      ? 'border-t border-base-100/20 bg-base-200/30 shadow-sm backdrop-blur-lg backdrop-saturate-150'
+      : bg === 'transparent'
+        ? 'border-t border-base-100/10'
+        : 'border-t border-base-300 bg-base-200';
+
   const frameInset = 'mx-auto w-full max-w-6xl px-4 pt-12 pb-6 sm:px-6 sm:pt-14 sm:pb-8 lg:px-8';
   const sectionBlock = 'flex min-w-0 w-full md:w-auto flex-col gap-1.5 text-left';
   const sectionTitle =
     'text-base-content/60 text-xs font-bold uppercase tracking-[0.18em] sm:text-sm sm:tracking-wide';
 
   return (
-    <footer class='border-base-300 bg-base-200 text-base-content border-t'>
+    <footer class={footerBg}>
       <div class={frameInset}>
         <div class='grid w-full grid-cols-1 gap-y-10 md:grid-cols-2 md:gap-x-14 md:gap-y-0 lg:gap-x-20'>
           <div class='flex flex-col gap-y-10 sm:flex-row sm:gap-x-14 sm:gap-y-0 lg:gap-x-16'>

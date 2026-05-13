@@ -40,6 +40,7 @@ export function SiteLayout(props: SiteLayoutProps) {
         <div class='sticky top-0 z-40'>
           <DemoBanner isDemo={isDemo} />
           <Header
+            bg='glass'
             brandText={brandText}
             drawerId={drawerId}
             navEntries={navEntries}

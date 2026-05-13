@@ -1,18 +1,16 @@
 import type { FooterProps } from './footer.types';
 import { FooterStandard } from './footer-standard';
-import { FooterMinimal } from './footer-minimal';
-import { FooterCompact } from './footer-compact';
+import { FooterBar } from './footer-bar';
 
-export { FooterStandard, FooterMinimal, FooterCompact };
+export { FooterStandard, FooterBar };
 export type { FooterPattern, FooterProps } from './footer.types';
 
 export function Footer(props: FooterProps) {
-  const { pattern, copy } = props;
+  const { pattern, copy, bg } = props;
 
   if (pattern === 'none') return null;
-  if (pattern === 'standard') return <FooterStandard copy={copy} />;
-  if (pattern === 'minimal') return <FooterMinimal copy={copy} />;
-  if (pattern === 'compact') return <FooterCompact copy={copy} />;
+  if (pattern === 'standard') return <FooterStandard copy={copy} bg={bg} />;
+  if (pattern === 'bar') return <FooterBar copy={copy} bg={bg} />;
 
   return null;
 }
