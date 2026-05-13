@@ -1,9 +1,12 @@
+// @ts-nocheck
 import type { Plugin } from '@opencode-ai/plugin';
 import * as fs from 'fs';
 import * as path from 'path';
+import { execFileSync } from 'child_process';
+import { appendFileSync, mkdirSync } from 'fs';
 
-const MAX_FILE_LINES = 10;
-const MAX_TREE_DEPTH = 2;
+const MAX_CONTEXT_CHARS = 4000;
+const MAX_LINE_LENGTH = 120;
 
 const IGNORE_DIRS = new Set([
   'node_modules',
@@ -15,110 +18,149 @@ const IGNORE_DIRS = new Set([
   'coverage',
 ]);
 
-function readFileHead(filePath: string, maxLines: number): string {
+// ── logging ──────────────────────────────────────────────────────────────────
+
+let LOG_PATH = '';
+
+function log(label: string, data?: unknown) {
+  if (!LOG_PATH) return;
+  const line = `[${new Date().toISOString()}] ${label}${data !== undefined ? ': ' + JSON.stringify(data) : ''}\n`;
   try {
-    const content = fs.readFileSync(filePath, 'utf-8');
-    return content.split('\n').slice(0, maxLines).join('\n');
+    appendFileSync(LOG_PATH, line);
+  } catch {}
+}
+
+// ── helpers ───────────────────────────────────────────────────────────────────
+
+function truncateLine(line: string, max = MAX_LINE_LENGTH): string {
+  return line.length > max ? line.slice(0, max) + '…' : line;
+}
+
+function sanitize(text: string): string {
+  return text
+    .replace(/\r/g, '')
+    .replace(/\t/g, ' ')
+    .split('\n')
+    .map((l) => truncateLine(l))
+    .join('\n');
+}
+
+function buildFlatTree(dir: string): string {
+  try {
+    const entries = fs
+      .readdirSync(dir, { withFileTypes: true })
+      .filter((e) => !IGNORE_DIRS.has(e.name))
+      .toSorted((a, b) => a.name.localeCompare(b.name));
+    return entries
+      .map((entry) => (entry.isDirectory() ? `📁 ${entry.name}/` : `📄 ${entry.name}`))
+      .join('\n');
   } catch {
     return '';
   }
 }
 
-function buildTree(dir: string, depth: number, maxDepth: number): string {
-  if (depth > maxDepth) return '';
-  let result = '';
-  let entries: fs.Dirent[];
+function readReadme(worktree: string): string {
+  for (const name of ['README.md', 'readme.md', 'README.mdx']) {
+    const file = path.join(worktree, name);
+    if (!fs.existsSync(file)) continue;
+    try {
+      return sanitize(fs.readFileSync(file, 'utf-8').slice(0, 500));
+    } catch {
+      return '';
+    }
+  }
+  return '';
+}
+
+function readPackageJson(worktree: string): string {
+  const file = path.join(worktree, 'package.json');
+  if (!fs.existsSync(file)) return '';
   try {
-    entries = fs.readdirSync(dir, { withFileTypes: true });
+    const pkg = JSON.parse(fs.readFileSync(file, 'utf-8'));
+    return sanitize(
+      JSON.stringify(
+        {
+          name: pkg.name,
+          version: pkg.version,
+          private: pkg.private,
+          scripts: pkg.scripts ? Object.keys(pkg.scripts) : [],
+          dependencies: pkg.dependencies ? Object.keys(pkg.dependencies).slice(0, 20) : [],
+          devDependencies: pkg.devDependencies ? Object.keys(pkg.devDependencies).slice(0, 20) : [],
+        },
+        null,
+        2,
+      ),
+    );
   } catch {
     return '';
   }
-  for (const entry of entries) {
-    if (IGNORE_DIRS.has(entry.name)) continue;
-    const indent = '  '.repeat(depth);
-    const fullPath = path.join(dir, entry.name);
-    if (entry.isDirectory()) {
-      result += `${indent}📁 ${entry.name}/\n`;
-      result += buildTree(fullPath, depth + 1, maxDepth);
-    } else {
-      result += `${indent}📄 ${entry.name}\n`;
-      // ファイルの中身はルート直下のみに限定
-      if (depth === 0) {
-        const head = readFileHead(fullPath, MAX_FILE_LINES);
-        if (head) {
-          result +=
-            head
-              .split('\n')
-              .map((l) => `${indent}  | ${l}`)
-              .join('\n') + '\n';
-        }
-      }
-    }
+}
+
+function readGithubIssues(worktree: string): string {
+  try {
+    const stdout = execFileSync(
+      'gh',
+      ['issue', 'list', '--state', 'open', '--json', 'number,title,labels', '--limit', '5'],
+      { cwd: worktree, encoding: 'utf-8', stdio: ['ignore', 'pipe', 'ignore'] },
+    );
+    const issues = JSON.parse(stdout);
+    if (!Array.isArray(issues) || issues.length === 0) return '';
+    return sanitize(
+      issues
+        .map((i: unknown) => {
+          const labels =
+            i.labels?.length > 0 ? ` [${i.labels.map((l: unknown) => l.name).join(', ')}]` : '';
+          return `- #${i.number} ${i.title}${labels}`;
+        })
+        .join('\n'),
+    );
+  } catch {
+    return '';
   }
+}
+
+async function buildContext(worktree: string): Promise<string> {
+  const sections: string[] = [];
+
+  const issues = readGithubIssues(worktree);
+  log('issues', issues.slice(0, 200));
+  if (issues) sections.push(['## Open GitHub Issues', '', '```text', issues, '```'].join('\n'));
+
+  const readme = readReadme(worktree);
+  if (readme) sections.push(['## README', '', '```text', readme, '```'].join('\n'));
+
+  const pkg = readPackageJson(worktree);
+  if (pkg) sections.push(['## package.json', '', '```json', pkg, '```'].join('\n'));
+
+  const tree = buildFlatTree(worktree);
+  if (tree) sections.push(['## Project Structure', '', '```text', tree, '```'].join('\n'));
+
+  const result = sections.join('\n\n---\n\n').slice(0, MAX_CONTEXT_CHARS);
+  log('context total chars', result.length);
   return result;
 }
 
-async function buildContext(worktree: string, $: unknown): Promise<string> {
-  const sections: string[] = [];
+// ── plugin ────────────────────────────────────────────────────────────────────
 
-  try {
-    // @ts-ignore
-    const result = await $`gh issue list --state open --json number,title,labels --limit 10`;
-    const issues = JSON.parse(result.stdout);
-    if (issues.length > 0) {
-      const formatted = issues
-        // @ts-ignore
-        .map(
-          // @ts-ignore
-          (i) =>
-            `- #${i.number} ${i.title}` +
-            // @ts-ignore
-            (i.labels?.length ? ` [${i.labels.map((l) => l.name).join(', ')}]` : ''),
-        )
-        .join('\n');
-      sections.push(`## Open GitHub Issues\n\n${formatted}`);
-    }
-  } catch {}
+export const InjectContextPlugin: Plugin = async ({ worktree }) => {
+  LOG_PATH = path.join(worktree, 'inject_context.log');
+  mkdirSync(path.dirname(LOG_PATH), { recursive: true });
+  log('plugin initialized', { worktree });
 
-  const projectMetaPath = path.join(worktree, '.opencode', 'rules', 'project-meta.mdc');
-  if (fs.existsSync(projectMetaPath)) {
-    const content = fs.readFileSync(projectMetaPath, 'utf-8').trim();
-    if (content) sections.push(`## Project Meta\n\n${content}`);
-  }
-
-  for (const name of ['README.md', 'readme.md', 'README.mdx']) {
-    const p = path.join(worktree, name);
-    if (fs.existsSync(p)) {
-      // README も先頭 1000 文字に絞る
-      sections.push(`## README\n\n${fs.readFileSync(p, 'utf-8').slice(0, 1000)}`);
-      break;
-    }
-  }
-
-  const tree = buildTree(worktree, 0, MAX_TREE_DEPTH);
-  if (tree) sections.push(`## Project Structure\n\n${tree}`);
-
-  return sections.join('\n\n---\n\n');
-}
-
-export const InjectContextPlugin: Plugin = async ({ worktree, $ }) => {
-  // ② Promise ごとキャッシュする（Race Condition 修正）
   const contextCache = new Map<string, Promise<string>>();
 
   return {
     event: async ({ event }) => {
       if (event.type === 'session.created') {
         const info = event.properties.info;
-
-        // ① サブエージェント（parentID あり）はスキップ
         if (info.parentID) return;
-
-        contextCache.set(info.id, buildContext(worktree, $));
+        log('session.created', info.id);
+        contextCache.set(info.id, buildContext(worktree));
       }
-
       if (event.type === 'session.compacted') {
         const { sessionID } = event.properties;
-        contextCache.set(sessionID, buildContext(worktree, $));
+        log('session.compacted', sessionID);
+        contextCache.set(sessionID, buildContext(worktree));
       }
     },
 
@@ -127,13 +169,24 @@ export const InjectContextPlugin: Plugin = async ({ worktree, $ }) => {
       if (!sessionID) return;
 
       const ctxPromise = contextCache.get(sessionID);
-      if (!ctxPromise) return;
+      if (!ctxPromise) {
+        log('transform: no cache for session', sessionID);
+        return;
+      }
 
-      // ② Promise を await して確実に注入
       const ctx = await ctxPromise;
-      if (!ctx) return;
+      if (!ctx?.trim()) {
+        log('transform: empty context');
+        return;
+      }
 
-      output.system.push(`# Project Context\n\n${ctx}`.trim());
+      log('transform: injecting', {
+        sessionID,
+        chars: ctx.length,
+        systemLengthBefore: output.system.length,
+      });
+      output.system.push(['# Project Context', '', ctx].join('\n'));
+      log('transform: done', { systemLengthAfter: output.system.length });
     },
   };
 };

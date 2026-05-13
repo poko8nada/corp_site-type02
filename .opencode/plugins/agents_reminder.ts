@@ -9,23 +9,9 @@ export const AgentsReminderPlugin: Plugin = async ({ directory }) => {
   const agentsMd = hasAgentsMd ? readFileSync(agentsPath, 'utf-8').trim() : '';
 
   const reminders = [
-    `<important>
-  STOP. Before responding, output:
-  **Acceptance Criteria:** [current criteria, updated if context changed]
-  **Next action:** [one sentence]
-
-  Do NOT touch any file until the user says "go ahead".
-  </important>`,
-
-    `<important>
-  HALT. Has new context changed the acceptance criteria? Update it now, output it, reconfirm with the user.
-  Do NOT proceed until criteria are confirmed.
-  </important>`,
-
-    `<important>
-  Before acting: output current acceptance criteria and next action. If criteria shifted — say so explicitly.
-  Do NOT touch any file without approval.
-  </important>`,
+    `<important>STOP. Run the \`build-awareness\` skill now before doing anything else.</important>`,
+    `<important>HALT. Before anything else, run the \`build-awareness\` skill.</important>`,
+    `<important>Do NOT act yet. Run the \`build-awareness\` skill first.</important>`,
   ];
 
   let count = 0;
