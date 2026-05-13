@@ -10,11 +10,11 @@ export function FooterMinimal({ copy }: { copy: FrameFooterCopy }) {
   return (
     <footer class='border-base-300 bg-base-200 text-base-content border-t'>
       <div class={frameInset}>
-        <section
-          aria-labelledby='footer-minimal-heading'
-          class='flex min-w-0 w-full md:w-auto flex-col gap-4 text-left'
-        >
-          <h2 class='sr-only' id='footer-minimal-heading'>
+        <section class='flex min-w-0 w-full md:w-auto flex-col gap-4 text-left'>
+          <h2
+            class='text-base-content/60 text-xs font-bold uppercase tracking-[0.18em] sm:text-sm sm:tracking-wide'
+            id='footer-minimal-heading'
+          >
             店舗・連絡先
           </h2>
           <div class='space-y-2 text-sm leading-relaxed'>

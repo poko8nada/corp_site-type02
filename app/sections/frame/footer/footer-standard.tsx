@@ -39,7 +39,7 @@ export function FooterStandard({ copy }: { copy: FrameFooterCopy }) {
           <div class='flex flex-col gap-y-10 sm:flex-row sm:gap-x-14 sm:gap-y-0 lg:gap-x-16'>
             <section class={sectionBlock}>
               <h2 class={sectionTitle} id='footer-company-heading'>
-                {copy.companyHeading}
+                会社情報
               </h2>
               <ul
                 aria-labelledby='footer-company-heading'
@@ -52,7 +52,7 @@ export function FooterStandard({ copy }: { copy: FrameFooterCopy }) {
             </section>
             <section class={sectionBlock}>
               <h2 class={sectionTitle} id='footer-contact-heading'>
-                {copy.contactHeading}
+                連絡先
               </h2>
               <ul
                 aria-labelledby='footer-contact-heading'
@@ -66,7 +66,7 @@ export function FooterStandard({ copy }: { copy: FrameFooterCopy }) {
           </div>
           <section class={`${sectionBlock} md:justify-self-end`}>
             <h2 class={sectionTitle} id='footer-legal-heading'>
-              {copy.legalHeading}
+              法務・ポリシー
             </h2>
             <ul
               aria-labelledby='footer-legal-heading'

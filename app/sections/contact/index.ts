@@ -5,11 +5,11 @@ export { ContactFormArea } from './form-area';
 import { SITE_PHONE } from '@/data';
 
 export const contactContextCatalog = {
-  phoneHeading: 'お電話でのお問い合わせ',
+  phoneHeading: 'お電話',
   phoneDesc: 'お急ぎの方はお電話でお受けしております。',
   phone: SITE_PHONE,
   hours: '営業時間内にお問い合わせください。',
-  formHeading: 'フォームでのお問い合わせ',
+  formHeading: 'フォーム',
   formDesc: 'ご質問・ご依頼のご相談は下記フォームからお送りください。',
   formNote:
     '内容を確認のうえ、3営業日以内にご連絡いたします。定休日・祝日を挟む場合は、返信にお時間をいただく場合がございます。',

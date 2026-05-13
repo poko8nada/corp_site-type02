@@ -1,3 +1,4 @@
+import { Heading } from '@/components/heading';
 import { Section } from '@/components/section';
 import { ROUTE_TITLES } from '@/data';
 import { createRoute } from 'honox/factory';
@@ -10,22 +11,18 @@ const PRIVACY_LINES = [
   '本ポリシーは、予告なく変更される場合がございます。変更後の内容は本ページにて公開された時点で有効となるものとします。',
 ];
 
-const container = 'mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8';
-
 export default createRoute((c) => {
   return c.render(
-    <Section wrapperClass='section-pad-relaxed' id='privacy-section' label='プライバシーポリシー'>
-      <div class={container}>
-        <h3 class='font-display text-base-content text-2xl leading-snug tracking-tight sm:text-3xl'>
-          プライバシーポリシー
-        </h3>
-        <div class='text-base-content/80 mt-6 space-y-4 text-sm leading-relaxed'>
-          {PRIVACY_LINES.map((text) => (
-            <p key={text}>{text}</p>
-          ))}
-        </div>
-        <p class='text-base-content/50 mt-8 text-xs'>最終更新日: 2026年5月8日</p>
+    <Section wrapperClass='section-pad-relaxed' id='privacy-section' containerClass='max-w-3xl'>
+      <Heading level={1} class='text-center mx-4'>
+        プライバシーポリシー
+      </Heading>
+      <div class='text-base-content/80 mt-20 space-y-4 text-sm leading-relaxed'>
+        {PRIVACY_LINES.map((text) => (
+          <p key={text}>{text}</p>
+        ))}
       </div>
+      <p class='text-base-content/50 mt-8 text-xs'>最終更新日: 2026年5月8日</p>
     </Section>,
     { title: ROUTE_TITLES.privacy, footerPattern: 'minimal' },
   );

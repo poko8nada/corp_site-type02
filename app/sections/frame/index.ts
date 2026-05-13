@@ -32,11 +32,8 @@ export const framePrimaryCta = {
 } as const;
 
 export const frameFooterCopy: FrameFooterCopy = {
-  companyHeading: '会社情報',
   companyLines: [SITE_BRAND, `${SITE_ZIP} ${SITE_ADDRESS}`, SITE_BUILDING],
-  contactHeading: '連絡先',
   contactLines: [`Tel ${SITE_PHONE}`, `営業: ${SITE_HOURS}（${SITE_HOLIDAY}）`],
-  legalHeading: '法務・ポリシー',
   legalEntries: [{ kind: 'link', label: 'プライバシーポリシー', href: '/privacy' }],
   copyrightName: SITE_BRAND,
 } as const;

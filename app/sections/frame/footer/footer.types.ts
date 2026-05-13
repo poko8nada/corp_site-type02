@@ -3,11 +3,8 @@ export type FrameLegalEntry =
   | { kind: 'placeholder'; label: string; reason: string };
 
 export interface FrameFooterCopy {
-  companyHeading: string;
   companyLines: readonly string[];
-  contactHeading: string;
   contactLines: readonly string[];
-  legalHeading: string;
   legalEntries: readonly FrameLegalEntry[];
   copyrightName: string;
 }

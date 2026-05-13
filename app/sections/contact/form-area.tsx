@@ -16,7 +16,7 @@ export function ContactFormArea() {
 
   if (!googleFormUrl) {
     return (
-      <div class='mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8'>
+      <>
         <div class='flex min-h-64 items-center justify-center rounded-xl border-2 border-dashed border-base-300 bg-base-200/50'>
           <p class='px-6 text-center text-sm text-base-content/60'>
             フォームプレースホルダー
@@ -34,12 +34,12 @@ export function ContactFormArea() {
           </a>{' '}
           {phoneCtaAfter}
         </p>
-      </div>
+      </>
     );
   }
 
   return (
-    <div class='mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8'>
+    <>
       <div class='min-h-fit'>
         <iframe
           id={iframeId}
@@ -73,6 +73,6 @@ export function ContactFormArea() {
         </a>{' '}
         {phoneCtaAfter}
       </p>
-    </div>
+    </>
   );
 }

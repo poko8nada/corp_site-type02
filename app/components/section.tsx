@@ -1,6 +1,7 @@
 import type { PropsWithChildren } from 'hono/jsx';
 
 const WRAPPER_BASE = 'w-full' as const;
+const CONTAINER_BASE = 'mx-auto w-full px-4 sm:px-6 lg:px-8' as const;
 
 export interface LayerConfig {
   depth: number;
@@ -17,7 +18,7 @@ export interface SectionProps extends PropsWithChildren {
 }
 
 export function Section(props: SectionProps) {
-  const { id, wrapperClass = '', label, layer, children } = props;
+  const { id, wrapperClass = '', containerClass, label, layer, children } = props;
   const headingId = `${id}-heading`;
 
   const wrapperCls = layer
@@ -45,7 +46,11 @@ export function Section(props: SectionProps) {
         <div aria-hidden='true' class={layerCls} />
         <div class='relative z-10'>
           {srHeading}
-          {children}
+          {containerClass ? (
+            <div class={`${CONTAINER_BASE} ${containerClass}`}>{children}</div>
+          ) : (
+            children
+          )}
         </div>
       </section>
     );
@@ -54,7 +59,11 @@ export function Section(props: SectionProps) {
   return (
     <section aria-labelledby={headingId} class={wrapperCls} id={id}>
       {srHeading}
-      {children}
+      {containerClass ? (
+        <div class={`${CONTAINER_BASE} ${containerClass}`}>{children}</div>
+      ) : (
+        children
+      )}
     </section>
   );
 }

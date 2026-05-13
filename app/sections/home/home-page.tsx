@@ -23,8 +23,6 @@ import {
   homeStrengthsCatalog,
 } from './index';
 
-const container = 'mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8';
-
 export function HomePage() {
   return (
     <div class='text-base-content flex flex-col'>
@@ -36,13 +34,12 @@ export function HomePage() {
         wrapperClass='section-divider section-pad-relaxed'
         id='home-section-explanation'
         label='ご案内'
+        containerClass='max-w-5xl'
       >
-        <div class={container}>
-          <div class='reveal-on-scroll [--reveal-delay:40ms]'>
-            <MediaBlock {...homeExplanationImage} revealOnScroll>
-              <RichText {...homeExplanationCatalog} />
-            </MediaBlock>
-          </div>
+        <div class='reveal-on-scroll [--reveal-delay:40ms]'>
+          <MediaBlock {...homeExplanationImage} revealOnScroll>
+            <RichText {...homeExplanationCatalog} />
+          </MediaBlock>
         </div>
       </Section>
 
@@ -51,12 +48,11 @@ export function HomePage() {
         id='home-section-strengths'
         label='強み・信頼'
         layer={homeSectionLayers.strengths}
+        containerClass='max-w-5xl'
       >
-        <div class={container}>
-          <div class='reveal-on-scroll [--reveal-delay:60ms]'>
-            <Heading level={2}>3つの強み</Heading>
-            <TextCardGrid {...homeStrengthsCatalog} revealOnScroll />
-          </div>
+        <div class='reveal-on-scroll [--reveal-delay:60ms]'>
+          <Heading level={2}>3つの強み</Heading>
+          <TextCardGrid {...homeStrengthsCatalog} revealOnScroll />
         </div>
       </Section>
 
@@ -68,14 +64,13 @@ export function HomePage() {
         wrapperClass='section-divider section-pad-relaxed'
         id='home-section-facts'
         label='店舗・アクセス'
+        containerClass='max-w-5xl'
       >
-        <div class={container}>
-          <div class='reveal-on-scroll [--reveal-delay:60ms]'>
-            <Heading level={2}>会社概要・アクセス</Heading>
-            <MapWithInfo mapNote={homeFactsMapNote} rows={homeFactsRows} revealOnScroll>
-              <MapEmbed />
-            </MapWithInfo>
-          </div>
+        <div class='reveal-on-scroll [--reveal-delay:60ms]'>
+          <Heading level={2}>会社概要・アクセス</Heading>
+          <MapWithInfo mapNote={homeFactsMapNote} rows={homeFactsRows} revealOnScroll>
+            <MapEmbed />
+          </MapWithInfo>
         </div>
       </Section>
 
@@ -84,12 +79,11 @@ export function HomePage() {
         id='home-section-info'
         label='営業・ご利用案内'
         layer={homeSectionLayers.info}
+        containerClass='max-w-5xl'
       >
-        <div class={container}>
-          <div class='reveal-on-scroll [--reveal-delay:80ms]'>
-            <Heading level={2}>よくあるご質問</Heading>
-            <FaqList {...homeInfoFaq} revealOnScroll />
-          </div>
+        <div class='reveal-on-scroll [--reveal-delay:80ms]'>
+          <Heading level={2}>よくあるご質問</Heading>
+          <FaqList {...homeInfoFaq} revealOnScroll />
         </div>
       </Section>
 
@@ -102,13 +96,12 @@ export function HomePage() {
         id='home-section-conversion'
         label='お問い合わせ'
         layer={{ depth: 1, surface: 'cta-surface section-pattern-cross' }}
+        containerClass='max-w-xl relative'
       >
-        <div class='mx-auto w-full max-w-xl px-4 sm:px-6 lg:px-8 relative'>
-          <Heading level={2} class='text-center'>
-            お問い合わせ
-          </Heading>
-          <CtaBand {...homeConversionCatalog} revealOnScroll />
-        </div>
+        <Heading level={2} class='text-center'>
+          お問い合わせ
+        </Heading>
+        <CtaBand {...homeConversionCatalog} revealOnScroll />
       </Section>
     </div>
   );
