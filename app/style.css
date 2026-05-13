@@ -280,6 +280,7 @@ body {
 
 .parallax-scroll {
   position: relative;
+  scroll-behavior: smooth;
 }
 
 .parallax-backdrop {

@@ -37,6 +37,16 @@ export function SiteLayout(props: SiteLayoutProps) {
     <div class='drawer drawer-end'>
       <input class='drawer-toggle' id={drawerId} type='checkbox' />
       <div class='drawer-content bg-base-100 flex min-h-dvh min-w-0 flex-col'>
+        <div class='sticky top-0 z-40'>
+          <DemoBanner isDemo={isDemo} />
+          <Header
+            brandText={brandText}
+            drawerId={drawerId}
+            navEntries={navEntries}
+            pattern={headerPattern}
+            primaryCta={primaryCta}
+          />
+        </div>
         <div class='parallax-scroll flex flex-col flex-1'>
           <div aria-hidden='true' class='parallax-backdrop' />
           <a
@@ -46,16 +56,6 @@ export function SiteLayout(props: SiteLayoutProps) {
             メインコンテンツへスキップ
           </a>
           <div class='flex min-h-screen flex-1 flex-col'>
-            <div class='sticky top-0 z-40'>
-              <DemoBanner isDemo={isDemo} />
-              <Header
-                brandText={brandText}
-                drawerId={drawerId}
-                navEntries={navEntries}
-                pattern={headerPattern}
-                primaryCta={primaryCta}
-              />
-            </div>
             <main class='flex flex-1 flex-col' id='main-content'>
               {main}
             </main>

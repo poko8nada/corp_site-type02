@@ -48,10 +48,10 @@ export function TextCardGrid(props: TextCardGridProps) {
       <div class={`mt-10 grid gap-5 sm:mt-12 sm:gap-6 ${gridCols}`}>
         {items.map((item, index) => (
           <div
-            class={`${revealOnScroll ? 'reveal-on-scroll ' + revealDelayByIndex[Math.min(index, revealDelayByIndex.length - 1)] : ''}`}
+            class={`h-full ${revealOnScroll ? 'reveal-on-scroll ' + revealDelayByIndex[Math.min(index, revealDelayByIndex.length - 1)] : ''}`}
             key={`${item.heading ?? ''}${index}`}
           >
-            <div class={`overflow-hidden rounded-xl ${CARD_CLASS[cardStyle]}`}>
+            <div class={`h-full overflow-hidden rounded-xl ${CARD_CLASS[cardStyle]}`}>
               <div class='px-6 py-6 sm:py-8 lg:py-10'>
                 {item.imageSrc && (
                   <figure class='-mx-6 -mt-6 mb-5 overflow-hidden rounded-xl sm:-mt-8 sm:-mx-6 lg:-mt-10 lg:-mx-6'>
