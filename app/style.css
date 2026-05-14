@@ -50,6 +50,8 @@
   --font-serif: 'Cormorant Variable', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
   --font-display: var(--font-sans);
 
+  --color-bg-emphasis: oklch(95.2% 0.005 260);
+  --color-bg-subtle: oklch(96.5% 0.003 260);
   --color-surface-emphasis: oklch(95.2% 0.005 260);
   --color-surface-subtle: oklch(96.5% 0.003 260);
   --color-surface-cta: oklch(96% 0.004 260);
@@ -75,6 +77,96 @@ body {
   --_pat-1-size: auto;
   --_pat-2-size: auto;
   --_pat-c: 25% 0.015 260;
+}
+
+/* --- Background layers (for Bg component) --- */
+
+.bg-emphasis {
+  --_pat-c: 25% 0.015 260;
+  background-image:
+    var(--_pat-1), var(--_pat-2),
+    radial-gradient(
+      ellipse 85% 62% at 0% 50%,
+      color-mix(in oklch, var(--color-primary) 5.5%, transparent) 0%,
+      transparent 62%
+    ),
+    radial-gradient(
+      ellipse 65% 72% at 100% 50%,
+      color-mix(in oklch, var(--color-accent) 4%, transparent) 0%,
+      transparent 52%
+    );
+  background-color: var(--color-bg-emphasis);
+  background-size: var(--_pat-1-size), var(--_pat-2-size), auto, auto;
+  background-repeat: repeat, repeat, no-repeat, no-repeat;
+  background-position:
+    0 0,
+    0 0,
+    0 0,
+    0 0;
+}
+
+.bg-subtle {
+  --_pat-c: 25% 0.015 260;
+  background-image:
+    var(--_pat-1), var(--_pat-2),
+    radial-gradient(
+      ellipse 72% 52% at 50% 0%,
+      color-mix(in oklch, var(--color-primary) 4%, transparent) 0%,
+      transparent 52%
+    ),
+    radial-gradient(
+      ellipse 62% 62% at 80% 100%,
+      color-mix(in oklch, var(--color-secondary) 3%, transparent) 0%,
+      transparent 42%
+    );
+  background-color: var(--color-bg-subtle);
+  background-size: var(--_pat-1-size), var(--_pat-2-size), auto, auto;
+  background-repeat: repeat, repeat, no-repeat, no-repeat;
+  background-position:
+    0 0,
+    0 0,
+    0 0,
+    0 0;
+}
+
+.bg-pattern-dots {
+  --_pat-1: radial-gradient(circle, oklch(var(--_pat-c) / 0.06) 1.5px, transparent 1.5px);
+  --_pat-1-size: 20px 20px;
+}
+
+.bg-pattern-grid {
+  --_pat-1: repeating-linear-gradient(90deg, oklch(var(--_pat-c) / 0.04) 0 1px, transparent 0 24px);
+  --_pat-2: repeating-linear-gradient(0deg, oklch(var(--_pat-c) / 0.04) 0 1px, transparent 0 24px);
+}
+
+.bg-pattern-stripe-v {
+  --_pat-1: repeating-linear-gradient(90deg, oklch(var(--_pat-c) / 0.04) 0 2px, transparent 0 24px);
+}
+
+.bg-pattern-stripe-h {
+  --_pat-1: repeating-linear-gradient(
+    180deg,
+    oklch(var(--_pat-c) / 0.04) 0 2px,
+    transparent 0 24px
+  );
+}
+
+.bg-pattern-diagonal {
+  --_pat-1: repeating-linear-gradient(45deg, oklch(var(--_pat-c) / 0.04) 0 1px, transparent 0 20px);
+}
+
+.bg-pattern-cross {
+  --_pat-1: repeating-linear-gradient(45deg, oklch(var(--_pat-c) / 0.04) 0 1px, transparent 0 20px);
+  --_pat-2: repeating-linear-gradient(
+    -45deg,
+    oklch(var(--_pat-c) / 0.04) 0 1px,
+    transparent 0 20px
+  );
+}
+
+.bg-pattern-checker {
+  --_pat-1: repeating-conic-gradient(oklch(var(--_pat-c) / 0.04) 0% 25%, transparent 0% 50%);
+  --_pat-1-size: 20px 20px;
 }
 
 /* --- Section surfaces --- */

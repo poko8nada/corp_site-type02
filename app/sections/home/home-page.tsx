@@ -6,6 +6,7 @@ import { MapEmbed } from '@/components/map-embed';
 import { MapWithInfo } from '@/components/map-with-info';
 import { MediaBlock } from '@/components/media-block';
 import { RichText } from '@/components/rich-text';
+import { Bg } from '@/components/background';
 import { Section } from '@/components/section';
 import { TextCardGrid } from '@/components/text-card-grid';
 import { VisualLead } from '@/components/visual-lead';
@@ -43,18 +44,19 @@ export function HomePage() {
         </div>
       </Section>
 
-      <Section
-        wrapperClass='section-divider section-pad-relaxed'
-        id='home-section-strengths'
-        label='強み・信頼'
-        layer={homeSectionLayers.strengths}
-        containerClass='max-w-5xl'
-      >
-        <div class='reveal-on-scroll [--reveal-delay:60ms]'>
-          <Heading level={2}>3つの強み</Heading>
-          <TextCardGrid {...homeStrengthsCatalog} revealOnScroll />
-        </div>
-      </Section>
+      <section id='home-section-strengths'>
+        <Bg
+          background={{ patternClass: 'bg-emphasis bg-pattern-stripe-h' }}
+          parallax={{ speed: 0.8 }}
+          wrapperClass='section-divider section-pad-relaxed'
+          containerClass='max-w-5xl'
+        >
+          <div class='reveal-on-scroll [--reveal-delay:60ms]'>
+            <Heading level={2}>3つの強み</Heading>
+            <TextCardGrid {...homeStrengthsCatalog} revealOnScroll />
+          </div>
+        </Bg>
+      </section>
 
       <div class='section-divider'>
         <ImageBreak {...homeImageBreaks[0]} revealOnScroll />
