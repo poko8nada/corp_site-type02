@@ -18,6 +18,8 @@ Build one complete state unit. Define the shape, transitions, and side effects f
 
 ### Step 3 — Verify
 
+Create a “To-Do” list below to use the to-do tool.
+
 - [ ] State transitions work as intended
 - [ ] Edge cases handled: empty, loading, error
 

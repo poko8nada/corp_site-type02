@@ -1,3 +1,4 @@
+//@ts-nocheck
 import type { Plugin } from '@opencode-ai/plugin';
 import { existsSync, readFileSync } from 'fs';
 import { join } from 'path';
@@ -10,13 +11,13 @@ export const AgentsReminderPlugin: Plugin = async ({ directory }) => {
 
   const reminders = [
     `/build-awareness
-  <important>STOP. Run the skill now before doing anything else. When implementing, use the appropriate skill: /implement-ui, /implement-state, /implement-api, /implement-db, or /debug. No exceptions.</important>`,
+<important>STOP. Run the skill now before doing anything else. When implementing, use the appropriate skill: /implement-ui, /implement-logic, /implement-state, /implement-api, /implement-db, /implement-test, /implement-config, or /debug. No exceptions.</important>`,
 
     `/build-awareness
-  <important>HALT. Before anything else, run the skill. Never implement without running the appropriate implement-* or debug skill.</important>`,
+<important>HALT. Before anything else, run the skill. Never implement without running the appropriate implement-* or debug skill.</important>`,
 
     `/build-awareness
-  <important>Do NOT act yet. Run the skill first. Skipping implement-* or debug skills is not allowed.</important>`,
+<important>Do NOT act yet. Run the skill first. Skipping implement-* or debug skills is not allowed.</important>`,
   ];
 
   let count = 0;
@@ -25,7 +26,6 @@ export const AgentsReminderPlugin: Plugin = async ({ directory }) => {
     'chat.message': async (input, output) => {
       if (!hasAgentsMd) return;
 
-      // @ts-ignore
       const firstPart = output.parts.find((p) => p.type === 'text' && !(p as unknown).synthetic);
       if (!firstPart || firstPart.type !== 'text') return;
 
@@ -38,8 +38,8 @@ export const AgentsReminderPlugin: Plugin = async ({ directory }) => {
       count++;
 
       const text = isDoubleLine
-        ? `${reminder}\n\n---\n\n# AGENTS.md\n\n${agentsMd}\n\n---`
-        : `${reminder}\n\n---`;
+        ? `${reminder}\n\n---\n\n# AGENTS.md\n\n${agentsMd}\n\n---\n\n`
+        : `${reminder}\n\n---\n\n`;
 
       output.parts.unshift({
         type: 'text',

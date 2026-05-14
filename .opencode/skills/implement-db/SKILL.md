@@ -24,6 +24,8 @@ For destructive changes, write the rollback migration first.
 
 ### Step 3 — Verify
 
+Create a “To-Do” list below to use the to-do tool.
+
 - [ ] Migration runs without errors
 - [ ] Rollback runs without errors
 - [ ] Query returns expected shape

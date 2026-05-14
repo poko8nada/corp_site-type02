@@ -18,6 +18,8 @@ Build one complete unit. Not a stub — correct structure, behavior, fully style
 
 ### Step 3 — Verify
 
+Create a “To-Do” list below to use the to-do tool.
+
 - [ ] Browser: structure and behavior work as intended via `browser-use`
 - [ ] Semantically accurate and accessible
 - [ ] Visually correct and responsive

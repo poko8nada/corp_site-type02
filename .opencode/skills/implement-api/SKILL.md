@@ -18,6 +18,8 @@ Build one complete endpoint or integration. Not a stub — correct request handl
 
 ### Step 3 — Verify
 
+Create a “To-Do” list below to use the to-do tool.
+
 - [ ] Response shape is correct
 - [ ] Error cases are handled
 - [ ] Edge cases handled: empty, null, unexpected input

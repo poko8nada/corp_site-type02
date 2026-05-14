@@ -5,7 +5,10 @@ alwaysApply: true
 
 # Project Guidelines
 
-There are rules for each file type in the same directory.
+## Files
+
+- You can touch files in only project root dir.
+- Never outside of the project such as `/tmp/`. Always use `./tmp/` under the project root.
 
 ## Semi Issue Driven
 
@@ -28,7 +31,3 @@ There are rules for each file type in the same directory.
 - Coverage isn't the most important thing; rather, critical areas should be covered.
 - Error paths are the most important. The happy path is one where the program returns early from an error path and returns a result at the end.
 - All anticipated error paths should be covered by tests.
-
-## Temporary Files
-
-- Never use `/tmp/`. Always use `./tmp/` under the project root.

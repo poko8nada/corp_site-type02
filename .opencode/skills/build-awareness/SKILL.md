@@ -49,9 +49,12 @@ Not a stub. Not everything at once. One unit, done properly, so the user can und
 Select the appropriate skill:
 
 - UI/markup/behavior/design → `implement-ui`
+- Business logic/utilities → `implement-logic`
 - State management → `implement-state`
 - API/server → `implement-api`
 - Database → `implement-db`
+- Tests → `implement-test`
+- Configuration → `implement-config`
 - Something broken → `debug`
 
 ### Step 5 — Act
