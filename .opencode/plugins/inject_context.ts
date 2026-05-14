@@ -106,8 +106,21 @@ function readGithubIssues(worktree: string): string {
   }
 }
 
+function readProjectMeta(worktree: string): string {
+  const metaPath = path.join(worktree, '.opencode', 'rules', 'project-meta.mdc');
+  if (!fs.existsSync(metaPath)) return '';
+  try {
+    return sanitize(fs.readFileSync(metaPath, 'utf-8').trim());
+  } catch {
+    return '';
+  }
+}
+
 async function buildContext(worktree: string): Promise<string> {
   const sections: string[] = [];
+
+  const meta = readProjectMeta(worktree);
+  if (meta) sections.push(['## Project Guidelines', '', meta].join('\n'));
 
   const issues = readGithubIssues(worktree);
   if (issues) sections.push(['## Open GitHub Issues', '', '```text', issues, '```'].join('\n'));
@@ -121,8 +134,7 @@ async function buildContext(worktree: string): Promise<string> {
   const tree = buildFlatTree(worktree);
   if (tree) sections.push(['## Project Structure', '', '```text', tree, '```'].join('\n'));
 
-  const result = sections.join('\n\n---\n\n').slice(0, MAX_CONTEXT_CHARS);
-  return result;
+  return sections.join('\n\n---\n\n').slice(0, MAX_CONTEXT_CHARS);
 }
 
 // ── plugin ────────────────────────────────────────────────────────────────────
@@ -148,14 +160,10 @@ export const InjectContextPlugin: Plugin = async ({ worktree }) => {
       if (!sessionID) return;
 
       const ctxPromise = contextCache.get(sessionID);
-      if (!ctxPromise) {
-        return;
-      }
+      if (!ctxPromise) return;
 
       const ctx = await ctxPromise;
-      if (!ctx?.trim()) {
-        return;
-      }
+      if (!ctx?.trim()) return;
 
       output.system.push(['# Project Context', '', ctx].join('\n'));
     },

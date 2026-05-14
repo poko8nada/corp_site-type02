@@ -9,9 +9,14 @@ export const AgentsReminderPlugin: Plugin = async ({ directory }) => {
   const agentsMd = hasAgentsMd ? readFileSync(agentsPath, 'utf-8').trim() : '';
 
   const reminders = [
-    `<important>STOP. Run the \`build-awareness\` skill now before doing anything else.</important>`,
-    `<important>HALT. Before anything else, run the \`build-awareness\` skill.</important>`,
-    `<important>Do NOT act yet. Run the \`build-awareness\` skill first.</important>`,
+    `/build-awareness
+  <important>STOP. Run the skill now before doing anything else. When implementing, use the appropriate skill: /implement-ui, /implement-state, /implement-api, /implement-db, or /debug. No exceptions.</important>`,
+
+    `/build-awareness
+  <important>HALT. Before anything else, run the skill. Never implement without running the appropriate implement-* or debug skill.</important>`,
+
+    `/build-awareness
+  <important>Do NOT act yet. Run the skill first. Skipping implement-* or debug skills is not allowed.</important>`,
   ];
 
   let count = 0;

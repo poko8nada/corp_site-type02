@@ -5,16 +5,7 @@ alwaysApply: true
 
 # Project Guidelines
 
-## Rules about file operations
-
-- There are rules for each file type in the same directory.
-- These rules matched by globs must be loaded in advance and strictly followed.
-- These must be followed, rather than relying on your own judgment.
-- Here's how to improve the quality of your work.
-
-### globs 
-
-` **/*.tsx, **/*.test.tsx, **/*.ts, **/*.test.ts, **/*.js, **/*.test.js, **/*.md, **/*.css`
+There are rules for each file type in the same directory.
 
 ## Semi Issue Driven
 
@@ -37,3 +28,7 @@ alwaysApply: true
 - Coverage isn't the most important thing; rather, critical areas should be covered.
 - Error paths are the most important. The happy path is one where the program returns early from an error path and returns a result at the end.
 - All anticipated error paths should be covered by tests.
+
+## Temporary Files
+
+- Never use `/tmp/`. Always use `./tmp/` under the project root.

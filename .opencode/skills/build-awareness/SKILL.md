@@ -15,10 +15,10 @@ Output in Japanese using exactly this format:
 ```markdown
 - Topic: [what is being discussed in "this session" in one sentence]
 - Gate: [what "done" looks like for "this session"]
-- Context level: [1-10]
+- Context level: [1-10, resets to 1 every turn, goes up as context is gathered, goes down if new unknowns emerge]
 - Related skills: [applicable skills, or "none"]
-- Current focus: [What I'm currently facing or working on "right now"]
-- Next action: [what to do next in one sentence]
+- Current focus: [what we're currently facing or working on "right now"]
+- Next action: [what to do "your" next turn in one sentence]
 ```
 
 > Note: **At the start of a session, the context is, of course, “1”.**
@@ -42,7 +42,11 @@ If Session Gate is unclear, confirm it with the user. Wait for response.
 
 Propose the single smallest next action. Wait for user approval.
 
-**If the action involves implementation, select the appropriate skill:**
+**If the action involves implementation:**
+Build one complete unit — fully styled, fully functional, verifiable by the user.
+Not a stub. Not everything at once. One unit, done properly, so the user can understand and agree before scope expands.
+
+Select the appropriate skill:
 
 - UI/markup/behavior/design → `implement-ui`
 - State management → `implement-state`
@@ -52,9 +56,12 @@ Propose the single smallest next action. Wait for user approval.
 
 ### Step 5 — Act
 
-Execute only what was agreed in Step 4.
-Stop immediately after the unit is complete. Do not expand scope. Return to Step 1.
+Execute only what was agreed in Step 4. Stop immediately after the unit is complete.
 
-### Step 6 — Return
+### Step 6 — Return and gate
 
-Report the result in one sentence. Go back to Step 1.
+Report the result. Wait for the user to respond.
+
+- User approves → this unit becomes the pattern. Proceed with the remaining scope.
+- User requests changes → return to Step 2.
+- User stops → stop.

@@ -42,6 +42,8 @@ const ALLOWED_COMMANDS = new Set([
   'gog',
   // python 3
   'python3',
+  // image
+  'sips',
 ]);
 
 // git subcommands that are explicitly blocked
