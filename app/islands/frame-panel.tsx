@@ -5,9 +5,11 @@ import {
   frameNavEntries,
   framePrimaryCta,
   frameFooterCopy,
+  type HeaderPattern,
+  type FooterPattern,
 } from '@/sections/frame';
-import { Header, type HeaderPattern } from '@/sections/frame/header';
-import { Footer, type FooterPattern } from '@/sections/frame/footer';
+import { Header } from '@/sections/frame/header';
+import { Footer } from '@/sections/frame/footer';
 
 const headerPatterns: HeaderPattern[] = ['standard', 'none'];
 const footerPatterns: FooterPattern[] = ['standard', 'bar', 'none'];
@@ -34,13 +36,14 @@ export default function FramePanel() {
       </div>
 
       <div class='border-2 border-dashed border-base-300 rounded-box overflow-hidden w-full min-h-32 p-6'>
-        <Header
-          brandText={SITE_BRAND}
-          drawerId={SITE_FRAME_DRAWER_ID}
-          navEntries={frameNavEntries}
-          pattern={headerPattern}
-          primaryCta={framePrimaryCta}
-        />
+        {headerPattern !== 'none' && (
+          <Header
+            brandText={SITE_BRAND}
+            drawerId={SITE_FRAME_DRAWER_ID}
+            navEntries={frameNavEntries}
+            primaryCta={framePrimaryCta}
+          />
+        )}
       </div>
 
       <div class='flex flex-wrap gap-4 justify-start'>

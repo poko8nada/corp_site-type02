@@ -1,22 +1,30 @@
 import type { Child } from 'hono/jsx';
-import type { FrameFooterCopy } from '@/sections/frame/footer/footer.types';
-import type { FrameNavEntry } from '@/sections/frame/header/header.types';
+import type {
+  FrameBg,
+  FrameFooterCopy,
+  FrameNavEntry,
+  HeaderPattern,
+  HeaderPosition,
+  FooterPattern,
+} from './frame.types';
+import type { HeaderProps } from './header';
 import DemoBanner from '@/components/$demo-banner';
 import { DrawerNav } from './drawer-nav';
-import { Footer, type FooterPattern } from './footer';
-import { Header, type HeaderPattern } from './header';
+import { Footer } from './footer';
+import { Header } from './header';
 
-/** Top-level shell: demo banner → header → main → footer. All structure props flow down from _renderer. */
 export interface SiteLayoutProps {
   brandText: string;
   drawerId: string;
-  headerPattern: HeaderPattern;
+  headerPattern?: HeaderPattern;
+  headerPosition?: HeaderPosition;
+  headerBg?: FrameBg;
   footerPattern: FooterPattern;
+  footerBg?: FrameBg;
   isDemo: boolean;
   navEntries: readonly FrameNavEntry[];
-  primaryCta: { readonly label: string; readonly href: string };
+  primaryCta: HeaderProps['primaryCta'];
   footerCopy: FrameFooterCopy;
-  /** Route body: Honox `Layout` wrapping page `children`. */
   main: Child;
 }
 
@@ -24,8 +32,11 @@ export function SiteLayout(props: SiteLayoutProps) {
   const {
     brandText,
     drawerId,
-    headerPattern,
+    headerPattern = 'standard',
+    headerPosition = 'sticky',
+    headerBg,
     footerPattern,
+    footerBg,
     isDemo,
     navEntries,
     primaryCta,
@@ -37,17 +48,20 @@ export function SiteLayout(props: SiteLayoutProps) {
     <div class='drawer drawer-end'>
       <input class='drawer-toggle' id={drawerId} type='checkbox' />
       <div class='drawer-content bg-base-100 flex min-h-dvh min-w-0 flex-col'>
-        <div class='sticky top-0 z-40'>
-          <DemoBanner isDemo={isDemo} />
-          <Header
-            bg='glass'
-            brandText={brandText}
-            drawerId={drawerId}
-            navEntries={navEntries}
-            pattern={headerPattern}
-            primaryCta={primaryCta}
-          />
-        </div>
+        {headerPattern !== 'none' && (
+          <div
+            class={headerPosition === 'fixed' ? 'fixed inset-x-0 top-0 z-40' : 'sticky top-0 z-40'}
+          >
+            <DemoBanner isDemo={isDemo} />
+            <Header
+              bg={headerBg}
+              brandText={brandText}
+              drawerId={drawerId}
+              navEntries={navEntries}
+              primaryCta={primaryCta}
+            />
+          </div>
+        )}
         <div class='flex flex-col flex-1'>
           <a
             class='sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-60 focus:rounded-btn focus:border focus:border-base-300 focus:bg-base-100 focus:px-4 focus:py-2 focus:text-base-content focus:shadow focus:outline-2 focus:outline-offset-2'
@@ -59,7 +73,7 @@ export function SiteLayout(props: SiteLayoutProps) {
             <main class='flex flex-1 flex-col' id='main-content'>
               {main}
             </main>
-            <Footer copy={footerCopy} pattern={footerPattern} />
+            <Footer bg={footerBg} copy={footerCopy} pattern={footerPattern} />
           </div>
         </div>
       </div>

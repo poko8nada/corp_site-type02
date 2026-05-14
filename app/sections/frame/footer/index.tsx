@@ -3,7 +3,7 @@ import { FooterStandard } from './footer-standard';
 import { FooterBar } from './footer-bar';
 
 export { FooterStandard, FooterBar };
-export type { FooterPattern, FooterProps } from './footer.types';
+export type { FooterProps } from './footer.types';
 
 export function Footer(props: FooterProps) {
   const { pattern, copy, bg } = props;

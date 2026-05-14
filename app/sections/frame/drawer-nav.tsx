@@ -1,4 +1,4 @@
-import type { FrameNavEntry } from '@/sections/frame/header/header.types';
+import type { FrameNavEntry } from './frame.types';
 
 /** Mobile drawer nav using DaisyUI menu. Placeholder entries show with `cursor-not-allowed`. */
 export interface DrawerNavProps {

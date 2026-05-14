@@ -6,6 +6,7 @@ import {
   frameIsDemo,
   frameNavEntries,
   framePrimaryCta,
+  type FrameBg,
 } from '@/sections/frame';
 import { raw } from 'hono/html';
 import { jsxRenderer } from 'hono/jsx-renderer';
@@ -23,7 +24,10 @@ export type SiteRenderProps = {
   title?: string;
   description?: string;
   headerPattern?: 'standard' | 'none';
+  headerPosition?: 'sticky' | 'fixed';
+  headerBg?: FrameBg;
   footerPattern?: 'standard' | 'bar' | 'none';
+  footerBg?: FrameBg;
 };
 
 export default jsxRenderer((props) => {
@@ -33,7 +37,10 @@ export default jsxRenderer((props) => {
   const baseDescription = props.description ?? SITE_DEFAULT_META_DESCRIPTION;
   const description = frameIsDemo ? `【架空のデモサイト】${baseDescription}` : baseDescription;
   const headerPattern = props.headerPattern ?? 'standard';
+  const headerPosition = props.headerPosition ?? 'sticky';
+  const headerBg = props.headerBg ?? 'solid';
   const footerPattern = props.footerPattern ?? 'standard';
+  const footerBg = props.footerBg;
   const clientScriptSrc = import.meta.env.PROD ? '/static/client.js' : '/app/client.ts';
 
   return (
@@ -54,9 +61,12 @@ export default jsxRenderer((props) => {
         <SiteLayout
           brandText={SITE_BRAND}
           drawerId={SITE_FRAME_DRAWER_ID}
+          footerBg={footerBg}
           footerCopy={frameFooterCopy}
           footerPattern={footerPattern}
+          headerBg={headerBg}
           headerPattern={headerPattern}
+          headerPosition={headerPosition}
           isDemo={frameIsDemo}
           main={<Layout>{children}</Layout>}
           navEntries={frameNavEntries}

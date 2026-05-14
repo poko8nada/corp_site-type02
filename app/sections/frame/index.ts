@@ -1,4 +1,3 @@
-/** Frame config: nav, footer, demo flag. Edit `SITE_*` imports from `@/data` to rebrand. */
 import {
   SITE_BRAND,
   SITE_PHONE,
@@ -8,13 +7,17 @@ import {
   SITE_HOURS,
   SITE_HOLIDAY,
 } from '@/data';
-import type { FrameFooterCopy } from '@/sections/frame/footer/footer.types';
-import type { FrameNavEntry } from '@/sections/frame/header/header.types';
+import type { FrameFooterCopy, FrameNavEntry } from './frame.types';
 
-export type { FrameBg } from './frame.types';
-export type { FrameFooterCopy } from '@/sections/frame/footer/footer.types';
-export type { FrameLegalEntry } from '@/sections/frame/footer/footer.types';
-export type { FrameNavEntry } from '@/sections/frame/header/header.types';
+export type {
+  FrameBg,
+  FrameFooterCopy,
+  FrameLegalEntry,
+  FrameNavEntry,
+  HeaderPattern,
+  FooterPattern,
+  HeaderPosition,
+} from './frame.types';
 
 export const SITE_FRAME_DRAWER_ID = 'site-frame-drawer' as const;
 
@@ -40,9 +43,15 @@ export const frameFooterCopy: FrameFooterCopy = {
 } as const;
 
 export { DrawerNav } from './drawer-nav';
-
 export type { DrawerNavProps } from './drawer-nav';
-export { Footer, type FooterPattern, type FooterProps } from './footer';
-export { Header, type HeaderPattern, type HeaderProps } from './header';
+export { Footer, type FooterProps } from './footer';
+export {
+  Header,
+  HeaderFullWidth,
+  Nav,
+  type HeaderProps,
+  type HeaderFullWidthProps,
+  type NavProps,
+} from './header';
 export { SiteLayout } from './site-layout';
 export type { SiteLayoutProps } from './site-layout';
