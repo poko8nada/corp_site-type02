@@ -22,7 +22,6 @@ function escapeHtmlAttr(value: string): string {
 export type SiteRenderProps = {
   title?: string;
   description?: string;
-  parallax?: boolean;
   headerPattern?: 'standard' | 'none';
   footerPattern?: 'standard' | 'bar' | 'none';
 };
@@ -35,11 +34,10 @@ export default jsxRenderer((props) => {
   const description = frameIsDemo ? `【架空のデモサイト】${baseDescription}` : baseDescription;
   const headerPattern = props.headerPattern ?? 'standard';
   const footerPattern = props.footerPattern ?? 'standard';
-  const parallaxEnabled = props.parallax ?? false;
   const clientScriptSrc = import.meta.env.PROD ? '/static/client.js' : '/app/client.ts';
 
   return (
-    <html class={parallaxEnabled ? 'parallax-on' : ''} lang='ja'>
+    <html lang='ja'>
       <head>
         {raw('<!-- site-frame:analytics-head (e.g. GTM container snippet) -->')}
         <meta charset='utf-8' />

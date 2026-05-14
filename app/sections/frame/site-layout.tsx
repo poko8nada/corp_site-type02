@@ -48,8 +48,7 @@ export function SiteLayout(props: SiteLayoutProps) {
             primaryCta={primaryCta}
           />
         </div>
-        <div class='parallax-scroll flex flex-col flex-1'>
-          <div aria-hidden='true' class='parallax-backdrop' />
+        <div class='flex flex-col flex-1'>
           <a
             class='sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-60 focus:rounded-btn focus:border focus:border-base-300 focus:bg-base-100 focus:px-4 focus:py-2 focus:text-base-content focus:shadow focus:outline-2 focus:outline-offset-2'
             href='#main-content'

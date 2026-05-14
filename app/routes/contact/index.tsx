@@ -1,5 +1,5 @@
 import { Heading } from '@/components/heading';
-import { Section } from '@/components/section';
+import { Bg } from '@/components/background';
 import { ROUTE_TITLES } from '@/data';
 import { createRoute } from 'honox/factory';
 import { ContactContextBlock, ContactFormArea } from '@/sections/contact';
@@ -8,34 +8,33 @@ export default createRoute((c) => {
   return c.render(
     <div class='text-base-content flex flex-col'>
       <section>
-        <Heading level={1} class='text-center mt-10 mx-4'>
+        <Heading level={1} class='mt-10 sm:text-2xl! text-xl! text-center mx-4'>
           お問い合わせ
         </Heading>
-        <Section
-          wrapperClass='section-pad-relaxed'
-          id='contact-section-context'
-          containerClass='max-w-3xl'
-        >
-          <Heading level={2} class='sr-only'>
-            お問い合わせ方法
-          </Heading>
-          <div class='mt-0'>
-            <ContactContextBlock />
-          </div>
-        </Section>
+        <section id='contact-section-context'>
+          <Bg wrapperClass='section-pad-relaxed' containerClass='max-w-3xl'>
+            <Heading level={2} class='sr-only'>
+              お問い合わせ方法
+            </Heading>
+            <div class='mt-0'>
+              <ContactContextBlock />
+            </div>
+          </Bg>
+        </section>
 
-        <Section
-          wrapperClass='surface-emphasis section-pattern-grid section-pad-relaxed section-divider'
-          id='contact-section-form'
-          containerClass='max-w-3xl'
-        >
-          <Heading level={2} class='text-center'>
-            お問い合わせフォーム
-          </Heading>
-          <div class='mt-6'>
-            <ContactFormArea />
-          </div>
-        </Section>
+        <section id='contact-section-form'>
+          <Bg
+            wrapperClass='bg-emphasis bg-pattern-grid section-pad-relaxed section-divider'
+            containerClass='max-w-3xl'
+          >
+            <Heading level={2} class='sm:text-2xl! text-xl! text-center mx-4'>
+              お問い合わせフォーム
+            </Heading>
+            <div class='mt-6'>
+              <ContactFormArea />
+            </div>
+          </Bg>
+        </section>
       </section>
     </div>,
     { title: ROUTE_TITLES.contact },

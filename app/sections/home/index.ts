@@ -13,7 +13,6 @@ import {
 import type { CtaBandProps } from '@/components/cta-band';
 import type { FaqListProps } from '@/components/faq-list';
 import type { ImageBreakProps } from '@/components/image-break';
-import type { LayerConfig } from '@/components/section';
 import type { MapInfoRow } from '@/components/map-with-info';
 import type { MediaBlockProps } from '@/components/media-block';
 import type { RichTextProps } from '@/components/rich-text';
@@ -129,10 +128,6 @@ export const homeImageBreaks: readonly ImageBreakProps[] = [
   { src: '/images/placeholder-break-2.svg', alt: 'イメージブレイク 2' },
   { src: '/images/placeholder-break-3.svg', alt: 'イメージブレイク 3' },
 ];
-export const homeSectionLayers: Record<string, LayerConfig | undefined> = {
-  strengths: { depth: 1, surface: 'surface-emphasis section-pattern-dots' },
-  info: { depth: 1, surface: 'surface-subtle section-pattern-stripe-v' },
-};
 
 export const homeConversionCatalog: CtaBandProps = {
   description: 'ご質問やご依頼のご相談は、専用ページからお気軽にお送りください。',

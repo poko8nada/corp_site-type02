@@ -1,3 +1,5 @@
+export { CatalogPage } from './catalog-page';
+
 import type { CtaBandProps } from '@/components/cta-band';
 import type { FaqListProps } from '@/components/faq-list';
 import type { ImageBreakProps } from '@/components/image-break';

@@ -24,7 +24,11 @@ export function Bg(props: BgProps) {
   if (!imageSrc && !patternCls) {
     return (
       <div class={wrapperCls}>
-        <div class={`${CONTAINER_BASE} ${containerClass ?? ''}`.trim()}>{children}</div>
+        {containerClass ? (
+          <div class={`${CONTAINER_BASE} ${containerClass}`}>{children}</div>
+        ) : (
+          children
+        )}
       </div>
     );
   }
