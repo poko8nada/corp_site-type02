@@ -1,4 +1,4 @@
-import type { FrameNavEntry } from '../frame.types';
+import type { FrameNavEntry } from '../frame-config';
 
 export interface NavProps {
   entries: readonly FrameNavEntry[];

@@ -1,4 +1,4 @@
-import type { FrameBg, FooterPattern, FrameFooterCopy } from '../frame.types';
+import type { FrameBg, FooterPattern, FrameFooterCopy } from '../frame-config';
 
 export interface FooterProps {
   pattern: FooterPattern;

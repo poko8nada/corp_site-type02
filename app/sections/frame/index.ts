@@ -1,57 +1,39 @@
-import {
-  SITE_BRAND,
-  SITE_PHONE,
-  SITE_ZIP,
-  SITE_ADDRESS,
-  SITE_BUILDING,
-  SITE_HOURS,
-  SITE_HOLIDAY,
-} from '@/data';
-import type { FrameFooterCopy, FrameNavEntry } from './frame.types';
-
 export type {
+  DrawerSide,
   FrameBg,
   FrameFooterCopy,
   FrameLegalEntry,
   FrameNavEntry,
-  HeaderPattern,
   FooterPattern,
+  HeaderPattern,
   HeaderPosition,
-} from './frame.types';
+  ResolvedFrameConfig,
+} from './frame-config';
 
-export const SITE_FRAME_DRAWER_ID = 'site-frame-drawer' as const;
+export { FrameConfigDefaults } from './frame-config';
 
-export const frameIsDemo = true as const;
-
-export const frameNavEntries: readonly FrameNavEntry[] = [
-  { kind: 'link', label: '事業概要', href: '/#home-section-explanation' },
-  { kind: 'link', label: '強み', href: '/#home-section-strengths' },
-  { kind: 'link', label: 'アクセス', href: '/#home-section-facts' },
-  { kind: 'link', label: 'よくある質問', href: '/#home-section-info' },
-] as const;
-
-export const framePrimaryCta = {
-  label: 'お問い合わせ',
-  href: '/contact',
-} as const;
-
-export const frameFooterCopy: FrameFooterCopy = {
-  companyLines: [SITE_BRAND, `${SITE_ZIP} ${SITE_ADDRESS}`, SITE_BUILDING],
-  contactLines: [`Tel ${SITE_PHONE}`, `営業: ${SITE_HOURS}（${SITE_HOLIDAY}）`],
-  legalEntries: [{ kind: 'link', label: 'プライバシーポリシー', href: '/privacy' }],
-  copyrightName: SITE_BRAND,
-} as const;
+export {
+  SITE_FRAME_DRAWER_ID,
+  frameFooterCopy,
+  frameIsDemo,
+  frameNavEntries,
+  framePrimaryCta,
+} from './data';
 
 export { DrawerNav } from './drawer-nav';
 export type { DrawerNavProps } from './drawer-nav';
 export { Footer, type FooterProps } from './footer';
 export {
-  Header,
+  HeaderCta,
   HeaderFullWidth,
-  Nav,
-  type HeaderProps,
+  HeaderIcon,
+  HeaderIsland,
+  HeaderNav,
+  type HeaderCtaProps,
   type HeaderFullWidthProps,
-  type NavProps,
+  type HeaderIconProps,
+  type HeaderIslandProps,
+  type HeaderNavProps,
 } from './header';
 export { SiteLayout } from './site-layout';
 export type { SiteLayoutProps } from './site-layout';

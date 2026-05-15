@@ -1,5 +1,5 @@
 import { CatalogPage } from '@/sections/catalog';
-import { frameIsDemo } from '@/sections/frame';
+import { frameIsDemo, FrameConfigDefaults } from '@/sections/frame';
 import { createRoute } from 'honox/factory';
 
 export default createRoute((c) => {
@@ -7,9 +7,12 @@ export default createRoute((c) => {
     return c.notFound();
   }
 
-  return c.render(<CatalogPage />, {
-    title: 'Components Catalog',
-    headerPattern: 'none',
-    footerPattern: 'none',
-  });
+  return c.render(
+    <CatalogPage />,
+    FrameConfigDefaults({
+      title: 'Components Catalog',
+      headerPattern: 'none',
+      footerPattern: 'none',
+    }),
+  );
 });

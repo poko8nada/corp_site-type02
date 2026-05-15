@@ -1,6 +1,7 @@
 import { Heading } from '@/components/heading';
 import { Bg } from '@/components/background';
 import { ROUTE_TITLES } from '@/data';
+import { FrameConfigDefaults } from '@/sections/frame';
 import { createRoute } from 'honox/factory';
 import { ContactContextBlock, ContactFormArea } from '@/sections/contact';
 
@@ -37,6 +38,6 @@ export default createRoute((c) => {
         </section>
       </section>
     </div>,
-    { title: ROUTE_TITLES.contact },
+    FrameConfigDefaults({ title: ROUTE_TITLES.contact }),
   );
 });

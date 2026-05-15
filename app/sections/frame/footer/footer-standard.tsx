@@ -1,4 +1,4 @@
-import type { FrameBg, FrameFooterCopy, FrameLegalEntry } from '../frame.types';
+import type { FrameBg, FrameFooterCopy, FrameLegalEntry } from '../frame-config';
 
 function currentYear(): number {
   return new Date().getFullYear();
