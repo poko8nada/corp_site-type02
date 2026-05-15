@@ -11,13 +11,13 @@ export const AgentsReminderPlugin: Plugin = async ({ directory }) => {
 
   const reminders = [
     `/build-awareness
-<important>STOP. Run the skill now before doing anything else. When implementing, use the appropriate skill: /implement-ui, /implement-logic, /implement-state, /implement-api, /implement-db, /implement-test, /implement-config, or /debug. No exceptions.</important>`,
+<important>STOP. Run the skill now before doing anything else. When implementing, use the appropriate skill: /implement-ui, /implement-logic, /implement-state, /implement-api, /implement-db, /implement-test, /implement-config, or /debug. Use the \`question\` tool at every agreement point. No exceptions.</important>`,
 
     `/build-awareness
-<important>HALT. Before anything else, run the skill. Never implement without running the appropriate implement-* or debug skill.</important>`,
+<important>HALT. Before anything else, run the skill. Never implement without running the appropriate implement-* or debug skill. Always use the \`question\` tool to confirm with the user before proceeding.</important>`,
 
     `/build-awareness
-<important>Do NOT act yet. Run the skill first. Skipping implement-* or debug skills is not allowed.</important>`,
+<important>Do NOT act yet. Run the skill first. Use the \`question\` tool at Agreement Point 1 (plan) and Agreement Point 2 (result). Skipping either is not allowed.</important>`,
   ];
 
   let count = 0;

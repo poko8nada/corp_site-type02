@@ -16,7 +16,7 @@ Do not attempt a fix yet.
 ### Step 2 — Form a hypothesis
 
 State the most likely cause in one sentence.
-Confirm the hypothesis with the user before proceeding.
+Use the `question` tool to confirm the hypothesis with the user before proceeding.
 
 ### Step 3 — Verify the hypothesis
 
@@ -25,7 +25,7 @@ Take the single smallest action to confirm or deny the hypothesis:
 - Read a file
 - Check a log
 - Search the web
-- Ask the user
+- Ask the user one question
 
 Do not fix anything yet. Do not combine multiple actions.
 
@@ -50,4 +50,7 @@ Apply the minimal fix that resolves the confirmed cause. Nothing more.
 
 ### Step 7 — Show and align
 
-Report the result. Wait for the user to confirm the fix before closing.
+Use the `question` tool:「修正結果を確認してください。問題は解決しましたか？」
+
+- Confirmed → return to `/build-awareness`
+- Not resolved → return to Step 2

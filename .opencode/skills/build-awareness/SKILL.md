@@ -34,17 +34,22 @@ If context level is below 7, take exactly one of these actions, then return to S
 
 Do not think. Do not combine. Pick one, execute, return.
 
-### Step 3 — Align on Session Gate
+### Step 3 — Align on plan
 
-If Session Gate is unclear, confirm it with the user. Wait for response.
+Use the `question` tool to confirm the Session Gate with the user.
+Do not proceed until the user explicitly agrees.
+
+**This is Agreement Point 1.**
 
 ### Step 4 — Agree on next action
 
-Propose the single smallest next action. Wait for user approval.
+Propose the single smallest next action.
 
 **If the action involves implementation:**
 Build one complete unit — fully styled, fully functional, verifiable by the user.
 Not a stub. Not everything at once. One unit, done properly, so the user can understand and agree before scope expands.
+
+Use the `question` tool to confirm the next action with the user before selecting a skill.
 
 Select the appropriate skill:
 
@@ -63,8 +68,10 @@ Execute only what was agreed in Step 4. Stop immediately after the unit is compl
 
 ### Step 6 — Return and gate
 
-Report the result. Wait for the user to respond.
+Report the result. Use the `question` tool:「この結果を確認してください。次に進んでよいですか？」
 
-- User approves → this unit becomes the pattern. Proceed with the remaining scope.
-- User requests changes → return to Step 2.
-- User stops → stop.
+**This is Agreement Point 2.**
+
+- User approves → `/apply-pattern`
+- User requests changes → return to Step 4
+- User stops → stop

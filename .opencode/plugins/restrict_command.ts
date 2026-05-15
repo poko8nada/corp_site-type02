@@ -34,6 +34,7 @@ const ALLOWED_COMMANDS = new Set([
   'touch',
   'cp',
   'mv',
+  'rm',
   // Project-specific
   'oxlint',
   'oxfmt',

@@ -27,10 +27,11 @@ Fix any failures before proceeding.
 
 ### Step 4 — Show and align
 
-Report the result. Demonstrate the state behavior to the user.
-Wait for the user to understand and approve before expanding scope.
+Use the `question` tool:「この結果を確認してください。次に進んでよいですか？」
+**This is Agreement Point 2.**
 
 ### Step 5 — Expand or stop
 
-If the user approves, apply the same approach to the remaining scope.
-If not, return to Step 2.
+- Approved → `/apply-pattern`
+- Changes needed → return to Step 2
+- Done → return to `/build-awareness`
