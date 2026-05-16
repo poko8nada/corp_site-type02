@@ -27,10 +27,18 @@ Create a “To-Do” list below to use the to-do tool.
 
 Fix any failures before proceeding.
 
-### Step 4 — Show and align
+### Step 4 — Propose and align
 
-Use the `question` tool:「この結果を確認してください。次に進んでよいですか？」
+Before asking the user, summarize what was built and why it meets the agreed unit definition.
+Use the `question` tool. Start the message with `[Context: X/10]`:
+
+「[結果の要約]。この結果を確認してください。次に進んでよいですか？」
+
 **This is Agreement Point 2.**
+
+- Approved → `/apply-pattern`
+- Changes needed → return to Step 2
+- Done → return to `/build-awareness`
 
 ### Step 5 — Expand or stop
 

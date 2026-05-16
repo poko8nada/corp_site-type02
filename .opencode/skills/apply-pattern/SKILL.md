@@ -29,9 +29,12 @@ Run the same checks as the original unit:
 
 Fix any failures before proceeding.
 
-### Step 4 — Confirm
+### Step 4 — Propose and align
 
-Use the `question` tool:「このユニットの結果を確認してください。次に進んでよいですか？」
+Before asking the user, summarize what was built and why it meets the agreed unit definition.
+Use the `question` tool. Start the message with `[Context: X/10]`:
+
+「[結果の要約]。この結果を確認してください。次に進んでよいですか？」
 
 - Approved → return to Step 2 for the next unit
 - Changes needed → fix and return to Step 3

@@ -1,31 +1,38 @@
 # Purpose
 
 All principles, steps, and skills exist for one reason: **mutual agreement with the user at every stage.**
-
 Agreement happens at exactly two points:
 
-1. **Plan** — before acting, align on what will be done and why.
-2. **Result** — after the first complete unit, show it and confirm before expanding.
+1. **Plan** — research and propose a concrete plan, then align with the user before acting.
+2. **Result** — build one complete unit, show it, confirm the user understands before expanding.
 
 # Flow
 
 ```text
 Session start
 ↓
-/build-awareness — build context, align on plan
-↓ question tool → **Agreement Point 1:** plan confirmed
+/build-awareness
+├ Build context incrementally (max +2 per turn)
+├ Research and form proposals — never ask without a proposal
+└ question tool → Agreement Point 1: plan confirmed
 ↓
-[Select based on plan]
-├ Implementation → /implement-ui, /implement-logic, /implement-state,
-│                  /implement-api, /implement-db, /implement-test, /implement-config
-├ Need more context → return to /build-awareness
-└ Something broken → /debug
+[Execute first unit]
+├ /implement-ui, /implement-logic, /implement-state
+├ /implement-api, /implement-db, /implement-test, /implement-config
+└ /debug
 ↓
-question tool → **Agreement Point 2:** result confirmed
-├ Approved → /apply-pattern
+question tool → Agreement Point 2: result confirmed
+├ Approved → /apply-pattern (remaining units, one at a time)
 ├ Changes needed → return to implement-*
 └ Done → return to /build-awareness or end session
 ```
+
+**Key rules:**
+
+- Never ask the user without first researching and forming a proposal
+- Never implement everything at once — one complete unit, then confirm
+- Context level never jumps more than 2 points per turn
+- Every question tool message starts with `[Context: X/10]`
 
 # Principles
 

@@ -15,8 +15,8 @@ Do not attempt a fix yet.
 
 ### Step 2 — Form a hypothesis
 
-State the most likely cause in one sentence.
-Use the `question` tool to confirm the hypothesis with the user before proceeding.
+Research the codebase, logs, and web before forming a hypothesis.
+Use the `question` tool. Start with `[Context: X/10]`:「[仮説の説明]。この方向で調査してよいですか？」
 
 ### Step 3 — Verify the hypothesis
 
@@ -48,9 +48,15 @@ Apply the minimal fix that resolves the confirmed cause. Nothing more.
 - [ ] The original problem is resolved
 - [ ] No new issues introduced
 
-### Step 7 — Show and align
+### Step 7 — Propose and align
 
-Use the `question` tool:「修正結果を確認してください。問題は解決しましたか？」
+Before asking the user, summarize what was built and why it meets the agreed unit definition.
+Use the `question` tool. Start the message with `[Context: X/10]`:
 
-- Confirmed → return to `/build-awareness`
-- Not resolved → return to Step 2
+「[結果の要約]。この結果を確認してください。次に進んでよいですか？」
+
+**This is Agreement Point 2.**
+
+- Approved → `/apply-pattern`
+- Changes needed → return to Step 2
+- Done → return to `/build-awareness`
