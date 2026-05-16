@@ -6,6 +6,14 @@ import { createRoute } from 'honox/factory';
 export default createRoute((c) => {
   return c.render(
     <PrivacyPage />,
-    FrameConfigDefaults({ title: ROUTE_TITLES.privacy, footerPattern: 'standard' }),
+    FrameConfigDefaults({
+      title: ROUTE_TITLES.privacy,
+      headerPattern: 'standard',
+      headerBg: 'solid',
+      headerPosition: 'sticky',
+      headerCenter: undefined,
+      headerRight: undefined,
+      hamburger: undefined,
+    }),
   );
 });

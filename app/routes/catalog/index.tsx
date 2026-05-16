@@ -1,9 +1,10 @@
+import { IS_DEMO } from '@/data';
 import { CatalogPage } from '@/sections/catalog';
-import { frameIsDemo, FrameConfigDefaults } from '@/sections/frame';
+import { FrameConfigDefaults } from '@/sections/frame';
 import { createRoute } from 'honox/factory';
 
 export default createRoute((c) => {
-  if (!frameIsDemo) {
+  if (!IS_DEMO) {
     return c.notFound();
   }
 

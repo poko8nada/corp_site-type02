@@ -2,16 +2,16 @@ import { useState } from 'hono/jsx';
 import { SITE_BRAND } from '@/data';
 import {
   frameNavEntries,
-  framePrimaryCta,
+  frameCtaEntry,
   frameFooterCopy,
   type HeaderPattern,
   type FooterPattern,
 } from '@/sections/frame';
 import {
   HeaderCta,
-  HeaderFullWidth,
+  HeaderTypeFullWidth,
   HeaderIcon,
-  HeaderIsland,
+  HeaderTypeIsland,
   HeaderNav,
 } from '@/sections/frame/header';
 import { Footer } from '@/sections/frame/footer';
@@ -23,27 +23,15 @@ export default function FramePanel() {
   const [headerPattern, setHeaderPattern] = useState<HeaderPattern>('standard');
   const [footerPattern, setFooterPattern] = useState<FooterPattern>('standard');
 
-  const left = (
-    <a
-      class='font-display text-base-content inline-flex min-w-0 items-center gap-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-left tracking-tight text-xl leading-tight sm:text-2xl'
-      href='/'
-      title={SITE_BRAND}
-    >
-      <HeaderIcon brandText={SITE_BRAND} />
-    </a>
-  );
+  const left = <HeaderIcon href='/' brandText={SITE_BRAND} />;
 
   const center = <HeaderNav entries={frameNavEntries} />;
   const right = (
-    <HeaderCta
-      href={framePrimaryCta.href}
-      label={framePrimaryCta.label}
-      shape={headerPattern === 'island' ? 'pill' : 'default'}
-    />
+    <HeaderCta entry={frameCtaEntry} shape={headerPattern === 'island' ? 'pill' : 'default'} />
   );
   const showDrawer = frameNavEntries.length > 0;
 
-  const HeaderComponent = headerPattern === 'island' ? HeaderIsland : HeaderFullWidth;
+  const HeaderComponent = headerPattern === 'island' ? HeaderTypeIsland : HeaderTypeFullWidth;
 
   return (
     <div class='flex flex-col gap-6 my-6 w-full mx-auto'>
@@ -65,7 +53,7 @@ export default function FramePanel() {
       <div class='border-2 border-dashed border-base-300 rounded-box overflow-hidden w-full min-h-32 p-6'>
         {headerPattern !== 'none' && (
           <HeaderComponent
-            drawerSide={showDrawer ? 'left' : undefined}
+            hamburger={showDrawer ? { side: 'left' } : undefined}
             bg='solid'
             left={left}
             center={center}

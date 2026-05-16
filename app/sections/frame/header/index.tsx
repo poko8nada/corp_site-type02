@@ -1,10 +1,9 @@
-export { CtaButton as HeaderCta } from './header-cta';
-export type { CtaButtonProps as HeaderCtaProps } from './header-cta';
-export { HeaderFullWidth } from './header-full-width';
-export type { HeaderFullWidthProps } from './header-full-width';
+export { HeaderCta, type HeaderCtaProps } from './header-cta';
+export { DrawerCta, type DrawerCtaProps } from './drawer-cta';
+export { HeaderTypeFullWidth } from './header-type-full-width';
+export type { HeaderTypeFullWidthProps } from './header-type-full-width';
 export { HeaderIcon } from './header-icon';
 export type { HeaderIconProps } from './header-icon';
-export { HeaderIsland } from './header-island';
-export type { HeaderIslandProps } from './header-island';
-export { Nav as HeaderNav } from './header-nav';
-export type { NavProps as HeaderNavProps } from './header-nav';
+export { HeaderTypeIsland } from './header-type-island';
+export type { HeaderTypeIslandProps } from './header-type-island';
+export { HeaderNav, type HeaderNavProps } from './header-nav';

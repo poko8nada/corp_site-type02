@@ -1,23 +1,23 @@
 export type {
-  DrawerSide,
+  Entry as FrameNavEntry,
   FrameBg,
   FrameFooterCopy,
   FrameLegalEntry,
-  FrameNavEntry,
   FooterPattern,
   HeaderPattern,
   HeaderPosition,
   ResolvedFrameConfig,
+  Side as DrawerSide,
 } from './frame-config';
 
 export { FrameConfigDefaults } from './frame-config';
 
 export {
   SITE_FRAME_DRAWER_ID,
+  frameCtaEntry,
   frameFooterCopy,
-  frameIsDemo,
+  frameIconEntry,
   frameNavEntries,
-  framePrimaryCta,
 } from './data';
 
 export { DrawerNav } from './drawer-nav';
@@ -25,14 +25,14 @@ export type { DrawerNavProps } from './drawer-nav';
 export { Footer, type FooterProps } from './footer';
 export {
   HeaderCta,
-  HeaderFullWidth,
+  HeaderTypeFullWidth,
   HeaderIcon,
-  HeaderIsland,
+  HeaderTypeIsland,
   HeaderNav,
   type HeaderCtaProps,
-  type HeaderFullWidthProps,
+  type HeaderTypeFullWidthProps,
   type HeaderIconProps,
-  type HeaderIslandProps,
+  type HeaderTypeIslandProps,
   type HeaderNavProps,
 } from './header';
 export { SiteLayout } from './site-layout';

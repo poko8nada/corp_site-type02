@@ -1,29 +1,35 @@
+import type { DisplayMode, IconEntry } from '@/sections/frame/frame-config';
+
 const LINK_CLASS =
-  'font-display text-base-content inline-flex min-w-0 items-center gap-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-left tracking-tight text-xl leading-tight sm:text-2xl';
+  'font-display text-base-content inline-flex min-w-0 items-center gap-1.5 overflow-hidden text-ellipsis whitespace-nowrap text-left tracking-tight text-lg sm:text-xl lg:text-2xl px-1';
 
 const ICON_CLASS = 'inline-block h-[1.1em] w-[1.1em] shrink-0';
 
-export interface HeaderIconProps {
-  class?: string;
-  icon?: boolean;
-  brandText?: string;
-  showBrandText?: boolean;
+export interface HeaderIconProps extends IconEntry {
+  className?: string;
+  display?: DisplayMode;
 }
 
-export function HeaderIcon(props: HeaderIconProps) {
-  const { class: className, icon = true, brandText, showBrandText } = props;
+export function HeaderIcon({
+  className,
+  href,
+  iconSrc,
+  brandText,
+  display = 'auto',
+}: HeaderIconProps) {
+  const textClass = display === 'always' ? 'block' : 'hidden md:block';
 
   return (
-    <a class={LINK_CLASS} href='/' title={brandText}>
-      {icon && (
+    <a class={LINK_CLASS} href={href} title={brandText}>
+      {iconSrc && (
         <img
           alt=''
           class={className ? `${ICON_CLASS} ${className}` : ICON_CLASS}
-          src='/logo.svg'
+          src={iconSrc}
           aria-hidden='true'
         />
       )}
-      {showBrandText && brandText && <span>{brandText}</span>}
+      {brandText && <span class={textClass}>{brandText}</span>}
     </a>
   );
 }

@@ -1,13 +1,16 @@
-import type { FrameNavEntry } from '../frame-config';
+import type { DisplayMode, Entry } from '@/sections/frame/frame-config';
 
-export interface NavProps {
-  entries: readonly FrameNavEntry[];
+export interface HeaderNavProps {
+  entries: readonly Entry[];
+  display?: DisplayMode;
 }
 
-export function Nav({ entries }: NavProps) {
+export function HeaderNav({ entries, display = 'auto' }: HeaderNavProps) {
+  const navClass = display === 'always' ? 'flex' : 'hidden md:flex';
+
   return (
-    <nav aria-label='グローバルナビ' class='hidden min-w-0 flex-1 justify-center px-2 lg:flex'>
-      <ul class='flex max-w-full flex-nowrap items-center justify-center gap-6 text-sm sm:text-base lg:gap-10'>
+    <nav aria-label='グローバルナビ' class={`min-w-0 flex-1 justify-center px-2 ${navClass}`}>
+      <ul class='flex max-w-full flex-nowrap items-center justify-center gap-4 text-sm md:gap-5 lg:gap-8 lg:text-base'>
         {entries.map((entry) => (
           <li class='shrink-0' key={entry.label}>
             {entry.kind === 'link' ? (

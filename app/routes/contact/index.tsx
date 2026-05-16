@@ -38,6 +38,14 @@ export default createRoute((c) => {
         </section>
       </section>
     </div>,
-    FrameConfigDefaults({ title: ROUTE_TITLES.contact }),
+    FrameConfigDefaults({
+      title: ROUTE_TITLES.contact,
+      headerPattern: 'standard',
+      headerBg: 'solid',
+      headerPosition: 'sticky',
+      headerCenter: undefined,
+      headerRight: undefined,
+      hamburger: undefined,
+    }),
   );
 });

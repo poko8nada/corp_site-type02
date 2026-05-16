@@ -1,20 +1,53 @@
 import type { Child } from 'hono/jsx';
-import type { ResolvedFrameConfig } from './frame-config';
+import type {
+  CtaSlot,
+  HeaderContents,
+  IconSlot,
+  NavSlot,
+  ResolvedFrameConfig,
+} from './frame-config';
 import { SITE_FRAME_DRAWER_ID } from './data';
 import DemoBanner from '@/components/$demo-banner';
 import { DrawerNav } from './drawer-nav';
 import { Footer } from './footer';
-import { HeaderFullWidth, HeaderIsland } from './header';
+import {
+  HeaderTypeFullWidth,
+  DrawerCta,
+  HeaderCta,
+  HeaderIcon,
+  HeaderTypeIsland,
+  HeaderNav,
+} from './header';
 
 export interface SiteLayoutProps {
   config: ResolvedFrameConfig;
+  isDemo: boolean;
   main: Child;
 }
 
-export function SiteLayout({ config, main }: SiteLayoutProps) {
+function resolveHeaderContent(cnt: HeaderContents): Child {
+  if (!cnt) return undefined;
+
+  switch (cnt.type) {
+    case 'icon': {
+      const c = cnt as IconSlot;
+      return <HeaderIcon {...c.entry} display={c.display} />;
+    }
+    case 'nav': {
+      const c = cnt as NavSlot;
+      return <HeaderNav entries={c.entry} display={c.display} />;
+    }
+    case 'cta': {
+      const c = cnt as CtaSlot;
+      return <HeaderCta entry={c.entry} shape={c.shape} display={c.display} />;
+    }
+    default:
+      return undefined;
+  }
+}
+
+export function SiteLayout({ config, isDemo, main }: SiteLayoutProps) {
   const {
-    brandText,
-    drawerSide,
     footerBg,
     footerCopy,
     footerPattern,
@@ -24,16 +57,18 @@ export function SiteLayout({ config, main }: SiteLayoutProps) {
     headerPattern,
     headerPosition,
     headerRight,
-    isDemo,
-    navEntries,
-    primaryCta,
+    hamburger,
+    drawer,
   } = config;
 
-  const hasDrawer = drawerSide !== undefined;
-  const HeaderComponent = headerPattern === 'island' ? HeaderIsland : HeaderFullWidth;
+  const left = resolveHeaderContent(headerLeft);
+  const center = resolveHeaderContent(headerCenter);
+  const right = resolveHeaderContent(headerRight);
+
+  const HeaderComponent = headerPattern === 'island' ? HeaderTypeIsland : HeaderTypeFullWidth;
 
   return (
-    <div class='drawer drawer-end'>
+    <div class={`drawer ${drawer?.side === 'right' ? 'drawer-end' : ''}`}>
       <input class='drawer-toggle' id={SITE_FRAME_DRAWER_ID} type='checkbox' />
       <div class='drawer-content bg-base-100 flex min-h-dvh min-w-0 flex-col'>
         {headerPattern !== 'none' && (
@@ -43,10 +78,10 @@ export function SiteLayout({ config, main }: SiteLayoutProps) {
             <DemoBanner isDemo={isDemo} />
             <HeaderComponent
               bg={headerBg}
-              drawerSide={hasDrawer ? drawerSide : undefined}
-              left={headerLeft}
-              center={headerCenter}
-              right={headerRight}
+              hamburger={hamburger}
+              left={left}
+              center={center}
+              right={right}
             />
           </div>
         )}
@@ -65,8 +100,8 @@ export function SiteLayout({ config, main }: SiteLayoutProps) {
           </div>
         </div>
       </div>
-      {hasDrawer && (
-        <div class='drawer-side z-50 lg:hidden'>
+      {drawer && (
+        <div class='drawer-side z-50'>
           <label
             aria-label='画面のこの部分をタップしてメニューを閉じる'
             class='drawer-overlay'
@@ -76,9 +111,9 @@ export function SiteLayout({ config, main }: SiteLayoutProps) {
             <div class='flex min-w-0 items-start justify-between gap-2'>
               <p
                 class='font-display text-lg leading-snug tracking-tight wrap-break-words'
-                title={brandText}
+                title={drawer.brandText}
               >
-                {brandText}
+                {drawer.brandText}
               </p>
               <label
                 aria-label='メニューを閉じる'
@@ -102,10 +137,8 @@ export function SiteLayout({ config, main }: SiteLayoutProps) {
                 </svg>
               </label>
             </div>
-            <DrawerNav entries={navEntries} />
-            <a class='btn btn-outline btn-primary btn-sm shrink-0' href={primaryCta.href}>
-              {primaryCta.label}
-            </a>
+            <DrawerNav entries={drawer.entry} />
+            {drawer.ctaEntry && <DrawerCta entry={drawer.ctaEntry} />}
           </aside>
         </div>
       )}
